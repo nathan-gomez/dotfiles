@@ -1,9 +1,7 @@
 vim.g.mapleader = " "
---File explorer
-vim.keymap.set("n", "<leader>fe", vim.cmd.Ex)
 
 --copy to system clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 --replace all words under cursor
@@ -15,18 +13,18 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
 --Source the current file
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end)
 
 --Keep cursor in the middle
@@ -39,15 +37,16 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "zz", "<Cmd>update<cr>")
 
 --Tabs and buffers
-vim.keymap.set('n', '<leader>nn', '<Cmd>tabnew<CR>')
+vim.keymap.set("n", "<leader>nn", "<Cmd>tabnew<CR>")
 
 --Switch to last buffer
-vim.keymap.set('n', '<leader>bb', ' <c-^><CR>')
+vim.keymap.set("n", "<leader>bb", " <c-^><CR>")
 
 --Exit terminal mode
-vim.keymap.set('t', '<C-w>h', "<C-\\><C-n><C-w>h",{silent = true})
+vim.keymap.set("t", "<C-w>h", "<C-\\><C-n><C-w>h", { silent = true })
 
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+	[[
 let g:clipboard = {
             \   'name': 'WslClipboard',
             \   'copy': {
@@ -60,4 +59,6 @@ let g:clipboard = {
             \   },
             \   'cache_enabled': 0,
             \ }
-]] , true)
+]],
+	true
+)

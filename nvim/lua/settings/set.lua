@@ -1,3 +1,7 @@
+--Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 --Line numbers / Relative lines
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -23,17 +27,16 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+vim.opt.signcolumn = "yes"
+--vim.opt.colorcolumn = "100"
 
 vim.opt.updatetime = 50
-
---vim.opt.colorcolumn = "80"
 
 --Leader key
 vim.g.mapleader = " "
 
 --Theme
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd([[colorscheme catppuccin]])
 
 vim.notify = require("notify")
