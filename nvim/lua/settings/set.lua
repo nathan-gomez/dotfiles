@@ -38,5 +38,3 @@ vim.g.mapleader = " "
 
 --Theme
 vim.cmd([[colorscheme catppuccin]])
-
-vim.notify = require("notify")
