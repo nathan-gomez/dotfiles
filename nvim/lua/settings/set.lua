@@ -33,8 +33,5 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 50
 
---Leader key
-vim.g.mapleader = " "
-
 --Theme
 vim.cmd([[colorscheme catppuccin]])

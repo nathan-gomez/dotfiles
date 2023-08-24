@@ -5,7 +5,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 --replace all words under cursor
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 --Move selected lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -44,6 +44,17 @@ vim.keymap.set("n", "<leader>bb", " <c-^><CR>")
 
 --Exit terminal mode
 vim.keymap.set("t", "<C-w>h", "<C-\\><C-n><C-w>h", { silent = true })
+
+--Toggle wrap
+function ToggleWordWrap()
+	if vim.wo.wrap then
+		vim.wo.wrap = false
+	else
+		vim.wo.wrap = true
+	end
+end
+
+vim.api.nvim_set_keymap("n", "<leader>w", [[:lua ToggleWordWrap()<CR>]], { noremap = true, silent = true })
 
 vim.api.nvim_exec(
 	[[
