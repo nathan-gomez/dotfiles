@@ -61,6 +61,7 @@ return require("packer").startup(function(use)
 	use({ "lewis6991/gitsigns.nvim" })
 	use({ "onsails/lspkind.nvim" })
 	use({ "folke/trouble.nvim", requires = "nvim-tree/nvim-web-devicons" })
+	use("MunifTanjim/prettier.nvim")
 
 	use({
 		"numToStr/Comment.nvim",
