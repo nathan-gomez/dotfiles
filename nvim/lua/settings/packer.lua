@@ -53,6 +53,11 @@ return require("packer").startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
+	use({
+		"nvim-telescope/telescope-file-browser.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	})
+
 	use("mbbill/undotree")
 	use("tpope/vim-fugitive")
 	use("norcalli/nvim-colorizer.lua")
@@ -62,6 +67,7 @@ return require("packer").startup(function(use)
 	use({ "onsails/lspkind.nvim" })
 	use({ "folke/trouble.nvim", requires = "nvim-tree/nvim-web-devicons" })
 	use("MunifTanjim/prettier.nvim")
+	use("windwp/nvim-ts-autotag")
 
 	use({
 		"numToStr/Comment.nvim",
