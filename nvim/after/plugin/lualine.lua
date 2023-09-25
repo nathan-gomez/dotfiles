@@ -2,20 +2,34 @@ require("lualine").setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-		component_separators = { left = "", right = "" },
+		-- component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		-- component_separators = "|",
+		component_separators = "|",
 		-- section_separators = "",
 		globalstatus = true,
 	},
 	sections = {
 		lualine_a = { "mode" },
-		lualine_b = { "branch", "diff", "diagnostics" },
+		lualine_b = {
+			{
+				"branch",
+				icon = "",
+			},
+			{
+				"diff",
+				symbols = { added = " ", modified = "󰝤 ", removed = " " },
+			},
+			{
+				"diagnostics",
+				sources = { "nvim_diagnostic" },
+				symbols = { error = " ", warn = " ", info = " " },
+			},
+		},
 		lualine_c = {
 			{
 				"filename",
 				file_status = true, -- displays file status (readonly status, modified status)
-				path = 2, -- 0 = just filename, 1 = relative path, 2 = absolute path
+				path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
 				symbols = {
 					modified = "[+]", -- Text to show when the file is modified.
 					readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
