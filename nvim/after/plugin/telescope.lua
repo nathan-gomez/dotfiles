@@ -43,17 +43,16 @@ require("telescope").setup({
 		border = {},
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 		color_devicons = true,
-		set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+		set_env = { ["COLORTERM"] = "truecolor" },
 		file_previewer = previewers.vim_buffer_cat.new,
 		grep_previewer = previewers.vim_buffer_vimgrep.new,
 		qflist_previewer = previewers.vim_buffer_qflist.new,
-		-- Developer configurations: Not meant for general override
 		buffer_previewer_maker = previewers.buffer_previewer_maker,
 		mappings = {
 			n = { ["q"] = actions.close },
 			i = {
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
+				["<C-n>"] = actions.move_selection_next,
+				["<C-p>"] = actions.move_selection_previous,
 				["<C-l>"] = actions.select_default,
 				["<C-s>"] = actions.cycle_previewers_next,
 				["<C-a>"] = actions.cycle_previewers_prev,
