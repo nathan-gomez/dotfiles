@@ -1,10 +1,9 @@
 local null_ls = require("null-ls")
 
 local sources = {
-	null_ls.builtins.formatting.prettierd,
+  null_ls.builtins.formatting.stylua,
 	null_ls.builtins.formatting.goimports_reviser,
-	null_ls.builtins.formatting.stylua,
-	null_ls.builtins.code_actions.gomodifytags,
+  null_ls.builtins.code_actions.gomodifytags,
 }
 
 -- local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })

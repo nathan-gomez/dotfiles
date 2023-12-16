@@ -4,3 +4,4 @@ tmux/plugins/
 lazygit/state.yml
 go/
 lazydocker/
+.vscode/

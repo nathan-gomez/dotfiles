@@ -33,6 +33,3 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 100
 vim.opt.linebreak = true
-
---Theme
-vim.cmd([[colorscheme catppuccin]])
