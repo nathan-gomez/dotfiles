@@ -2,3 +2,5 @@ nextjs-nodejs/
 nvim/plugin/
 tmux/plugins/
 lazygit/state.yml
+go/
+lazydocker/
