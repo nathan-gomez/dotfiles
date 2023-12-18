@@ -48,7 +48,15 @@ local plugins = {
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { { "nvim-lua/plenary.nvim" } },
+	},
+
+	-- Formatters
 	{ "jose-elias-alvarez/null-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+	{ "stevearc/conform.nvim", dependencies = { "mason.nvim" } },
 	{
 		"numToStr/Comment.nvim",
 		config = function()
