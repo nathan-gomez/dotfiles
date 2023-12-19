@@ -1,11 +1,16 @@
 vim.g.mapleader = " "
 
---copy to system clipboard
+--Copy to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
---replace all words under cursor
-vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+--Replace all words under cursor
+vim.keymap.set(
+	"n",
+	"<leader>r",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Replace all words under cursor" }
+)
 
 --Move selected lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -34,7 +39,11 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 --Save current file
-vim.keymap.set("n", "zz", "<Cmd>update<cr>")
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- better indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
 --Tabs and buffers
 vim.keymap.set("n", "<leader>nn", "<Cmd>tabnew<CR>")

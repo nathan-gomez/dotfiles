@@ -38,7 +38,6 @@ local plugins = {
 			{ "rafamadriz/friendly-snippets" }, -- Optional
 		},
 	},
-
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
@@ -55,8 +54,9 @@ local plugins = {
 	},
 
 	-- Formatters
-	{ "jose-elias-alvarez/null-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+	{ "nvimtools/none-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 	{ "stevearc/conform.nvim", dependencies = { "mason.nvim" } },
+
 	{
 		"numToStr/Comment.nvim",
 		config = function()
@@ -80,7 +80,8 @@ local plugins = {
 	--Web dev
 	{ "windwp/nvim-ts-autotag" },
 
-	-- Themes
+	-- UI
+	{ "stevearc/dressing.nvim", lazy = true },
 	{ "rebelot/kanagawa.nvim", lazy = true },
 	{ "catppuccin/nvim", lazy = true },
 }

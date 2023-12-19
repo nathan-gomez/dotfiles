@@ -33,3 +33,8 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 100
 vim.opt.linebreak = true
+vim.opt.showmode = false
+
+--Casing and spellchecking
+vim.opt.ignorecase = true
+vim.opt.smartcase = true

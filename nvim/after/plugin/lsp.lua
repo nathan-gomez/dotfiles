@@ -1,5 +1,6 @@
 -- Learn the keybindings, see :help lsp-zero-keybindings
 -- Learn to configure LSP servers, see :help lsp-zero-api-showcase
+local icons = require("icons")
 local lsp = require("lsp-zero")
 local mason = require("mason")
 local lspkind = require("lspkind")
@@ -37,41 +38,54 @@ lsp.setup_nvim_cmp({
 
 lsp.set_preferences({
 	suggest_lsp_servers = true,
-	sign_icons = {
-		error = "✘",
-		warn = "▲",
-		hint = "⚑",
-		info = "»",
-	},
+	sign_icons = icons.diagnostics,
 })
 
 mason.setup({
 	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
+		icons = icons.mason,
 	},
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
-	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-	vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
-	vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
-	vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-	vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-	vim.keymap.set("n", "<leader>vrr", function() builtin.lsp_references() end, opts)
+	vim.keymap.set("n", "gd", function()
+		vim.lsp.buf.definition()
+	end, opts)
+	vim.keymap.set("n", "K", function()
+		vim.lsp.buf.hover()
+	end, opts)
+	vim.keymap.set("n", "]d", function()
+		vim.diagnostic.goto_next()
+	end, opts)
+	vim.keymap.set("n", "[d", function()
+		vim.diagnostic.goto_prev()
+	end, opts)
+	vim.keymap.set("n", "<leader>vca", function()
+		vim.lsp.buf.code_action()
+	end, opts)
+	vim.keymap.set("n", "<leader>vrn", function()
+		vim.lsp.buf.rename()
+	end, opts)
+	vim.keymap.set("n", "<leader>vrr", function()
+		builtin.lsp_references()
+	end, opts)
 end)
 
 lsp.setup()
 
 cmp.setup({
 	formatting = {
-		format = lspkind.cmp_format(),
+		-- 	format = lspkind.cmp_format(),
+		-- },
+		format = function(_, item)
+			local itemIcons = require("icons").kinds
+			if itemIcons[item.kind] then
+				item.kind = itemIcons[item.kind] .. item.kind
+			end
+			return item
+		end,
 	},
 })
 

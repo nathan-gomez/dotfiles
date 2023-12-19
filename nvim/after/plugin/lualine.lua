@@ -1,3 +1,5 @@
+local icons = require("icons")
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -17,12 +19,12 @@ require("lualine").setup({
 			},
 			{
 				"diff",
-				symbols = { added = " ", modified = "󰝤 ", removed = " " },
+				symbols = icons.git,
 			},
 			{
 				"diagnostics",
 				sources = { "nvim_diagnostic" },
-				symbols = { error = " ", warn = " ", info = " " },
+				symbols = icons.diagnostics,
 			},
 		},
 		lualine_c = {
