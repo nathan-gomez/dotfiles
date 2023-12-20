@@ -3,8 +3,17 @@ local conform = require("conform")
 conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
-		javascript = { "prettier" },
 		go = { "goimports-reviser", "gofumpt" },
+		javascript = { "prettier" },
+		typescript = { "prettier" },
+		javascriptreact = { "prettier" },
+		typescriptreact = { "prettier" },
+		css = { "prettier" },
+		html = { "prettier" },
+		json = { "prettier" },
+		yaml = { "prettier" },
+		markdown = { "prettier" },
+		graphql = { "prettier" },
 	},
 	-- format_on_save = { timeout_ms = 500, lsp_fallback = true },
 	formatters = {
@@ -26,4 +35,4 @@ vim.api.nvim_create_user_command("Format", function(args)
 	conform.format({ async = true, lsp_fallback = true, range = range })
 end, { range = true })
 
-vim.keymap.set("n", "<leader>fo", "<Cmd>Format<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>fo", "<Cmd>Format<cr>")

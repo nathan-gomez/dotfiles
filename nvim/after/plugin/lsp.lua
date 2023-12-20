@@ -3,7 +3,6 @@
 local icons = require("icons")
 local lsp = require("lsp-zero")
 local mason = require("mason")
-local lspkind = require("lspkind")
 local builtin = require("telescope.builtin")
 
 lsp.preset("recommended")
@@ -24,10 +23,7 @@ lsp.configure("lua_ls", {
 })
 
 local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<C-b>"] = cmp.mapping.select_prev_item(cmp_select),
-	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 	["<Tab>"] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
 })
@@ -77,8 +73,6 @@ lsp.setup()
 
 cmp.setup({
 	formatting = {
-		-- 	format = lspkind.cmp_format(),
-		-- },
 		format = function(_, item)
 			local itemIcons = require("icons").kinds
 			if itemIcons[item.kind] then
