@@ -8,10 +8,6 @@ let mapleader = " "
 " Replace word under cursor
 nnoremap <leader>r :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
-" Move lines
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
 " Keep screen center
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
@@ -40,17 +36,25 @@ set clipboard=unnamedplus
 
 set ideajoin
 
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 map <leader>fo <Action>(ReformatCode)
+map <leader>ff <Action>(GotoFile)
+
 nmap <S-k> <Action>(ShowHoverInfo)
 nmap <C-Enter> <Action>(ShowIntentionActions)
 map ]d <Action>(GotoNextError)
 map [d <Action>(GotoPreviousError)
-map <C-/> <Action>(CommentByLineComment)
-map <leader>ff <Action>(GotoFile)
+
+" Comments
+nmap <C-/> <Action>(CommentByLineComment)
+vmap gc <Action>(CommentByLineComment)
+
+" Regions
 nmap <leader>[ <Action>(CollapseRegion)
 nmap <leader>] <Action>(ExpandRegion)
 
+" Move lines
+vmap J <Action>(MoveLineDown)
+vmap K <Action>(MoveLineUp)
 
 " Highlight copied text
 Plug 'machakann/vim-highlightedyank'

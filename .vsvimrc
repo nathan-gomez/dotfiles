@@ -3,10 +3,6 @@
 " Replace word under cursor
 nnoremap <leader>r :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
-" Move lines
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
 " Keep screen center
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
@@ -31,12 +27,22 @@ set visualbell
 set hlsearch
 set clipboard=unnamed
 
-map <leader>fo :vsc Edit.FormatSelection<CR>
+" Move lines
+vmap K :vsc Edit.MoveSelectedLinesUp<CR>
+vmap J :vsc Edit.MoveSelectedLinesDown<CR>
+
+" Comment
+nmap <C-/> :vsc Edit.CommentSelection<CR>
+vmap gc :vsc Edit.ToggleLineComment<CR>
+
+nmap <leader>fo :vsc Edit.FormatDocument<CR>
+vmap <leader>fo :vsc Edit.FormatSelection<CR>
+map <leader>ff :vsc Edit.GoToFile<CR>
+map <leader>fe :vsc View.SolutionExplorer<CR>
 nmap <S-k> :vsc Edit.QuickInfo<CR>
 nmap <C-Enter> :vsc View.QuickActions<CR>
 map ]d :vsc View.NextError<CR>
 map [d :vsc View.PreviousError<CR>
-map <C-/> :vsc Edit.CommentSelection<CR>
-map <leader>ff :vsc Edit.GoToFile<CR>
+
 nmap <leader>[ :vsc Edit.CollapseCurrentRegion<CR>
 nmap <leader>] :vsc Edit.ExpandCurrentRegion<CR>
