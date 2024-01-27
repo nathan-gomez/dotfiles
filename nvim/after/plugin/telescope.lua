@@ -1,9 +1,10 @@
+local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local sorters = require("telescope.sorters")
 local previewers = require("telescope.previewers")
 
-require("telescope").setup({
+telescope.setup({
 	defaults = {
 		vimgrep_arguments = {
 			"rg",
@@ -51,8 +52,8 @@ require("telescope").setup({
 		mappings = {
 			n = { ["q"] = actions.close },
 			i = {
-				["<C-n>"] = actions.move_selection_next,
-				["<C-p>"] = actions.move_selection_previous,
+				["<C-j>"] = actions.move_selection_next,
+				["<C-k>"] = actions.move_selection_previous,
 				["<C-l>"] = actions.select_default,
 				["<C-s>"] = actions.cycle_previewers_next,
 				["<C-a>"] = actions.cycle_previewers_prev,
@@ -69,10 +70,11 @@ require("telescope").setup({
 			override_file_sorter = true,
 			case_mode = "smart_case",
 		},
+		file_browser = { hijack_netrw = true },
 	},
 })
 
-require("telescope").load_extension("file_browser")
+telescope.load_extension("file_browser")
 
 -- local colors = require("catppuccin.palettes").get_palette()
 -- local TelescopeColor = {
@@ -103,3 +105,4 @@ vim.api.nvim_set_keymap(
 	":Telescope file_browser path=%:p:h select_buffer=true<CR>",
 	{ noremap = true }
 )
+vim.api.nvim_set_keymap("n", "<leader>tw", ":Telescope tmux windows<CR>", { noremap = true })

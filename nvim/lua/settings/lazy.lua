@@ -48,6 +48,10 @@ local plugins = {
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
 	{
+		"camgraff/telescope-tmux.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	},
+	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
 		dependencies = { { "nvim-lua/plenary.nvim" } },
@@ -63,7 +67,6 @@ local plugins = {
 			require("Comment").setup()
 		end,
 	},
-	{ "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
 	{ "lewis6991/gitsigns.nvim" },
 	{ "mbbill/undotree" },
 	{ "folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
@@ -80,7 +83,6 @@ local plugins = {
 	{ "windwp/nvim-ts-autotag" },
 
 	-- UI
-	{ "stevearc/dressing.nvim", lazy = true },
 	{ "rebelot/kanagawa.nvim", lazy = true },
 	{ "catppuccin/nvim", lazy = true },
 }
