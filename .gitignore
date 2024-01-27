@@ -3,5 +3,5 @@ nvim/plugin/
 tmux/plugins/
 lazygit/state.yml
 go/
-lazydocker/
+lazydocker/state.yml
 .vscode/
