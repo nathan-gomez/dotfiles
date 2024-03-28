@@ -9,7 +9,7 @@ conform.setup({
 		javascriptreact = { "biome" },
 		typescriptreact = { "biome" },
 		json = { "biome" },
-		yaml = { "biome" },
+		yaml = { "prettier" },
 		css = { "prettier" },
 		html = { "prettier" },
 		markdown = { "prettier" },

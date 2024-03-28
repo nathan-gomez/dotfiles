@@ -20,11 +20,12 @@ alias rider="rider64.exe"
 alias k="kubectl"
 alias docker-prune="docker image prune -a && docker volume prune && docker volume prune -a && docker network prune"
 
-alias srv1="ssh nathan@192.168.100.25"
-alias srv2="ssh admin-2@192.168.100.28"
+alias srv-desa="ssh sysadmin@192.168.100.53"
+alias srv-prod="ssh sysadmin@192.168.100.27"
+alias desa-kmaster="ssh sysadmin@192.168.100.60"
 
 export PATH=$PATH:/usr/local/go/bin
-# export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:/mnt/c/Program\ Files/JetBrains/JetBrains\ Rider\ 2023.3/bin
 
@@ -46,9 +47,5 @@ echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Vagrant
-export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH=/mnt/c/Users/gomez
-export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 
 source $ZSH/oh-my-zsh.sh

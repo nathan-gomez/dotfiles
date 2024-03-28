@@ -7,10 +7,10 @@ local builtin = require("telescope.builtin")
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-	"tsserver",
-	"gopls",
-})
+-- lsp.ensure_installed({
+-- 	"tsserver",
+-- 	"gopls",
+-- })
 
 lsp.configure("lua_ls", {
 	settings = {
