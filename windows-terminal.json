@@ -1,0 +1,25 @@
+[
+	{
+		"background": "#181616",
+		"black": "#0D0C0C",
+		"blue": "#8BA4B0",
+		"brightBlack": "#A6A69C",
+		"brightBlue": "#7FB4CA",
+		"brightCyan": "#7AA89F",
+		"brightGreen": "#87A986",
+		"brightPurple": "#938AA9",
+		"brightRed": "#E46876",
+		"brightWhite": "#C5C9C5",
+		"brightYellow": "#F39D21",
+		"cursorColor": "#C8C093",
+		"cyan": "#8EA4A2",
+		"foreground": "#C5C9C5",
+		"green": "#8A9A7B",
+		"name": "Kanawaga",
+		"purple": "#A292A3",
+		"red": "#C4746E",
+		"selectionBackground": "#2D4F67",
+		"white": "#C8C093",
+		"yellow": "#E1AA5D"
+	}
+]
