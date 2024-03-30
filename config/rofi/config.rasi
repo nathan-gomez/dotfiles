@@ -1,16 +1,24 @@
 configuration {
+  	/*---------- General setting ----------*/
     show-icons: true;
     icon-theme: "Papirus";
+    case-sensitive: false;
     terminal: "wezterm start";
-    drun-display-format:        "{name}";
     disable-history: false;
     hide-scrollbar: true;
-    window-format: " [{w}]\t\t{t:0}";
     sidebar-mode: true;
-    display-run: "";
-    display-drun: "";
-    display-window: "";
     show-match: true;
+    drun-match-fields: "name,generic,exec,categories,keywords";
+    drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+   	modi:                       "drun,window,run,filebrowser";
+    display-drun:               " Apps";
+    display-run:                " Run";
+    display-filebrowser:        " Files";
+    display-window:             " Windows";
+    drun-display-format:        "{name}";
+  	window-format:              "{c} · {t}";
+
+   	/*---------- Keybindings ----------*/
     kb-mode-previous: "Control+h,Control+Shift+Tab";
     kb-mode-next: "Control+l,Control+Tab";
     kb-row-down: "Control+j,Control+n,Down";
@@ -24,7 +32,6 @@ configuration {
     kb-remove-char-back: "BackSpace,Shift+BackSpace";
     kb-remove-to-eol: "";
     kb-mode-complete: "";
-    modi: "drun,window";
 }
 
-@theme "theme.rasi"
+@theme "./themes/kanagawa.rasi"
