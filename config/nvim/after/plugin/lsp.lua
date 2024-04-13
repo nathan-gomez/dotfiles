@@ -1,16 +1,10 @@
--- Learn the keybindings, see :help lsp-zero-keybindings
--- Learn to configure LSP servers, see :help lsp-zero-api-showcase
 local icons = require("icons")
 local lsp = require("lsp-zero")
 local mason = require("mason")
+local cmp = require("cmp")
 local builtin = require("telescope.builtin")
 
 lsp.preset("recommended")
-
--- lsp.ensure_installed({
--- 	"tsserver",
--- 	"gopls",
--- })
 
 lsp.configure("lua_ls", {
 	settings = {
@@ -22,7 +16,6 @@ lsp.configure("lua_ls", {
 	},
 })
 
-local cmp = require("cmp")
 local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<Tab>"] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
@@ -74,7 +67,7 @@ lsp.setup()
 cmp.setup({
 	formatting = {
 		format = function(_, item)
-			local itemIcons = require("icons").kinds
+			local itemIcons = icons.kinds
 			if itemIcons[item.kind] then
 				item.kind = itemIcons[item.kind] .. item.kind
 			end

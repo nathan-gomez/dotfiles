@@ -56,4 +56,10 @@ return {
 		Value = " ",
 		Variable = "󰀫 ",
 	},
+	misc = {
+		FolderOpen = "",
+		FolderClosed = "",
+    ArrowRight = "",
+    ArrowDown = "",
+	},
 }
