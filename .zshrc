@@ -4,7 +4,11 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="eastwood"
 ENABLE_CORRECTION="true"
-plugins=(git)
+plugins=(git docker docker-compose)
+
+### Fix for making Docker plugin work
+autoload -U compinit && compinit
+###
 
 # Alias
 alias zshconfig="source ~/.zshrc"
@@ -47,5 +51,7 @@ echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.json)"
 
 source $ZSH/oh-my-zsh.sh
