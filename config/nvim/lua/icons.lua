@@ -9,6 +9,7 @@ return {
 		added = " ",
 		modified = " ",
 		removed = " ",
+		branch = "",
 	},
 	mason = {
 		package_installed = "✓",

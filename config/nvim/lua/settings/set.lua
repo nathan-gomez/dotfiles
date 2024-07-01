@@ -29,7 +29,6 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 10
 vim.opt.isfname:append("@-@")
 vim.opt.signcolumn = "yes"
--- vim.opt.colorcolumn = "120"
 
 vim.opt.updatetime = 100
 vim.opt.linebreak = true
