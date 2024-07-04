@@ -1,5 +1,4 @@
 {
-  // Editor
   "editor.tabSize": 2,
   "editor.wordWrapColumn": 120,
   "editor.wordWrap": "wordWrapColumn",
@@ -12,7 +11,7 @@
   "diffEditor.hideUnchangedRegions.enabled": true,
   "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
   "terminal.explorerKind": "both",
-  // Vim Extension
+
   "vim.textwidth": 120,
   "vim.vimrc.enable": true,
   "vim.easymotion": true,
@@ -56,6 +55,14 @@
     {
       "before": ["leader", "f", "o"],
       "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["leader", "["],
+      "commands": ["editor.fold"]
+    },
+    {
+      "before": ["leader", "]"],
+      "commands": ["editor.unfold"]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -80,6 +87,10 @@
     {
       "before": ["J"],
       "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["leader", "f", "o"],
+      "commands": ["editor.action.formatSelection"]
     }
   ]
 }
