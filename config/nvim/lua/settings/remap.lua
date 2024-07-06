@@ -16,11 +16,6 @@ vim.keymap.set(
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
---Source the current file
-vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
-end)
-
 --Keep cursor in the middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 
