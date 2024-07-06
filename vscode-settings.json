@@ -1,7 +1,7 @@
 {
   "editor.tabSize": 2,
   "editor.wordWrapColumn": 120,
-  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrap": "off",
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "none",
   "editor.fontFamily": "'JetBrainsMono Nerd Font', 'CaskaydiaCove Nerd Font', Consolas, 'Courier New', monospace",
@@ -9,11 +9,12 @@
   "editor.fontLigatures": true,
   "editor.autoClosingBrackets": "always",
   "diffEditor.hideUnchangedRegions.enabled": true,
-  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', 'CaskaydiaCove Nerd Font', Consolas, 'Courier New', monospace",
   "terminal.explorerKind": "both",
+  "terminal.integrated.defaultLocation": "editor",
 
   "vim.textwidth": 120,
-  "vim.vimrc.enable": true,
+  "vim.vimrc.enable": false,
   "vim.easymotion": true,
   "vim.incsearch": true,
   "vim.useCtrlKeys": true,
@@ -23,7 +24,8 @@
   "vim.leader": " ",
   "vim.handleKeys": {
     "<C-f>": false,
-    "<C-p>": false,
+    "<C-b>": false,
+    "<C-p>": true,
     "<C-z>": true,
     "<C-w>": true
   },
