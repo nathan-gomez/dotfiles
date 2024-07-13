@@ -1,33 +1,87 @@
 return {
-	"neovim/nvim-lspconfig",
+	"VonHeikemen/lsp-zero.nvim",
+	branch = "v2.x",
+	event = { "BufReadPre", "BufNewFile" },
+	cmd = "Mason",
 	dependencies = {
+		"neovim/nvim-lspconfig",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
 		"hrsh7th/nvim-cmp",
-		"hrsh7th/cmp-cmdline",
+		"hrsh7th/cmp-nvim-lsp",
 		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
-		"rafamadriz/friendly-snippets",
 		"j-hui/fidget.nvim",
 	},
-
 	config = function()
+		require("fidget").setup({})
+
+		-- Lsp
+		local lsp = require("lsp-zero").preset({})
 		local icons = require("icons")
-		local lsp_config = require("lspconfig")
-		local mason = require("mason")
-		local mason_lspconfig = require("mason-lspconfig")
+
+		lsp.on_attach(function(_, bufnr)
+			lsp.default_keymaps({ buffer = bufnr })
+		end)
+
+		lsp.set_sign_icons({
+			error = icons.diagnostics.Error,
+			warn = icons.diagnostics.Warn,
+			hint = icons.diagnostics.Hint,
+			info = icons.diagnostics.Info,
+		})
+
+		lsp.setup()
+
+		-- Cmp
 		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
+		local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+		cmp.setup({
+			preselect = cmp.PreselectMode.None,
+			sources = {
+				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
+			},
+			snippet = {
+				expand = function(args)
+					require("luasnip").lsp_expand(args.body)
+				end,
+			},
+			mapping = {
+				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+				["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
+				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+				["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
+				["<CR>"] = cmp.mapping.confirm({ select = false }),
+				["<Tab>"] = cmp.mapping.confirm({ select = true }),
+				["<C-Space>"] = cmp.mapping.complete(),
+			},
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
+			formatting = {
+				format = function(_, item)
+					local itemIcons = icons.kinds
+					if itemIcons[item.kind] then
+						item.kind = itemIcons[item.kind] .. item.kind
+					end
+					return item
+				end,
+			},
+		})
+
+		-- Mason
+		local mason = require("mason")
+		local mason_lspconfig = require("mason-lspconfig")
+		local lsp_config = require("lspconfig")
 		local capabilities = vim.tbl_deep_extend(
 			"force",
 			{},
 			vim.lsp.protocol.make_client_capabilities(),
 			cmp_lsp.default_capabilities()
 		)
-		require("fidget").setup({})
 
 		mason.setup({
 			ui = {
@@ -62,36 +116,7 @@ return {
 			},
 		})
 
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-		cmp.setup({
-			snippet = {
-				expand = function(args)
-					require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-				end,
-			},
-			mapping = cmp.mapping.preset.insert({
-				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-				["<Tab>"] = cmp.mapping.confirm({ select = true }),
-				["<C-Space>"] = cmp.mapping.complete(),
-			}),
-			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" }, -- For luasnip users.
-			}, {
-				{ name = "buffer" },
-			}),
-			formatting = {
-				format = function(_, item)
-					local itemIcons = icons.kinds
-					if itemIcons[item.kind] then
-						item.kind = itemIcons[item.kind] .. item.kind
-					end
-					return item
-				end,
-			},
-		})
-
+		-- Diagnostic
 		vim.diagnostic.config({
 			virtual_text = true,
 			update_in_insert = true,
