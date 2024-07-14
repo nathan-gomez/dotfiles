@@ -65,6 +65,10 @@
     {
       "before": ["leader", "]"],
       "commands": ["editor.unfold"]
+    },
+    {
+      "before": ["<C-w>", "c"],
+      "commands": ["workbench.action.closeActiveEditor"]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
