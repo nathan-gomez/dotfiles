@@ -1,6 +1,10 @@
+## Install needed packages
 ```bash
 # Development packages
-sudo pacman -S neovim tmux kitty lazygit unzip flatpak fd ripgrep
+sudo pacman -S neovim tmux kitty lazygit unzip flatpak fd ripgrep zsh
+
+# Install fonts
+sudo pacman -S ttf-jetbrains-mono-nerd
 
 # Install oh-my-posh
 curl -s https://ohmyposh.dev/install.sh | bash -s
@@ -10,7 +14,43 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 # Set zsh as default shell
 chsh -s $(which zsh)
+```
 
-# Install fonts
-sudo pacman -S ttf-jetbrains-mono-nerd
+## Fix PipeWire crackling on VMs
+```bash
+# Install pipewire
+sudo pacman -S pipewire pipewire-audio pipewire-pulse pipewire-alsa pipewire-jack wireplumber rtkit
+
+sudo cp /usr/share/pipewire/pipewire.conf /etc/pipewire/
+
+mkdir -p ~/.config/wireplumber/wireplumber.conf.d/
+nvim ~/.config/wireplumber/wireplumber.conf.d/50-alsa-config.conf
+
+```
+
+### Paste the contents inside the new file
+```conf
+monitor.alsa.rules = [
+  {
+    matches = [
+      # This matches the value of the 'node.name' property of the node.
+      {
+        node.name = "~alsa_output.*"
+      }
+    ]
+    actions = {
+      # Apply all the desired node specific settings here.
+      update-props = {
+        api.alsa.period-size   = 1024
+        api.alsa.headroom      = 8192
+      }
+    }
+  }
+]
+
+```
+
+```bash
+# Restart audio driver
+systemctl --user restart wireplumber pipewire pipewire-pulse
 ```
