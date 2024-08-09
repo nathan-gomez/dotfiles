@@ -60,7 +60,16 @@ return {
 	misc = {
 		FolderOpen = "",
 		FolderClosed = "",
-    ArrowRight = "",
-    ArrowDown = "",
+		ArrowRight = "",
+		ArrowDown = "",
+	},
+	todoComments = {
+		Fix = " ",
+		Todo = " ",
+		Hack = " ",
+		Warn = " ",
+		Perf = " ",
+		Note = " ",
+		Test = "⏲ ",
 	},
 }
