@@ -9,17 +9,16 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				go = { "goimports-reviser", "gofumpt" },
-				javascript = { "prettier", "biome" },
-				typescript = { "prettier", "biome" },
-				javascriptreact = { "biome", "prettier" },
-				typescriptreact = { "biome", "prettier" },
-				json = { "biome", "prettier" },
+				javascript = { "prettier", "biome", stop_after_first = true },
+				typescript = { "prettier", "biome", stop_after_first = true },
+				javascriptreact = { "biome", "prettier", stop_after_first = true },
+				typescriptreact = { "biome", "prettier", stop_after_first = true },
+				json = { "biome", "prettier", stop_after_first = true },
 				yaml = { "prettier" },
 				css = { "prettier" },
 				html = { "prettier" },
 				markdown = { "prettier" },
 			},
-			-- format_on_save = { timeout_ms = 500, lsp_fallback = true },
 			formatters = {
 				shfmt = {
 					prepend_args = { "-i", "2" },
