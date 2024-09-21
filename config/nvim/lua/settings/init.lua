@@ -31,5 +31,3 @@ autocmd("TextYankPost", {
 	group = yank_group,
 	pattern = "*",
 })
-
-vim.cmd([[colorscheme kanagawa-dragon]])
