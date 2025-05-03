@@ -1,0 +1,41 @@
+[general]
+live_config_reload = true
+import = [ "~/.config/alacritty/gruvbox-dark.toml" ]
+
+[env]
+TERM = "xterm-256color"
+
+[cursor]
+style = "Block"
+
+[window]
+# decorations = "none"
+startup_mode = "Maximized"
+dynamic_padding = false
+opacity = 1
+
+padding.x = 5
+padding.y = 10
+
+[font]
+size = 11.0
+
+normal.family = "JetBrainsMono Nerd Font"
+normal.style = "Semibold"
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = true
+
+bindings = [
+# { mouse = "Right", action = "Paste" },
+]
+
+[keyboard]
+bindings = [
+  # { key = "C", mods = "Control|Shift", action = "Copy" },
+  # { key = "V", mods = "Control|Shift", action = "Paste" },
+  # { key = "Q", mods = "Control|Shift", action = "Quit" },
+]
