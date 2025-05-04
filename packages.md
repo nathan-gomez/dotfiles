@@ -1,16 +1,18 @@
 ## Install needed packages
 ```bash
 # Development packages
-sudo pacman -S neovim tmux kitty lazygit unzip flatpak fd ripgrep zsh
+yay -S neovim tmux alacritty lazygit lazydocker unzip flatpak fd ripgrep zsh
 
-# Install fonts
-sudo pacman -S ttf-jetbrains-mono-nerd
+yay -S ttf-jetbrains-mono-nerd bitwarden btop ktorrent syncthing zerotier-one obsidian dotnet-host dotnet-runtime dotnet-sdk
 
 # Install oh-my-posh
 curl -s https://ohmyposh.dev/install.sh | bash -s
 
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# Install Oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Set zsh as default shell
 chsh -s $(which zsh)
