@@ -1,7 +1,7 @@
 CONFIG_DIR := $(HOME)/.config
 
 # Default target
-all: nvim tmux ohmyposh alacritty lazydocker lazygit zsh rofi
+all: nvim tmux ohmyposh alacritty lazydocker lazygit zsh rofi i3
 
 nvim:
 	@echo "Creating symlink: $(CONFIG_DIR)/nvim"
