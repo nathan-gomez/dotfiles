@@ -1,18 +1,44 @@
-# font pango: Noto Sans Regular 10
-font pango: JetBrainsMono Nerd Font 11
+##############
+# Variables: #
+##############
 
 # Win:
 set $mod1 Mod4
-
 # Alt:
 set $mod2 Mod1
 
-#####################
-# workspace layout: #
-#####################
+# Workspaces
+set $ws1 " 1 "
+set $ws2 " 2 "
+set $ws3 " 3 "
+set $ws4 " 4 "
+set $ws5 " 5 "
+set $ws6 " 6 "
+set $ws7 " 7 "
+set $ws8 " 8 "
+set $ws9 " 9 "
+set $ws10 " 10 "
 
-# default i3 tiling mode:
+# Colors
+set $darkbluetrans	#08052be6
+set $darkblue		#08052b
+set $lightblue		#5294e2
+set $urgentred		#e53935
+set $white		#ffffff
+set $black		#000000
+set $purple		#e345ff
+set $darkgrey		#383c4a
+set $grey		#b0b5bd
+set $mediumgrey		#8b8b8b
+set $yellowbrown	#e1b700
+
+##############
+# workspace: #
+##############
+
 workspace_layout default
+
+font pango: JetBrainsMono Nerd Font 11
 
 ##############################
 # extra options for windows: #
@@ -20,19 +46,6 @@ workspace_layout default
 
 #border indicator on windows:
 new_window pixel 1
-
-# thin borders
-# hide_edge_borders both
-
-# Set inner/outer gaps
-gaps inner 0
-gaps outer 0
-
-# show window title bars (not officially supported with i3gaps)
-#default_border normal
-
-# window title alignment
-#title_align center
 
 # Use Mouse+$mod1 to drag floating windows to their wanted position
 floating_modifier $mod1
@@ -113,7 +126,9 @@ bindcode $mod1+Shift+80 	 move container to workspace  $ws8
 bindcode $mod1+Shift+81 	 move container to workspace  $ws9
 bindcode $mod1+Shift+90 	 move container to workspace  $ws10
 
-# resize window (you can also use the mouse for that):
+# resize window
+bindsym $mod1+r mode "resize"
+
 mode "resize" {
     # These bindings trigger as soon as you enter the resize mode
     bindsym h resize shrink width 10 px or 10 ppt
@@ -131,8 +146,6 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
-bindsym $mod1+r mode "resize"
 
 ######################################
 # keybindings for different actions: #
@@ -205,13 +218,13 @@ bindsym $mod1+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod1+s layout stacking
 # bindsym $mod1+g layout tabbed
-bindsym $mod1+e layout toggle split
+# bindsym $mod1+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod1+Shift+space floating toggle
+bindsym $mod1+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod1+space focus mode_toggle
+bindsym $mod1+Shift+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod1+a focus parent
@@ -254,7 +267,8 @@ bindsym $mod1+p exec --no-startup-id /usr/local/bin/switch-audio-port
 ##################
 # App shortcuts: #
 ##################
-bindsym $mod1+Return exec --no-startup-id alacritty
+
+bindsym $mod1+Return exec --no-startup-id alacritty -e tmux
 bindsym $mod1+w exec --no-startup-id /usr/bin/firefox
 bindsym $mod1+n exec --no-startup-id /usr/bin/thunar
 bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%d-%m-%Y-%T")-screenshot.png"
@@ -262,19 +276,6 @@ bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-scre
 ##########################################
 # configuration for workspace behaviour: #
 ##########################################
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
 
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
@@ -284,35 +285,6 @@ set $ws10 "10"
 #workspace $ws3 output HDMI-0
 #workspace $ws4 output HDMI-0
 #workspace $ws5 output HDMI-0
-
-##############
-# compositor #
-##############
-
-# transparency
-# uncomment one of them to be used
-# options could need changes, related to used GPU and drivers.
-# to find the right setting consult the archwiki or ask at the forum.
-#
-# xcompmgr: https://wiki.archlinux.org/title/Xcompmgr
-# manpage: https://man.archlinux.org/man/xcompmgr.1.en
-# install xcompmgr package to use it (yay -S xcompmgr)
-#exec --no-startup-id xcompmgr -C -n &
-# or an more specialized config like this:
-#exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
-#
-# or:
-#
-# picom: https://wiki.archlinux.org/title/Picom
-# manpage: https://man.archlinux.org/man/picom.1.en
-# The default configuration is available in /etc/xdg/picom.conf 
-# For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
-# install picom package (yay -S picom)
-# start using default config 
-#exec_always --no-startup-id picom -b
-#
-# for custom config:
-#exec_always --no-startup-id picom --config  ~/.config/picom.conf
 
 #############################################
 # autostart applications/services on login: #
@@ -373,8 +345,11 @@ exec --no-startup-id /usr/bin/dunst
 #exec_always --no-startup-id autotiling
 
 # Autostart apps as you like
-exec --no-startup-id sleep 2 && alacritty
+exec --no-startup-id sleep 2 && alacritty -e tmux
 exec --no-startup-id sleep 7 && firefox
+
+assign [class="Alacritty"]  $ws1
+assign [class="Firefox"]    $ws2
 
 ###############
 # system tray #
@@ -423,19 +398,6 @@ for_window [class="urxvt"] border pixel 1
 # color settings for bar and windows #
 ######################################
 
-# Define colors variables:
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
-
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
 client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
@@ -450,7 +412,7 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
 bar {
-		font pango: JetBrainsMono Nerd Font 13
+		#font pango: JetBrainsMono Nerd Font 13
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	    	position bottom
     	# i3bar_command i3bar --transparency
