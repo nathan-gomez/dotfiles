@@ -42,5 +42,7 @@ rofi:
 i3:
 	@echo "Creating symlink: $(CONFIG_DIR)/i3"
 	@ln -sfn $(PWD)/config/i3 $(CONFIG_DIR)/i3
+	@echo "Creating symlink: $(CONFIG_DIR)/polybar"
+	@ln -sfn $(PWD)/config/polybar $(CONFIG_DIR)/polybar
 
 .PHONY: all nvim tmux ohmyposh kitty lazydocker lazygit zsh alacritty rofi i3
