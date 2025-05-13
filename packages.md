@@ -1,10 +1,5 @@
 ## Install needed packages
 ```bash
-# Development packages
-yay -S neovim tmux alacritty lazygit lazydocker unzip flatpak fd ripgrep zsh
-
-yay -S ttf-jetbrains-mono-nerd bitwarden btop ktorrent syncthing zerotier-one obsidian dotnet-host dotnet-runtime dotnet-sdk
-
 # Install oh-my-posh
 curl -s https://ohmyposh.dev/install.sh | bash -s
 

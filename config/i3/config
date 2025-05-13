@@ -306,8 +306,7 @@ exec --no-startup-id dex --autostart --environment i3
 # exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
-# exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/berserk/berserk.jpg
+exec --no-startup-id sleep 2 && nitrogen --restore
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -345,8 +344,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id sleep 2 && alacritty -e tmux
 exec --no-startup-id sleep 7 && firefox
 
-assign [class="Alacritty"]  $ws1
-assign [class="Firefox"]    $ws2
+# Check window class
+# xprop | grep WM_CLASS | awk '{ print $4 }'
+
+assign [class="Alacritty"] $ws1
+assign [class="firefox"] $ws2
 
 ###############
 # system tray #
@@ -359,9 +361,6 @@ assign [class="Firefox"]    $ws2
 
 # networkmanager-applet
 exec --no-startup-id nm-applet
-
-# clipman-applet
-exec --no-startup-id xfce4-clipman
 
 ##################
 # floating rules #
@@ -425,7 +424,6 @@ bindsym $mod1+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -sho
 	-config ~/.config/rofi/rofidmenu.rasi
 
 # exit menu
-# bindsym $mod1+Shift+o exec --no-startup-id ~/.config/i3/scripts/powermenu
 bindsym $mod1+Shift+o exec --no-startup-id rofi -modi drun -show drun \
           -config ~/.config/rofi/powermenu.rasi
 
