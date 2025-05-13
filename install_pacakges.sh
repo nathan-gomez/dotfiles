@@ -36,7 +36,9 @@ packages=(
 
   # i3
   polybar
+  rofi
   rofi-greenclip
+  nitrogen
 )
 
 # Update package database and upgrade system
