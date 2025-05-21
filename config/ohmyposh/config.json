@@ -1,75 +1,82 @@
 {
-	"$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-	"version": 2,
-	"final_space": true,
-	"transient_prompt": {
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "secondary_prompt": {
+    "template": "\ue285\ue285 ",
     "foreground": "blue",
-		"background": "transparent",
-		"template": "\ue285 "
-	},
-	"secondary_prompt": {
-		"foreground": "blue",
-		"background": "transparent",
-		"template": "\ue285\ue285 "
-	},
-	"blocks": [
-		{
-			"type": "rprompt",
-			"segments": [
-				{
-					"type": "executiontime",
-					"style": "plain",
-					"foreground": "yellow",
-					"background": "transparent",
-					"template": "{{ .FormattedMs }}",
-					"properties": {
-						"threshold": 1000,
-						"style": "austin"
-					}
-				}
-			]
-		},
-		{
-			"alignment": "left",
-			"segments": [
-				{
-					"type": "path",
-					"foreground": "green",
-					"style": "plain",
-					"properties": {
-						"style": "full"
-					},
-					"template": "{{ .Path }}"
-				},
-				{
-					"type": "git",
-					"foreground": "red",
-					"properties": {
-						"branch_icon": "\ue725 ",
-						"commit_icon": "@",
-						"fetch_status": true
-					},
-					"style": "plain",
-					"template": " <blue>\ue285 git:(</>{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}<yellow>{{ if gt .Behind 0 }}\uea9d{{ end }}{{ if gt .Ahead 0 }}\ueaa0{{ end }}</><blue>)</>"
-				}
-			],
-			"type": "prompt",
-			"style": "plain"
-		},
-		{
-			"type": "prompt",
-			"alignment": "left",
-			"newline": true,
-			"segments": [
-				{
-					"type": "text",
-					"style": "plain",
-					"background": "transparent",
-					"foreground": "blue",
-					"foreground_templates": ["{{if gt .Code 0}}red{{end}}"],
-					"template": "\ue285"
-				}
-			]
-		}
-	]
+    "background": "transparent"
+  },
+  "transient_prompt": {
+    "template": "\ue285 ",
+    "foreground": "blue",
+    "background": "transparent"
+  },
+  "blocks": [
+    {
+      "type": "rprompt",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "style": "austin",
+            "threshold": 1000
+          },
+          "template": "{{ .FormattedMs }}",
+          "foreground": "yellow",
+          "background": "transparent",
+          "type": "executiontime",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "style": "full"
+          },
+          "template": "{{ .Path }}",
+          "foreground": "green",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "branch_icon": "\ue725 ",
+            "cache_duration": "none",
+            "commit_icon": "@",
+            "fetch_status": true
+          },
+          "template": " <blue>\ue285 git:(</>{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}<yellow>{{ if gt .Behind 0 }}\uea9d{{ end }}{{ if gt .Ahead 0 }}\ueaa0{{ end }}</><blue>)</>",
+          "foreground": "red",
+          "type": "git",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "\ue285",
+          "foreground": "blue",
+          "background": "transparent",
+          "type": "text",
+          "style": "plain",
+          "foreground_templates": [
+            "{{if gt .Code 0}}red{{end}}"
+          ]
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3,
+  "final_space": true
 }
