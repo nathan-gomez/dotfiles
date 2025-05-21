@@ -1,0 +1,33 @@
+location:
+  source_directories:
+    - /home/sysadmin/pgdata_prod
+
+  repositories:
+    - /mnt/windows-backup
+
+storage:
+  compression: auto,zstd
+
+retention:
+  keep_daily: 7
+  keep_weekly: 4
+  keep_monthly: 6
+
+consistency:
+  checks:
+    - repository
+    - archives
+  check_last: 2
+
+hooks:
+  before_backup:
+    - /usr/local/bin/mount-borg-smb.sh
+    - echo "Mounted SMB share."
+
+  after_backup:
+    - echo "Unmounting SMB share..."
+    - /usr/local/bin/umount-borg-smb.sh
+
+  on_error:
+    - echo "Backup failed. Unmounting SMB share for safety."
+    - /usr/local/bin/umount-borg-smb.sh
