@@ -44,5 +44,7 @@ i3:
 	@ln -sfn $(PWD)/config/i3 $(CONFIG_DIR)/i3
 	@echo "Creating symlink: $(CONFIG_DIR)/polybar"
 	@ln -sfn $(PWD)/config/polybar $(CONFIG_DIR)/polybar
+	@echo "Creating symlink: $(CONFIG_DIR)/dunst"
+	@ln -sfn $(PWD)/config/dunst $(CONFIG_DIR)/dunst
 
 .PHONY: all nvim tmux ohmyposh kitty lazydocker lazygit zsh alacritty rofi i3
