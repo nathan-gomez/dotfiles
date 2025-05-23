@@ -1,33 +1,43 @@
-location:
-  source_directories:
-    - /home/sysadmin/pgdata_prod
+source_directories:
+  - /home/sysadmin/srv-docker/gitea
 
-  repositories:
-    - /mnt/windows-backup
+repositories:
+  - path: /mnt/windows-backup
+    label: windows-backup
+    encryption: none
 
-storage:
-  compression: auto,zstd
+compression: lzma
+archive_name_format: '{hostname}-{now}'
 
-retention:
-  keep_daily: 7
-  keep_weekly: 4
-  keep_monthly: 6
+keep_daily: 3
+keep_weekly: 2
+keep_monthly: 3
 
-consistency:
-  checks:
-    - repository
-    - archives
-  check_last: 2
+verbosity: 1
 
-hooks:
-  before_backup:
-    - /usr/local/bin/mount-borg-smb.sh
-    - echo "Mounted SMB share."
+# postgresql_databases:
+#   - name: all
+#     hostname: srv-prod-2.nfg-tech.com
+#     port: 5432
+#     username: admin
+#     password:
+#     pg_dump_command: docker exec postgresdb pg_dumpall
+#     pg_restore_command: docker exec postgresdb pg_restore
 
-  after_backup:
-    - echo "Unmounting SMB share..."
-    - /usr/local/bin/umount-borg-smb.sh
-
-  on_error:
-    - echo "Backup failed. Unmounting SMB share for safety."
-    - /usr/local/bin/umount-borg-smb.sh
+commands:
+  - before: action
+    when: [create]
+    run:
+      - echo "Before create!"
+      # - /usr/local/bin/mount-borg-smb.sh
+  - after: action
+    when:
+      - create
+      - prune
+    run:
+      # - /usr/local/bin/unmount-borg-smb.sh
+      - echo "After create or prune!"
+  - after: error
+    run:
+      # - /usr/local/bin/unmount-borg-smb.sh
+      - echo "Something went wrong!"
