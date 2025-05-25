@@ -1,41 +1,42 @@
 configuration {
-  	/*---------- General setting ----------*/
-    show-icons: true;
-    icon-theme: "Papirus";
-    case-sensitive: false;
-    terminal: "wezterm start";
-    disable-history: false;
-    hide-scrollbar: true;
-    sidebar-mode: true;
-    show-match: true;
-    drun-match-fields: "name,generic,exec,categories,keywords";
-    drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
-   	modi:                       "drun,window,run,filebrowser";
-    display-drun:               " Apps";
-    display-run:                " Run";
-    display-filebrowser:        " Files";
-    display-window:             " Windows";
-    drun-display-format:        "{name}";
-  	window-format:              "{c} · {t}";
-    window {
-      close-on-delete: false;
-    }
+  /*---------- General setting ----------*/
+  font: "JetBrainsMono Nerd Font 14";
+  show-icons: true;
+  icon-theme: "Papirus";
+  case-sensitive: false;
+  terminal: "alacritty";
+  disable-history: false;
+  hide-scrollbar: true;
+  sidebar-mode: false;
+  show-match: true;
+  drun-match-fields: "name,generic,exec,categories,keywords";
+  drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+  modi:                       "drun,window";
+  display-drun:               " Apps";
+  display-run:                " Run";
+  display-filebrowser:        " Files";
+  display-window:             " Windows";
+  drun-display-format:        "{name}";
+  window-format:              "{c} · {t}";
+  window {
+    close-on-delete: false;
+  }
 
-   	/*---------- Keybindings ----------*/
-    kb-mode-previous: "Control+h,Control+Shift+Tab";
-    kb-mode-next: "Control+l,Control+Tab";
-    kb-row-down: "Control+j,Control+n,Down";
-    kb-row-up: "Control+k,Control+p,Up";
-    kb-row-left: "Control+Alt+h";
-    kb-row-right: "Control+Alt+l";
-    kb-remove-word-back: "Control+BackSpace";
-    me-select-entry: "MousePrimary";
-    me-accept-entry: "!MousePrimary";
-    kb-accept-entry: "Control+m,Return,KP_Enter";
-    kb-remove-char-back: "BackSpace,Shift+BackSpace";
-    kb-remove-to-eol: "";
-    kb-mode-complete: "";
-    kb-delete-entry: "Control+q,Shift+Delete";
+  /*---------- Keybindings ----------*/
+  kb-mode-previous: "Control+h,Control+Shift+Tab";
+  kb-mode-next: "Control+l,Control+Tab";
+  kb-row-down: "Control+j,Control+n,Down";
+  kb-row-up: "Control+k,Control+p,Up";
+  kb-row-left: "Control+Alt+h";
+  kb-row-right: "Control+Alt+l";
+  kb-remove-word-back: "Control+BackSpace";
+  me-select-entry: "MousePrimary";
+  me-accept-entry: "!MousePrimary";
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+  kb-remove-char-back: "BackSpace,Shift+BackSpace";
+  kb-remove-to-eol: "";
+  kb-mode-complete: "";
+  kb-delete-entry: "Control+q,Shift+Delete";
 }
 
-@theme "./themes/kanagawa.rasi"
+@theme "./squared-everforest.rasi"

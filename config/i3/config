@@ -323,14 +323,9 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 #exec --no-startup-id xscreensaver --no-splash
 
 # Desktop notifications
-# dunst config used ~/.config/dunst/dunstrc
-# set alternative config if needed:
-#exec --no-startup-id /usr/bin/dunst --config ~/.config/dunst/dunstrc
+exec --no-startup-id /usr/bin/dunst --config ~/.config/dunst/dunstrc
 # may need to run dbus-launch explicitly: 
 #exec --no-startup-id dbus-launch /usr/bin/dunst
-exec --no-startup-id /usr/bin/dunst
-# alternative if you installed aside with XFCE4:
-# exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
 # autotiling script
 # https://github.com/nwg-piotr/autotiling
@@ -405,28 +400,24 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 # Rofi bindings: #
 ##################
 
-bindsym $mod1+d exec --no-startup-id rofi -modi drun -show drun \
-		-config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod1+d exec --no-startup-id rofi -show drun
 
 #bindsym F9 exec --no-startup-id rofi -modi drun -show drun \
 #		-config ~/.config/rofi/rofidmenu.rasi
 
 ## windows menu ($mod1+t /F10 optional disabled)
-bindsym $mod1+t exec --no-startup-id rofi -show window \
-		-config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod1+t exec --no-startup-id rofi -modi window -show window
 
 #bindsym F10 exec --no-startup-id rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi
 
 ## manage clipboard (rofi-greenclip)
 exec --no-startup-id greenclip daemon>/dev/null
-bindsym $mod1+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
-	-config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod1+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
 
 # exit menu
-bindsym $mod1+Shift+o exec --no-startup-id rofi -modi drun -show drun \
-          -config ~/.config/rofi/powermenu.rasi
+bindsym $mod1+Shift+o exec --no-startup-id ~/.config/rofi/scripts/powermenu.sh
 
 # Power Profiles menu switcher (rofi)
-bindsym $mod1+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
+# bindsym $mod1+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
 
