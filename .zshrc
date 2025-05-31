@@ -5,6 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="eastwood"
 ENABLE_CORRECTION="true"
 plugins=(git docker docker-compose)
+plugins=(git docker docker-compose zsh-autosuggestions)
 
 ### Fix for making Docker plugin work
 autoload -U compinit && compinit

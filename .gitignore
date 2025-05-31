@@ -5,3 +5,4 @@ lazygit/state.yml
 go/
 lazydocker/state.yml
 .vscode/
+config/tmux/plugins
