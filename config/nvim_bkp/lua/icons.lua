@@ -11,6 +11,11 @@ return {
 		removed = " ",
 		branch = "",
 	},
+	mason = {
+		package_installed = "✓",
+		package_pending = "➜",
+		package_uninstalled = "✗",
+	},
 	kinds = {
 		Array = " ",
 		Boolean = "󰨙 ",
