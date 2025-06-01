@@ -3,36 +3,36 @@
 # List of packages to install
 packages=(
   # Terminal
-  alacritty
   zsh
+  oh-my-zsh-git
   tmux
   lazygit
   lazydocker
-
-  # Editors
   neovim
-  visual-studio-code-bin
 
   # Utilities
   unzip
   fd
   ripgrep
-  flatpak
   nvm
   dotnet-host
   dotnet-runtime
   dotnet-sdk
 
+  # Desktop pkgs #
+
   # Fonts
   ttf-jetbrains-mono-nerd
 
   # Other Programs
+  alacritty
   bitwarden
   btop
   ktorrent
   syncthing
   zerotier-one
   obsidian
+  visual-studio-code-bin
 
   # i3
   polybar
