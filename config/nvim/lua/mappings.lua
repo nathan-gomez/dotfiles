@@ -44,9 +44,15 @@ map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 map("n", "<leader>te", function()
   vim.cmd.vnew()
   vim.cmd.term()
+  vim.cmd.wincmd("L")
+end, { desc = "Open vertical terminal" })
+
+map("n", "<leader>th", function()
+  vim.cmd.vnew()
+  vim.cmd.term()
   vim.cmd.wincmd("J")
   vim.api.nvim_win_set_height(0, 15)
-end, { desc = "Open terminal" })
+end, { desc = "Open horizontal terminal" })
 
 -- Telescope
 

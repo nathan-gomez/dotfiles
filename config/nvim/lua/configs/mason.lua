@@ -19,7 +19,9 @@ local servers = {
   "stylua",
   "lua_ls",
 
+  -- Elixir
   "elixirls",
+  "lexical",
 }
 
 local server_opts = {}
