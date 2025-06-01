@@ -1,12 +1,12 @@
 return {
-  {
-    "yardnsm/nvim-base46",
-    lazy = false,
-    priority = 1000,
-    opts = function()
-      -- vim.cmd.colorscheme("base46-nightlamp")
-    end,
-  },
+  -- {
+  --   "yardnsm/nvim-base46",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = function()
+  --     vim.cmd.colorscheme("base46-nightlamp")
+  --   end,
+  -- },
   {
     "vague2k/vague.nvim",
     lazy = false,

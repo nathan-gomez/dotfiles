@@ -40,6 +40,14 @@ map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- Open terminal
+map("n", "<leader>te", function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0, 15)
+end, { desc = "Open terminal" })
+
 -- Telescope
 
 local builtin = require("telescope.builtin")
@@ -47,9 +55,9 @@ local builtin = require("telescope.builtin")
 map("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
 map("n", "<leader>fs", builtin.live_grep, { desc = "Live grep" })
 map("n", "<leader>fg", builtin.git_files, { desc = "Find git files" })
-map("n", "<leader>fe", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { desc = "Open file browser" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffers" })
-map("n", "<leader>fa", "<cmd>Telescope marks<CR>", { desc = "Find marks" })
+map("n", "<leader>fe", ":Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>", { desc = "Open file browser" })
+map("n", "<leader>fb", "<cmd>Telescope buffers initial_mode=normal<CR>", { desc = "Find buffers" })
+map("n", "<leader>fm", "<cmd>Telescope marks<CR> initial_mode=normal", { desc = "Find marks" })
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Find in current buffer" })
 
 ------------
