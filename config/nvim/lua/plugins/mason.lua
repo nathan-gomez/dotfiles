@@ -3,7 +3,6 @@ return {
   cmd = { "Mason", "MasonInstall", "MasonUpdate" },
   opts = function()
     return {
-      PATH = "skip",
       ui = {
         icons = {
           package_pending = " ",

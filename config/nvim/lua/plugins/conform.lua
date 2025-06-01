@@ -6,7 +6,7 @@ return {
     notify_on_error = false,
     formatters_by_ft = {
       lua = { "stylua" },
-      go = { "goimports-reviser", "gofumpt" },
+      go = { "gofumpt" },
       javascript = { "prettier", "biome", stop_after_first = true },
       typescript = { "prettier", "biome", stop_after_first = true },
       javascriptreact = { "biome", "prettier", stop_after_first = true },
@@ -16,7 +16,6 @@ return {
       css = { "prettier" },
       html = { "prettier" },
       markdown = { "prettier" },
-      elixir = { "mix" },
     },
   },
 }

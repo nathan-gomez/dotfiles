@@ -6,19 +6,12 @@ return {
     { "mason-org/mason.nvim", opts = {} },
     "mason-org/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    { "j-hui/fidget.nvim", opts = {} },
+    { "j-hui/fidget.nvim",    opts = {} },
     "saghen/blink.cmp",
   },
   config = function()
     local autocmd = vim.api.nvim_create_autocmd
     local capabilities = require("blink.cmp").get_lsp_capabilities()
-    local servers = {
-      gopls = {},
-      svelte = {},
-      ts_ls = {},
-      html = {},
-      cssls = {},
-    }
 
     local lsp_configs = {
       on_attach = function(bufnr)
@@ -76,7 +69,8 @@ return {
     })
 
     -- Install defined servers
-    local ensure_installed = vim.tbl_keys(servers or {})
+    local mason_configs = require("configs.mason")
+    local ensure_installed = mason_configs.servers or {}
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     -- Enable installed servers
@@ -85,7 +79,7 @@ return {
       automatic_installation = false,
       handlers = {
         function(server_name)
-          local server = servers[server_name] or {}
+          local server = mason_configs.opts[server_name] or {}
           server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
           require("lspconfig")[server_name].setup(server)
         end,
