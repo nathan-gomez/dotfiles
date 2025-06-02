@@ -14,6 +14,7 @@ packages=(
   unzip
   fd
   ripgrep
+  fzf
   nvm
   dotnet-host
   dotnet-runtime
