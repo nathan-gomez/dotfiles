@@ -13,7 +13,7 @@ autoload -U compinit && compinit
 # Alias
 alias zshconfig="source ~/.zshrc"
 
-alias nvimconfig="nvim ~/.config/nvim -c :cd ~/.config/nvim"
+alias nvimconfig="cd ~/.config/nvim"
 alias lzg="lazygit"
 alias lzd="lazydocker"
 alias docker-prune="docker image prune -a && docker volume prune && docker volume prune -a && docker network prune"
@@ -26,6 +26,7 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.dotnet/tools
+export PATH=$PATH:$HOME/.mix/escripts
 
 # Check if there is an active tmux session
 if [ -z "$TMUX" ]; then

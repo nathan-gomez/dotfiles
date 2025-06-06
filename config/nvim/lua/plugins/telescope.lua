@@ -9,6 +9,7 @@ return {
   cmd = "Telescope",
   opts = function()
     local actions = require("telescope.actions")
+    local action_layout = require("telescope.actions.layout")
 
     return {
       defaults = {
@@ -25,11 +26,15 @@ return {
           height = 0.80,
         },
         mappings = {
-          n = { ["q"] = actions.close },
+          n = {
+            ["q"] = actions.close,
+            ["<M-p>"] = action_layout.toggle_preview,
+          },
           i = {
             ["<C-j>"] = actions.move_selection_next,
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-l>"] = actions.select_default,
+            ["<M-p>"] = action_layout.toggle_preview,
           },
         },
       },

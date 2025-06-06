@@ -6,7 +6,7 @@ return {
     { "mason-org/mason.nvim", opts = {} },
     "mason-org/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    { "j-hui/fidget.nvim",    opts = {} },
+    { "j-hui/fidget.nvim", opts = {} },
     "saghen/blink.cmp",
   },
   config = function()
@@ -21,18 +21,19 @@ return {
         local map = vim.keymap.set
         local telescope = require("telescope.builtin")
 
-        map("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
-        map("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
-        map("n", "K", vim.lsp.buf.hover, opts("Hove"))
+        map("n", "gd", telescope.lsp_definitions, opts("Go to definition"))
+
+        map("n", "K", vim.lsp.buf.hover, opts("Hover"))
+
         map("n", "<leader>vca", vim.lsp.buf.code_action, opts("Code actions"))
-        map("n", "<C-cr>", vim.lsp.buf.code_action, opts("Code actions"))
+
         map("n", "<leader>vrn", vim.lsp.buf.rename, opts("Rename"))
-        map("n", "]d", vim.diagnostic.goto_next, opts("Next diagnostic"))
-        map("n", "[d", vim.diagnostic.goto_prev, opts("Previous diagnostic"))
+        map("n", "<F2>", vim.lsp.buf.rename, opts("Rename"))
+
         map("n", "<leader>vrr", telescope.lsp_references, opts("References"))
         map("n", "<F12>", telescope.lsp_references, opts("References"))
 
-        map("n", "<leader>D", vim.lsp.buf.type_definition, opts("Go to type definition"))
+        map("n", "<leader>ds", telescope.lsp_document_symbols, opts("Open document symbols"))
       end,
 
       on_init = function(client, _)

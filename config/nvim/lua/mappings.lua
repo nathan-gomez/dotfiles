@@ -63,7 +63,7 @@ map("n", "<leader>fs", builtin.live_grep, { desc = "Live grep" })
 map("n", "<leader>fg", builtin.git_files, { desc = "Find git files" })
 map("n", "<leader>fe", ":Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>", { desc = "Open file browser" })
 map("n", "<leader>fb", "<cmd>Telescope buffers initial_mode=normal<CR>", { desc = "Find buffers" })
-map("n", "<leader>fm", "<cmd>Telescope marks<CR> initial_mode=normal", { desc = "Find marks" })
+map("n", "<leader>fm", "<cmd>Telescope marks initial_mode=normal<CR>", { desc = "Find marks" })
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Find in current buffer" })
 
 ------------
