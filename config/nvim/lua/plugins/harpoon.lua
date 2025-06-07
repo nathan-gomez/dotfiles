@@ -6,7 +6,6 @@ return {
 
   opts = function()
     local map = vim.keymap.set
-    local conf = require("telescope.config").values
     local harpoon = require("harpoon")
     harpoon:setup()
 
@@ -27,6 +26,12 @@ return {
     map("n", "<C-m>", function()
       harpoon:list():select(3)
     end)
+
+    for i = 1, 9 do
+      vim.keymap.set("n", "<leader>h" .. i, function()
+        harpoon:list():select(i)
+      end, { desc = "Harpoon file " .. i })
+    end
 
     return {
       menu = {
