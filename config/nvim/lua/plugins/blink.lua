@@ -1,6 +1,6 @@
 return {
   "saghen/blink.cmp",
-  event = "VimEnter",
+  event = { "InsertEnter", "CmdlineEnter" },
   version = "1.*",
   dependencies = {
     {
@@ -94,7 +94,7 @@ return {
 
       documentation = {
         auto_show = false,
-        window = { border = "single" },
+        window = { border = "rounded" },
       },
 
       ghost_text = {
@@ -109,6 +109,13 @@ return {
       },
     },
 
+    signature = {
+      window = {
+        border = "rounded",
+        winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+      },
+    },
+
     sources = {
       default = { "lsp", "path", "snippets", "lazydev" },
       providers = {
@@ -119,9 +126,5 @@ return {
     snippets = { preset = "luasnip" },
 
     fuzzy = { implementation = "lua" },
-
-    signature = {
-      enabled = true,
-    },
   },
 }
