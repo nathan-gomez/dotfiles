@@ -3,7 +3,6 @@ return {
   event = "VimEnter",
   version = "1.*",
   dependencies = {
-    -- Snippet Engine
     {
       "L3MON4D3/LuaSnip",
       version = "2.*",
@@ -27,9 +26,9 @@ return {
       opts = {},
     },
     "folke/lazydev.nvim",
+    "xzbdmw/colorful-menu.nvim",
+    "onsails/lspkind.nvim",
   },
-  --- @module 'blink.cmp'
-  --- @type blink.cmp.Config
   opts = {
     keymap = {
       preset = "super-tab",
@@ -48,13 +47,60 @@ return {
       menu = {
         border = "single",
         auto_show = false,
+
+        draw = {
+          columns = { { "kind_icon" }, { "label", gap = 1 } },
+          components = {
+            label = {
+              text = function(ctx)
+                return require("colorful-menu").blink_components_text(ctx)
+              end,
+              highlight = function(ctx)
+                return require("colorful-menu").blink_components_highlight(ctx)
+              end,
+            },
+
+            kind_icon = {
+              text = function(ctx)
+                local icon = ctx.kind_icon
+                if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                  local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+                  if dev_icon then
+                    icon = dev_icon
+                  end
+                else
+                  icon = require("lspkind").symbolic(ctx.kind, {
+                    mode = "symbol",
+                  })
+                end
+
+                return icon .. ctx.icon_gap
+              end,
+
+              highlight = function(ctx)
+                local hl = ctx.kind_hl
+                if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                  local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
+                  if dev_icon then
+                    hl = dev_hl
+                  end
+                end
+                return hl
+              end,
+            },
+          },
+        },
       },
+
       documentation = {
         auto_show = false,
+        window = { border = "single" },
       },
+
       ghost_text = {
         enabled = true,
       },
+
       list = {
         selection = {
           preselect = true,

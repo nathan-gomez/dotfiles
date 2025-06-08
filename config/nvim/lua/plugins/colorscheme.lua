@@ -7,6 +7,29 @@ return {
   --     vim.cmd.colorscheme("base46-nightlamp")
   --   end,
   -- },
+  -- {
+  --   "thesimonho/kanagawa-paper.nvim",
+  --   lazy = false,
+  --   init = function()
+  --     -- vim.cmd.colorscheme("kanagawa-paper-ink")
+  --   end,
+  --   config = {
+  --     undercurl = true,
+  --     transparent = false,
+  --     gutter = false,
+  --     diag_background = true,
+  --     dim_inactive = true,
+  --     terminal_colors = true,
+  --     cache = false,
+  --     styles = {
+  --       comment = { italic = true },
+  --       functions = { italic = true },
+  --       keyword = { italic = true, bold = true },
+  --       statement = { italic = true, bold = true },
+  --       type = { italic = true },
+  --     },
+  --   },
+  -- },
   {
     "vague2k/vague.nvim",
     lazy = false,
@@ -15,9 +38,8 @@ return {
       require("vague").setup({
         transparent = false,
         colors = {
-          -- bg = "#111112"
-          bg = "#070708"
-        }
+          bg = "#070708",
+        },
       })
 
       vim.cmd.colorscheme("vague")
@@ -28,21 +50,13 @@ return {
   --   lazy = false,
   --   priority = 1000, -- Make sure to load this before all the other start plugins.
   --   opts = function()
-  --     vim.g.gruvbox_material_background = "medium"
+  --     vim.g.gruvbox_material_background = "hard"
   --     vim.g.gruvbox_material_foreground = "material"
   --     vim.g.gruvbox_material_enable_italic = 1
   --     vim.g.gruvbox_material_enable_bold = 1
   --     -- vim.g.gruvbox_material_transparent_background = 1
   --
-  --     -- vim.cmd.colorscheme("gruvbox-material")
-  --   end,
-  -- },
-  -- {
-  --   "vague2k/vague.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = function()
-  --     vim.cmd.colorscheme("vague")
+  --     vim.cmd.colorscheme("gruvbox-material")
   --   end,
   -- },
 }

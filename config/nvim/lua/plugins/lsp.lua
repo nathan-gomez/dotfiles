@@ -34,6 +34,9 @@ return {
         map("n", "<F12>", telescope.lsp_references, opts("References"))
 
         map("n", "<leader>ds", telescope.lsp_document_symbols, opts("Open document symbols"))
+
+        map("n", "]d", vim.diagnostic.goto_next, opts("Next diagnostic"))
+        map("n", "[d", vim.diagnostic.goto_next, opts("Previous diagnostic"))
       end,
 
       on_init = function(client, _)
