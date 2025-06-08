@@ -39,6 +39,8 @@ map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map("n", "<C-Left>", ":vertical resize -5<CR>", { noremap = true, silent = true, desc = "Decrease window width" })
+map("n", "<C-Right>", ":vertical resize +5<CR>", { noremap = true, silent = true, desc = "Increase window width" })
 
 -- Open terminal
 map("n", "<leader>te", function()
@@ -58,13 +60,23 @@ end, { desc = "Open horizontal terminal" })
 
 local builtin = require("telescope.builtin")
 
-map("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
-map("n", "<leader>fs", builtin.live_grep, { desc = "Live grep" })
-map("n", "<leader>fg", builtin.git_files, { desc = "Find git files" })
-map("n", "<leader>fe", ":Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>", { desc = "Open file browser" })
-map("n", "<leader>fb", "<cmd>Telescope buffers initial_mode=normal<CR>", { desc = "Find buffers" })
-map("n", "<leader>fm", "<cmd>Telescope marks initial_mode=normal<CR>", { desc = "Find marks" })
-map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Find in current buffer" })
+map("n", "<leader>ff", builtin.find_files, { desc = "Find files", silent = true })
+map("n", "<leader>fs", builtin.live_grep, { desc = "Live grep", silent = true })
+map("n", "<leader>fg", builtin.git_files, { desc = "Find git files", silent = true })
+map(
+  "n",
+  "<leader>fe",
+  ":Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>",
+  { desc = "Open file browser", silent = true }
+)
+map("n", "<leader>fb", "<cmd>Telescope buffers initial_mode=normal<CR>", { desc = "Find buffers", silent = true })
+map("n", "<leader>fm", "<cmd>Telescope marks initial_mode=normal<CR>", { desc = "Find marks", silent = true })
+map(
+  "n",
+  "<leader>fz",
+  "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+  { desc = "Find in current buffer", silent = true }
+)
 
 ------------
 

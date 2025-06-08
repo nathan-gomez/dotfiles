@@ -29,6 +29,7 @@ return {
           n = {
             ["q"] = actions.close,
             ["<M-p>"] = action_layout.toggle_preview,
+            ["<C-l>"] = actions.select_default,
           },
           i = {
             ["<C-j>"] = actions.move_selection_next,
