@@ -1,13 +1,5 @@
 return {
   -- {
-  --   "yardnsm/nvim-base46",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = function()
-  --     vim.cmd.colorscheme("base46-nightlamp")
-  --   end,
-  -- },
-  -- {
   --   "thesimonho/kanagawa-paper.nvim",
   --   lazy = false,
   --   init = function()
