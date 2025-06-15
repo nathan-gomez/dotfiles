@@ -18,6 +18,9 @@ alias lzg="lazygit"
 alias lzd="lazydocker"
 alias docker-prune="docker image prune -a && docker volume prune && docker volume prune -a && docker network prune"
 
+# Uses fzf to open a file in nvim
+alias nvimf='f=$(fzf-tmux -p) && [ -n "$f" ] && nvim "$f"'
+
 alias srv-dev="ssh sysadmin@192.168.100.14"
 alias srv-prod-1="ssh sysadmin@192.168.100.4"
 alias srv-prod-2="ssh sysadmin@192.168.100.6"
@@ -27,6 +30,15 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.dotnet/tools
 export PATH=$PATH:$HOME/.mix/escripts
+
+export FZF_DEFAULT_OPTS='--reverse'
+export FZF_CTRL_T_OPTS="--height 60% \
+--border sharp \
+--layout reverse \
+--prompt '∷ ' \
+--pointer ▶ \
+--marker ⇒"
+
 
 # Check if there is an active tmux session
 if [ -z "$TMUX" ]; then
@@ -41,5 +53,10 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export EDITOR="nvim"
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 source $ZSH/oh-my-zsh.sh
