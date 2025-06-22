@@ -28,14 +28,16 @@ return {
         mappings = {
           n = {
             ["q"] = actions.close,
-            ["<M-p>"] = action_layout.toggle_preview,
+            ["<C-p>"] = action_layout.toggle_preview,
             ["<C-l>"] = actions.select_default,
+            ["<C-o>"] = actions.select_vertical,
+            ["<C-?>"] = "which_key",
           },
           i = {
             ["<C-j>"] = actions.move_selection_next,
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-l>"] = actions.select_default,
-            ["<M-p>"] = action_layout.toggle_preview,
+            ["<C-p>"] = action_layout.toggle_preview,
           },
         },
       },

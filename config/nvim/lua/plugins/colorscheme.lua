@@ -3,7 +3,7 @@ return {
   --   "thesimonho/kanagawa-paper.nvim",
   --   lazy = false,
   --   init = function()
-  --     -- vim.cmd.colorscheme("kanagawa-paper-ink")
+  --     vim.cmd.colorscheme("kanagawa-paper-ink")
   --   end,
   --   config = {
   --     undercurl = true,
@@ -46,7 +46,7 @@ return {
   --     vim.g.gruvbox_material_foreground = "material"
   --     vim.g.gruvbox_material_enable_italic = 1
   --     vim.g.gruvbox_material_enable_bold = 1
-  --     -- vim.g.gruvbox_material_transparent_background = 1
+  --     vim.g.gruvbox_material_transparent_background = 1
   --
   --     vim.cmd.colorscheme("gruvbox-material")
   --   end,
