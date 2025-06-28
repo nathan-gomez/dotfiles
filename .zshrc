@@ -31,14 +31,28 @@ export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.dotnet/tools
 export PATH=$PATH:$HOME/.mix/escripts
 
-export FZF_DEFAULT_OPTS='--reverse'
-export FZF_CTRL_T_OPTS="--height 60% \
---border sharp \
---layout reverse \
---prompt '∷ ' \
---pointer ▶ \
---marker ⇒"
-
+export FZF_DEFAULT_OPTS="
+    --border sharp
+    --reverse
+    --prompt '∷ '
+    --pointer '▶ '
+    --marker ⇒
+    --scrollbar='▌'
+    --highlight-line
+    --color=hl:#f3be7c
+    --color=bg:-1
+    --color=gutter:-1
+    --color=bg+:#252530
+    --color=fg+:#aeaed1
+    --color=hl+:#f3be7c
+    --color=border:#606079
+    --color=prompt:#bb9dbd
+    --color=query:#aeaed1:bold
+    --color=pointer:#aeaed1
+    --color=scrollbar:#aeaed1
+    --color=info:#f3be7c
+    --color=spinner:#7fa563
+    "
 
 # Check if there is an active tmux session
 if [ -z "$TMUX" ]; then
@@ -51,7 +65,6 @@ fi
 
 # Nvm setup
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export EDITOR="nvim"

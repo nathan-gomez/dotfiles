@@ -4,7 +4,6 @@
 packages=(
   # Terminal
   zsh
-  oh-my-zsh-git
   tmux
   lazygit
   lazydocker
