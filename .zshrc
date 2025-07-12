@@ -53,6 +53,7 @@ export FZF_DEFAULT_OPTS="
     --color=info:#f3be7c
     --color=spinner:#7fa563
     "
+bindkey '^F' fzf-history-widget
 
 # Check if there is an active tmux session
 if [ -z "$TMUX" ]; then
