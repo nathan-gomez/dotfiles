@@ -263,7 +263,7 @@ bindsym $mod1+p exec --no-startup-id /usr/local/bin/switch-audio-port
 ##################
 
 bindsym $mod1+Return exec --no-startup-id alacritty -e tmux
-bindsym $mod1+w exec --no-startup-id /usr/bin/firefox
+bindsym $mod1+w exec --no-startup-id /usr/bin/brave
 bindsym $mod1+n exec --no-startup-id /usr/bin/thunar
 bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%d-%m-%Y-%T")-screenshot.png"
 
@@ -337,13 +337,13 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Autostart apps as you like
 exec --no-startup-id sleep 2 && alacritty -e tmux
-exec --no-startup-id sleep 7 && firefox
+exec --no-startup-id sleep 7 && brave
 
 # Check window class
 # xprop | grep WM_CLASS | awk '{ print $4 }'
 
 assign [class="Alacritty"] $ws1
-assign [class="firefox"] $ws2
+assign [class="brave"] $ws2
 
 ###############
 # system tray #
