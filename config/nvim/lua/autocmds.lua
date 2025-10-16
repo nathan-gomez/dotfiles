@@ -8,3 +8,10 @@ autocmd("TextYankPost", {
     vim.hl.on_yank()
   end,
 })
+
+autocmd("FileType", {
+  pattern = { "c", "cpp", "zig" },
+  callback = function()
+    vim.opt_local.matchpairs:append("=:;")
+  end,
+})

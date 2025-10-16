@@ -117,7 +117,7 @@ return {
     },
 
     sources = {
-      default = { "lsp", "path", "snippets", "lazydev" },
+      default = { "lsp", "path", "lazydev" },
       per_filetype = {
         sql = { "dadbod", "snippets" },
       },
@@ -127,6 +127,7 @@ return {
       },
     },
 
+    -- using only for sql
     snippets = { preset = "luasnip" },
 
     fuzzy = { implementation = "lua" },
