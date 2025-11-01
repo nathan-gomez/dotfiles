@@ -3,28 +3,7 @@ return {
   event = { "InsertEnter", "CmdlineEnter" },
   version = "1.*",
   dependencies = {
-    {
-      "L3MON4D3/LuaSnip",
-      version = "2.*",
-      build = (function()
-        -- Build Step is needed for regex support in snippets.
-        -- This step is not supported in many windows environments.
-        -- Remove the below condition to re-enable on windows.
-        if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
-          return
-        end
-        return "make install_jsregexp"
-      end)(),
-      dependencies = {
-        {
-          "rafamadriz/friendly-snippets",
-          config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-          end,
-        },
-      },
-      opts = {},
-    },
+    "L3MON4D3/LuaSnip",
     "folke/lazydev.nvim",
     "xzbdmw/colorful-menu.nvim",
     "onsails/lspkind.nvim",
@@ -117,9 +96,9 @@ return {
     },
 
     sources = {
-      default = { "lsp", "path", "lazydev" },
+      default = { "lsp", "path", "snippets", "lazydev" },
       per_filetype = {
-        sql = { "dadbod", "snippets" },
+        sql = { "dadbod" },
       },
       providers = {
         lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
@@ -127,9 +106,15 @@ return {
       },
     },
 
-    -- using only for sql
     snippets = { preset = "luasnip" },
 
-    fuzzy = { implementation = "lua" },
+    fuzzy = {
+      implementation = "prefer_rust_with_warning",
+      sorts = {
+        "score", -- Primary sort: by fuzzy matching score
+        "sort_text", -- Secondary sort: by sortText field if scores are equal
+        "label", -- Tertiary sort: by label if still tied
+      },
+    },
   },
 }

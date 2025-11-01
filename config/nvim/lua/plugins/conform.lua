@@ -7,6 +7,8 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       go = { "gofumpt" },
+      c = { "clang_format" },
+      cpp = { "clang_format" },
       javascript = { "prettier", "biome", stop_after_first = true },
       typescript = { "prettier", "biome", stop_after_first = true },
       javascriptreact = { "biome", "prettier", stop_after_first = true },

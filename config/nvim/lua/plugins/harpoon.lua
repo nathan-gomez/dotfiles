@@ -17,14 +17,20 @@ return {
     end, { desc = "Open Harpoon" })
 
     -- Quick select
-    map("n", "<C-b>", function()
+    map("n", "<M-b>", function()
       harpoon:list():select(1)
     end)
-    map("n", "<C-n>", function()
+    map("n", "<M-n>", function()
       harpoon:list():select(2)
     end)
-    map("n", "<C-m>", function()
+    map("n", "<M-m>", function()
       harpoon:list():select(3)
+    end)
+    map("n", "<M-,>", function()
+      harpoon:list():select(4)
+    end)
+    map("n", "<M-.>", function()
+      harpoon:list():select(5)
     end)
 
     for i = 1, 9 do

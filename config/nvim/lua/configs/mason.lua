@@ -22,6 +22,9 @@ local servers = {
   -- Elixir
   "elixirls",
   "lexical",
+
+  "clangd",
+  "zls",
 }
 
 local server_opts = {}
