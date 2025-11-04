@@ -64,7 +64,9 @@ return {
 		Hack = " ",
 		Warn = " ",
 		Perf = " ",
-		Note = " ",
-		Test = "⏲ ",
+		Note = " ",
+		Test = "󰙨 ",
+    Study = " ",
+    Mark = " ",
 	},
 }
