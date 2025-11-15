@@ -1,10 +1,14 @@
 return {
   "folke/todo-comments.nvim",
   event = "VimEnter",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "folke/snacks.nvim",
+  },
   opts = function()
     local icons = require("icons")
-    vim.keymap.set("n", "<leader>tt", "<Cmd>TodoTelescope<CR>")
+    local Snacks = require("snacks")
+    vim.keymap.set("n", "<leader>tt", function() Snacks.picker.todo_comments() end, { desc = "Open TODOs" })
 
     return {
       keywords = {

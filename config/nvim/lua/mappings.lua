@@ -64,30 +64,6 @@ map("n", "<leader>th", function()
   vim.api.nvim_win_set_height(0, 15)
 end, { desc = "Open horizontal terminal" })
 
--- Telescope
-
-local builtin = require("telescope.builtin")
-
-map("n", "<leader>ff", builtin.find_files, { desc = "Find files", silent = true })
-map("n", "<leader>fs", builtin.live_grep, { desc = "Live grep", silent = true })
-map("n", "<leader>fg", builtin.git_files, { desc = "Find git files", silent = true })
-map(
-  "n",
-  "<leader>fe",
-  ":Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>",
-  { desc = "Open file browser", silent = true }
-)
-map("n", "<leader>fb", "<cmd>Telescope buffers initial_mode=normal<CR>", { desc = "Find buffers", silent = true })
-map("n", "<leader>fm", "<cmd>Telescope marks initial_mode=normal<CR>", { desc = "Find marks", silent = true })
-map(
-  "n",
-  "<leader>fz",
-  "<cmd>Telescope current_buffer_fuzzy_find<CR>",
-  { desc = "Find in current buffer", silent = true }
-)
-
-------------
-
 -- Confrom Format
 
 vim.api.nvim_create_user_command("Format", function(args)
@@ -108,12 +84,6 @@ map({ "n", "v", "x" }, "<leader>fo", "<Cmd>Format<cr>", { desc = "Format file" }
 
 -- Oil
 
-map("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+map("n", "<leader>fe", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 
 ------
-
--- Lazygit
-
-map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
-
-----------

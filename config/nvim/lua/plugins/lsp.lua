@@ -19,9 +19,6 @@ return {
           return { buffer = bufnr, desc = "LSP " .. desc }
         end
         local map = vim.keymap.set
-        local telescope = require("telescope.builtin")
-
-        map("n", "gd", telescope.lsp_definitions, opts("Go to definition"))
 
         map("n", "K", vim.lsp.buf.hover, opts("Hover"))
 
@@ -29,11 +26,6 @@ return {
 
         map("n", "<leader>vrn", vim.lsp.buf.rename, opts("Rename"))
         map("n", "<F2>", vim.lsp.buf.rename, opts("Rename"))
-
-        map("n", "<leader>vrr", telescope.lsp_references, opts("References"))
-        map("n", "<F12>", telescope.lsp_references, opts("References"))
-
-        map("n", "<leader>ds", telescope.lsp_document_symbols, opts("Open document symbols"))
 
         map("n", "]d", vim.diagnostic.goto_next, opts("Next diagnostic"))
         map("n", "[d", vim.diagnostic.goto_next, opts("Previous diagnostic"))
