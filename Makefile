@@ -27,6 +27,18 @@ lazygit:
 	@echo "Creating symlink: $(CONFIG_DIR)/lazygit"
 	@ln -sfn $(PWD)/config/lazygit $(CONFIG_DIR)/lazygit
 
+hypr:
+	@echo "Creating symlink: $(CONFIG_DIR)/hypr"
+	@ln -sfn $(PWD)/config/hypr $(CONFIG_DIR)/hypr
+
+waybar:
+	@echo "Creating symlink: $(CONFIG_DIR)/waybar"
+	@ln -sfn $(PWD)/config/waybar $(CONFIG_DIR)/waybar
+
+fish:
+	@echo "Creating symlink: $(CONFIG_DIR)/fish"
+	@ln -sfn $(PWD)/config/fish $(CONFIG_DIR)/fish
+
 zsh:
 	@echo "Creating symlink: $(HOME)/.zshrc"
 	@ln -sfn $(PWD)/.zshrc $(HOME)/.zshrc
@@ -47,4 +59,4 @@ i3:
 	@echo "Creating symlink: $(CONFIG_DIR)/dunst"
 	@ln -sfn $(PWD)/config/dunst $(CONFIG_DIR)/dunst
 
-.PHONY: all nvim tmux ohmyposh kitty lazydocker lazygit zsh alacritty rofi i3
+.PHONY: all nvim tmux ohmyposh kitty lazydocker lazygit zsh alacritty rofi i3 hypr waybar fish

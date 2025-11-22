@@ -1,0 +1,87 @@
+/* ArchRiot Waybar Configuration */
+/* Main Waybar configuration file */
+
+/* NOTE: This files will be replaced and backed-up as .old after an update */
+/* NOTE: Changes will only be kept in user files: UserModules, UserWorkspaces */
+
+[
+    {
+        "include": [
+            "$HOME/.config/waybar/Modules",
+            "$HOME/.config/waybar/ModulesCustom",
+            "$HOME/.config/waybar/ModulesWorkspaces",
+            "$HOME/.config/waybar/ModulesGroups",
+            "$HOME/.config/waybar/UserModules.jsonc",
+            "$HOME/.config/waybar/UserWorkspaces.jsonc"
+        ],
+
+        // ----- WAYBAR SETTINGS:
+        // Commented out to prevent dual Waybar when disconnecting from monitors
+        // Defaults to all monitors if unset
+        // "output": ["DP-1", "eDP-1", "HDMI-A-1"],
+        "fixed-center": true,
+        "layer": "top",
+        "margin-right": 8,
+        "margin-left": 8,
+        "spacing": 10,
+        "passthrough": false,
+        "exclusive": true,
+        "margin-top": 3,
+        "position": "top",
+        "ipc": false,
+    
+        // ----- MODULES LEFT:
+        "modules-left": [
+            "custom/launcher",         // App Drawer
+            // "wlr/taskbar",
+            "hyprland/workspaces#rw",  // e.g.: hyprland/workspaces#numbers, #roman, #kanji, #pacman, #pacman-rwc, #cam, #4
+            "hyprland/window",         // Active window title
+            "mpris#1"                   // Media status
+        ],
+
+        // ----- MODULES CENTER:
+        // "modules-center": [
+        //     "mpris#1"                   // Media status
+        // ],
+    
+        // ----- MODULES RIGHT:
+        "modules-right": [
+            "custom/rec-dot",             // Recording status
+            "tray",                       // App tray
+            "custom/cpu-temp",
+            "custom/cpu",
+            "custom/memory",
+
+            "custom/separator#line-tray",
+
+            "custom/volume-bar",          // Volume bar
+            "custom/archriot-update",     // ArchRiot Update
+            "network",                    // Network status
+            "custom/power",
+
+            "custom/separator#line-tray",
+
+            "clock"                       // Clock with date
+        ]
+    }
+
+    // {
+    //     "include": [
+    //       "$HOME/.config/waybar/UserModules.jsonc",
+    //       "$HOME/.config/waybar/Modules"
+    //     ],
+    //     "output": ["DP-1"],
+    //     "fixed-center": true,
+    //     "margin-right": 8,
+    //     "margin-left": 8,
+    //     "spacing": 10,
+    //     "margin-bottom": 3,
+    //     "position": "bottom",
+    //     "modules-center": [
+    //         "mpris#1"                   // Media status
+    //     ],
+    //     "modules-right": [
+    //       "clock"
+    //     ]
+    // }
+]

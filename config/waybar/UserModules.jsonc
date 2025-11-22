@@ -1,0 +1,76 @@
+{
+    // Media Player
+    "mpris#1": {
+      "interval": 1,
+      "format": "{status_icon} {dynamic} {player_icon}",
+      "format-paused": "{status_icon} {dynamic} {player_icon}",
+      "format-stopped": "",
+      "format-disconnected": "",
+      "on-click-middle": "playerctl previous",
+      "on-click": "playerctl play-pause",
+      "on-click-right": "playerctl next",
+      "scroll-step": 5.0,
+      "on-scroll-up": "$HOME/.local/share/archriot/install/archriot --volume inc",
+      "on-scroll-down": "$HOME/.local/share/archriot/install/archriot --volume dec",
+      "smooth-scrolling-threshold": 1,
+      "tooltip": true,
+      "tooltip-format": "{status_icon} {dynamic}\nLeft Click: Pause\nMid Click: Previous\nRight Click: Next",
+      "player-icons": {
+        "chromium": "",
+        "chrome": "",
+        "brave": "",
+        "default": "",
+        "firefox": "",
+        "kdeconnect": "",
+        "mopidy": "",
+        "mpv": "󰐹",
+        "spotify": "",
+        "vlc": "󰕼",
+        "lollypop": "",
+      },
+      "status-icons": {
+        "paused": "󰏤",
+        "playing": "",
+        "stopped": "",
+      },
+      "max-length": 70,
+    },
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "on-click": "nwg-drawer -c 4 -is 48 -spacing 15 -fm \"JetBrainsMono Nerd Font Bold\" || fuzzel",
+        "on-click-right": "pkill fuzzel || fuzzel",
+        "tooltip": true,
+        "tooltip-format": "Left Click: Application Grid\nRight Click: Fuzzel Launcher"
+    },
+
+    "custom/cpu": {
+    	"format": "󰍛 {percentage}%",
+    	"return-type": "json",
+    	"interval": 2,
+    	"exec": "$HOME/.local/share/archriot/install/archriot --waybar-cpu",
+    	"on-click": "gnome-system-monitor",
+    	"on-click-right": "gnome-system-monitor",
+    	"tooltip": true
+    },
+
+    "custom/cpu-temp": {
+    	"format": "󰈸 {percentage}°C",
+    	"return-type": "json",
+    	"interval": 10,
+    	"exec": "$HOME/.local/share/archriot/install/archriot --waybar-temp",
+    	"on-click": "gnome-system-monitor",
+    	"on-click-right": "gnome-system-monitor",
+    	"tooltip": true
+    },
+
+    "custom/memory": {
+    	"format": "󰾆 {percentage}%",
+    	"return-type": "json",
+    	"interval": 5,
+    	"exec": "$HOME/.local/share/archriot/install/archriot --waybar-memory",
+    	"on-click": "gnome-system-monitor",
+    	"on-click-right": "gnome-system-monitor",
+    	"tooltip": true
+    },
+}
