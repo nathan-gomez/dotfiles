@@ -1,6 +1,9 @@
 vim.o.number = true
 vim.o.relativenumber = true
 
+-- Enable project configurations
+vim.o.exrc = true
+
 --Tab width
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2

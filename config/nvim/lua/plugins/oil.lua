@@ -3,8 +3,6 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   lazy = false,
   opts = function()
-    vim.keymap.set("n", "<space>-", require("oil").toggle_float)
-
     return {
       watch_for_changes = true,
       view_options = {

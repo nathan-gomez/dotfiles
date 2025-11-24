@@ -18,7 +18,7 @@ ls.add_snippets("c", {
     fmt(
       [[
         //
-        // {}
+        // region {}
         //
         {}
         ]],
