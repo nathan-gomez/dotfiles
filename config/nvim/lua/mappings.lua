@@ -64,6 +64,11 @@ map("n", "<leader>th", function()
   vim.api.nvim_win_set_height(0, 15)
 end, { desc = "Open horizontal terminal" })
 
+-- Quickfix list
+map("n", "<leader>xq", function() vim.diagnostic.setqflist({ bufnr = 0 }) end, { noremap = true, silent = true, desc = "Buffer Diagnostics -> Quickfix" })
+map("n", "<leader>xQ", function() vim.diagnostic.setqflist() end, { noremap = true, silent = true, desc = "Diagnostics -> Quickfix" })
+map("n", "<leader>xc", function()   vim.fn.setqflist({}, "r") end, { desc = "Clear Quickfix list" })
+
 -- Confrom Format
 
 vim.api.nvim_create_user_command("Format", function(args)

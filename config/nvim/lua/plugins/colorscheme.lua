@@ -32,6 +32,10 @@ return {
         colors = {
           bg = "#070708",
         },
+        on_highlights = function(highlights, colors)
+          print(highlights)
+          highlights.CurSearch.fg = "#070708"
+        end,
       })
 
       vim.cmd.colorscheme("vague")
