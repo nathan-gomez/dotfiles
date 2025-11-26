@@ -28,7 +28,7 @@ return {
     priority = 1000,
     opts = function()
       require("vague").setup({
-        transparent = false,
+        transparent = true,
         colors = {
           bg = "#070708",
         },
