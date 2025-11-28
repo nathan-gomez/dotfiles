@@ -38,14 +38,20 @@ set ideajoin
 
 map <leader>fo <Action>(ReformatCode)
 map <leader>ff <Action>(GotoFile)
+map <leader>fs <Action>(FindInPath)
+map <leader>fe <Action>(RecentFiles)
 
 nmap <S-k> <Action>(ShowHoverInfo)
 nmap <C-Enter> <Action>(ShowIntentionActions)
+
 map ]d <Action>(GotoNextError)
 map [d <Action>(GotoPreviousError)
 
+nmap <leader><leader>f <Action>(AceAction)
+nmap <leader><leader>s <Action>(AceBackwardAction)
+nmap <leader><leader>g <Action>(AceLineAction)
+
 " Comments
-nmap <C-/> <Action>(CommentByLineComment)
 vmap gc <Action>(CommentByLineComment)
 
 " Regions
