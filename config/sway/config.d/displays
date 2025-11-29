@@ -1,0 +1,7 @@
+### Output configuration
+#
+# Get outputs by running: swaymsg -t get_outputs
+#
+
+output HDMI-A-1 position 0 0
+output DP-1 position 1920 0

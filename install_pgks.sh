@@ -3,42 +3,44 @@
 # List of packages to install
 packages=(
   # Terminal
-  zsh
   tmux
   lazygit
   lazydocker
   neovim
+  fish
 
   # Utilities
   unzip
   fd
   ripgrep
   fzf
-  nvm
-  dotnet-host
-  dotnet-runtime
-  dotnet-sdk
+  lsd
+  # nvm
+  # dotnet-host
+  # dotnet-runtime
+  # dotnet-sdk
 
   # Desktop pkgs #
 
   # Fonts
   ttf-jetbrains-mono-nerd
 
-  # Other Programs
-  alacritty
+  # Desktop Programs
+  ghostty
   bitwarden
   btop
   ktorrent
   syncthing
   zerotier-one
   obsidian
-  visual-studio-code-bin
+  eog
+  qalculate-gtk
 
-  # i3
-  polybar
-  rofi
-  rofi-greenclip
-  nitrogen
+  # Theme
+  materia-gtk-theme
+  bibata-cursor-theme-bin
+  # Papirus Icon Set
+  # wget -qO- https://git.io/papirus-icon-theme-install | sh
 )
 
 # Update package database and upgrade system

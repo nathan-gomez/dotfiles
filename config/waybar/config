@@ -1,0 +1,43 @@
+{
+    // ----- TOP BAR
+    "layer": "top",
+    "position": "top",
+    "spacing": 10,
+
+    "include": [
+      "$HOME/.config/waybar/modules.jsonc"
+    ],
+
+    // ----- MODULES LEFT:
+    "modules-left": [
+        "custom/launcher",
+        "sway/workspaces#minimal",
+        "sway/window",
+        "custom/separator#line",
+    ],
+
+    // ----- MODULES CENTER:
+    "modules-center": [
+        "mpris#1"
+    ],
+
+    // ----- MODULES RIGHT:
+    "modules-right": [
+        //"network",
+        //"custom/keyboard-layout",
+        "custom/separator#line",
+        "cpu",
+        "memory",
+        "temperature",
+        "pulseaudio",
+        //"backlight",
+        //"battery",
+
+        "custom/separator#line",
+        "clock",
+
+        "custom/separator#line",
+        "tray",
+        "custom/power"
+    ],
+}

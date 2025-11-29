@@ -1,7 +1,7 @@
 CONFIG_DIR := $(HOME)/.config
 
 # Default target
-all: nvim tmux ohmyposh alacritty lazydocker lazygit zsh rofi i3
+all: nvim tmux lazydocker lazygit fish
 
 nvim:
 	@echo "Creating symlink: $(CONFIG_DIR)/nvim"
@@ -11,14 +11,6 @@ tmux:
 	@echo "Creating symlink: $(CONFIG_DIR)/tmux"
 	@ln -sfn $(PWD)/config/tmux $(CONFIG_DIR)/tmux
 
-ohmyposh:
-	@echo "Creating symlink: $(CONFIG_DIR)/ohmyposh"
-	@ln -sfn $(PWD)/config/ohmyposh $(CONFIG_DIR)/ohmyposh
-
-kitty:
-	@echo "Creating symlink: $(CONFIG_DIR)/kitty"
-	@ln -sfn $(PWD)/config/kitty $(CONFIG_DIR)/kitty
-
 lazydocker:
 	@echo "Creating symlink: $(CONFIG_DIR)/lazydocker"
 	@ln -sfn $(PWD)/config/lazydocker $(CONFIG_DIR)/lazydocker
@@ -27,24 +19,28 @@ lazygit:
 	@echo "Creating symlink: $(CONFIG_DIR)/lazygit"
 	@ln -sfn $(PWD)/config/lazygit $(CONFIG_DIR)/lazygit
 
+sway:
+	@echo "Creating symlink: $(CONFIG_DIR)/sway"
+	@ln -sfn $(PWD)/config/sway $(CONFIG_DIR)/sway
+
+waybar:
+	@echo "Creating symlink: $(CONFIG_DIR)/waybar"
+	@ln -sfn $(PWD)/config/waybar $(CONFIG_DIR)/waybar
+
+fish:
+	@echo "Creating symlink: $(CONFIG_DIR)/fish"
+	@ln -sfn $(PWD)/config/fish $(CONFIG_DIR)/fish
+
 zsh:
 	@echo "Creating symlink: $(HOME)/.zshrc"
 	@ln -sfn $(PWD)/.zshrc $(HOME)/.zshrc
 
-alacritty:
-	@echo "Creating symlink: $(CONFIG_DIR)/alacritty"
-	@ln -sfn $(PWD)/config/alacritty $(CONFIG_DIR)/alacritty
+ghostty:
+	@echo "Creating symlink: $(CONFIG_DIR)/ghostty"
+	@ln -sfn $(PWD)/config/ghostty $(CONFIG_DIR)/ghostty
 
 rofi:
 	@echo "Creating symlink: $(CONFIG_DIR)/rofi"
 	@ln -sfn $(PWD)/config/rofi $(CONFIG_DIR)/rofi
 
-i3:
-	@echo "Creating symlink: $(CONFIG_DIR)/i3"
-	@ln -sfn $(PWD)/config/i3 $(CONFIG_DIR)/i3
-	@echo "Creating symlink: $(CONFIG_DIR)/polybar"
-	@ln -sfn $(PWD)/config/polybar $(CONFIG_DIR)/polybar
-	@echo "Creating symlink: $(CONFIG_DIR)/dunst"
-	@ln -sfn $(PWD)/config/dunst $(CONFIG_DIR)/dunst
-
-.PHONY: all nvim tmux ohmyposh kitty lazydocker lazygit zsh alacritty rofi i3
+.PHONY: all nvim tmux lazydocker lazygit zsh rofi waybar sway fish
