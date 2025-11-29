@@ -1,0 +1,377 @@
+{
+  // NOTE: Custom Modules
+
+  "custom/launcher": {
+      "format":"<span size='x-large'>󰣇</span>",
+      "on-click": "exec nwg-drawer",
+      "tooltip": false
+  },
+
+  "custom/power": {
+      "format":"⏻",
+      "on-click": "exec ~/.config/sway/scripts/power_menu.sh",
+      "tooltip": false
+  },
+
+  "custom/separator#line": {
+    "format": "|",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  // NOTE: Sway
+
+  "sway/workspaces#minimal": {
+      "disable-scroll": true,
+      "all-outputs": true,
+      "format": "{icon}{name}",
+      "format-icons": {
+        "focused": "<span font='16'>●</span> ",
+        "default": "<span font='16'>○</span> ",
+        "urgent": "<span font='16'></span> ",
+      },
+      "persistent-workspaces": {
+        "2": [],
+        "3": [],
+        "4": [],
+      }
+  },
+
+  "sway/workspaces#icons": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}{windows}",
+    "window-format": "{name}",
+    "format-icons": {
+      "focused": "<span font='16'>●</span> ",
+      "default": "<span font='16'>○</span> ",
+      "urgent": "<span font='16'></span> ",
+    },
+    "window-rewrite": {
+      // --- WEB & BROWSERS ---
+      "class<firefox|org.mozilla.firefox|librewolf|floorp|mercury-browser|[Cc]achy-browser>": "<span font='11'>󰈹 </span>",
+      "class<waterfox|waterfox-bin>": "<span font='11'>󰈹 </span>",
+      "class<microsoft-edge>": "<span font='11'>󰇩 </span>",
+      "class<Chromium|Thorium|[Cc]hrome>": "<span font='11'>󰊯 </span>",
+      "class<brave-browser|Brave-browser|Brave|brave>": "<span font='11'>󰊯 </span>",
+      "class<tor browser>": "<span font='11'> </span>",
+      "class<qutebrowser>": "<span font='11'>󰈹 </span>",
+      "title<.*youtube.*>": "<span font='11'> </span>",
+      "title<.*reddit.*>": "<span font='11'> </span>",
+      "title<.*facebook.*>": "<span font='11'> </span>",
+      "title<.*github.*>": "<span font='11'> </span>",
+      "class<.*brave-github\\.app__.*>": "<span font='11'> </span>",
+      "class<^brave-github\\.app__-Default$>": "<span font='11'> </span>",
+
+      // --- COMMUNICATION ---
+      "class<[Tt]elegram-desktop|org.telegram.desktop|io.github.tdesktop_x64.TDesktop>": "<span font='11'>󰘦 </span>",
+      "class<discord|[Ww]ebcord|Vesktop>": "<span font='11'> </span>",
+      "title<.*whatsapp.*>": "<span font='11'> </span>",
+      "class<slack>": "<span font='11'> </span>",
+      "title<.*gmail.*>": "<span font='11'>󰊫 </span>",
+      "class<brave-mail.proton.me.*>": "<span font='11'>󰊫 </span>",
+      "class<[Tt]hunderbird|[Tt]hunderbird-esr>": "<span font='11'>󰊫 </span>",
+      "class<eu.betterbird.Betterbird>": "<span font='11'>󰊫 </span>",
+      "class<org.gnome.Evolution>": "<span font='11'>󰊫 </span>",
+      "class<claws-mail>": "<span font='11'>󰇮 </span>",
+      "class<org.gnome.Geary>": "<span font='11'>󰊫 </span>",
+
+      // --- DEV TOOLS ---
+      "class<VSCode|code-url-handler|code-oss|codium|codium-url-handler|VSCodium|Code>": "<span font='11'>󰨞 </span>",
+      "class<dev.zed.Zed|dev.zed.Zed-Preview>": "<span font='12'>☡ </span>",
+      "title<.*nvim.*>": "<span font='11'>󰈙 </span>",
+      "title<.*vim.*>": "<span font='11'>󰈙 </span>",
+      "class<jetbrains-idea>": "<span font='11'> </span>",
+
+      // --- TERMINALS ---
+      "class<com.mitchellh.ghostty>": "<span font='11'>󰊠 </span>",
+      "class<com.mitchellh.ghostty-floating>": "<span font='11'>󰊠 </span>",
+      "class<org.wezfurlong.wezterm>": "<span font='11'>󰞷 </span>",
+      "class<foot>": "<span font='11'>󰆍 </span>",
+
+      // --- MEDIA / VIDEO / MUSIC ---
+      "class<mpv>": "<span font='11'>󰥠 </span>",
+      "class<mpd-player>": "<span font='11'>󰥠 </span>",
+      "class<celluloid>": "<span font='11'>󰕼 </span>",
+      "class<vlc>": "<span font='11'>󰕼 </span>",
+      "class<Cider>": "<span font='11'>󰎆 </span>",
+      "title<.*cmus.*>": "<span font='11'>󰽴 </span>",
+      "class<[Ss]potify>": "<span font='11'>󰽴 </span>",
+      "class<org.kde.elisa>": "<span font='11'>󰽴 </span>",
+      "class<org.gnome.Lollypop|org.gnome.Music|rhythmbox>": "<span font='11'>󰝚 </span>",
+
+      // --- FILES / SYSTEM ---
+      "class<thunar|nemo|org.gnome.Nautilus>": "<span font='11'>󰝰 </span>",
+      "class<Gparted>": "<span font='11'> </span>",
+      "class<org.gnome.TextEditor>": "<span font='11'>󰷈 </span>",
+      "class<polkit-gnome-authentication-agent-1>": "<span font='11'>󰒃 </span>",
+      "class<[Pp]avucontrol|org.pulseaudio.pavucontrol>": "<span font='11'>󱡫 </span>",
+      "class<nwg-look>": "<span font='11'>󰀻 </span>",
+      "class<org.pipewire.Helvum>": "<span font='11'>󰓃 </span>",
+      "class<virt-manager|.virt-manager-wrapped>": "<span font='11'>󰢹 </span>",
+      "class<virtualbox manager>": "<span font='11'>󰌗 </span>",
+      "class<remmina>": "<span font='11'>󰢹 </span>",
+      "class<steam>": "<span font='11'>󰓓 </span>",
+      "title<.*steam.*>": "<span font='11'>󰓓 </span>",
+
+      // --- DESIGN / CREATIVITY / 3D ---
+      "class<gimp>": "<span font='11'> </span>",
+      "class<krita>": "<span font='11'> </span>",
+      "class<kdenlive>": "<span font='11'> </span>",
+      "title<.*kdenlive.*>": "<span font='11'> </span>",
+      "class<PrusaSlicer|UltiMaker-Cura|OrcaSlicer>": "<span font='11'>󰹛 </span>",
+      "class<inkscape>": "<span font='11'> </span>",
+      "class<blender>": "<span font='11'>󰂫 </span>",
+
+      // --- UTILITIES / MISC ---
+      "class<obsidian>": "<span font='11'>󱞁 </span>",
+      "class<feather>": "<span font='11'>󱟘 </span>",
+      "class<Trezor Suite>": "<span font='11'>󰌆 </span>",
+      "class<Exodus|exodus>": "<span font='11'>Ⓧ </span>",
+      "class<cake_wallet>": "<span font='11'>󰿦 </span>",
+      "class<zen>": "<span font='11'>󰰷 </span>",
+      "class<com.transmissionbt.transmission.*>": "<span font='11'>󰇚 </span>",
+      "class<de.haeckerfelix.Fragments>": "<span font='11'>󰇚 </span>",
+      "class<mousepad>": "<span font='11'>󰈙 </span>",
+      "class<libreoffice-writer>": "<span font='11'>󰈙 </span>",
+      "class<libreoffice-calc>": "<span font='11'>󰈙 </span>",
+      "class<libreoffice-startcenter>": "<span font='11'>󰏆 </span>",
+
+      // --- SYSTEM / SETTINGS / UTILITIES ---
+      "class<gnome-control-center|org.gnome.Settings>": "<span font='11'>󰒓 </span>",
+      "class<org.gnome.Extensions>": "<span font='11'>󰔎 </span>",
+      "class<org.gnome.Terminal.Preferences>": "<span font='11'>󰒓 </span>",
+      "class<org.gnome.Software>": "<span font='11'>󰏗 </span>",
+      "class<gnome-disks|org.gnome.DiskUtility>": "<span font='11'>󰋊 </span>",
+      "class<org.gnome.SystemMonitor>": "<span font='11'>󰍹 </span>",
+      "class<org.gnome.Calculator|gnome-calculator>": "<span font='11'>󰪚 </span>",
+      "class<qalculate-gtk>": "<span font='11'>󰪚 </span>",
+      "class<org.gnome.Fonts>": "<span font='11'>󰛖 </span>",
+      "class<org.gnome.Maps>": "<span font='11'>󰟡 </span>",
+      "class<org.gnome.Weather>": "<span font='11'>󰖕 </span>",
+      "class<org.gnome.Connections>": "<span font='11'>󰢹 </span>",
+      "class<org.gnome.PowerStats>": "<span font='11'>󰠭 </span>",
+      "class<org.gnome.Logs>": "<span font='11'>󰁯 </span>",
+      "class<org.gnome.About>": "<span font='11'>󰋖 </span>",
+      "class<org.gnome.Usage>": "<span font='11'>󰍹 </span>",
+      "class<org.gnome.SystemMonitor>": "<span font='11'>󰍹 </span>",
+
+      "class<org.kde.systemmonitor>": "<span font='11'>󰍹 </span>",
+      "class<org.kde.dolphin>": "<span font='11'>󰝰 </span>",
+      "class<org.kde.kinfocenter>": "<span font='11'>󰋗 </span>",
+      "class<org.kde.konsole>": "<span font='11'> </span>",
+      "class<org.kde.ksysguard>": "<span font='11'>󰍹 </span>",
+      "class<org.kde.spectacle>": "<span font='11'>󰄀 </span>",
+      "class<systemsettings|systemsettings5>": "<span font='11'>󰒓 </span>",
+
+      "class<org.xfce.SettingsManager>": "<span font='11'>󰒓 </span>",
+      "class<org.xfce.Terminal>": "<span font='11'> </span>",
+      "class<org.xfce.Thunar>": "<span font='11'>󰝰 </span>",
+      "class<org.xfce.AppFinder>": "<span font='11'>󰘳 </span>",
+      "class<org.xfce.Panel>": "<span font='11'>󰘳 </span>",
+      "class<org.xfce.Session>": "<span font='11'>󰜉 </span>",
+
+      "class<lxappearance>": "<span font='11'>󰀻 </span>",
+      "class<xfce4-settings-manager>": "<span font='11'>󰒓 </span>",
+      "class<xfce4-taskmanager>": "<span font='11'>󰍹 </span>",
+      "class<xfce4-power-manager-settings>": "<span font='11'>󰠭 </span>",
+      "class<xfce4-display-settings>": "<span font='11'>󰹑 </span>",
+      "class<xfce4-appfinder>": "<span font='11'>󰘳 </span>",
+
+      "class<nwg-displays>": "<span font='11'>󰹑 </span>",
+      "class<nwg-look>": "<span font='11'>󰀻 </span>",
+      "class<nwg-panel>": "<span font='11'>󰘳 </span>",
+      "class<nwg-shell-config>": "<span font='11'>󰒓 </span>",
+
+      "class<timeshift-gtk>": "<span font='11'>󰣜 </span>",
+      "class<baobab|org.gnome.baobab>": "<span font='11'>󰋊 </span>",
+      "class<htop|btop|gotop>": "<span font='11'>󰍹 </span>",
+      "title<htop|btop|gotop>": "<span font='11'>󰍹 </span>",
+      "class<lxtask>": "<span font='11'>󰍹 </span>",
+      "class<nm-connection-editor>": "<span font='11'>󰤨 </span>",
+      "class<wicd>": "<span font='11'>󰤨 </span>",
+      "class<blueman-manager|blueman>": "<span font='11'>󰂯 </span>",
+      "class<pavucontrol>": "<span font='11'>󱡫 </span>",
+      "class<file-roller|org.gnome.FileRoller>": "<span font='11'>󰗄 </span>",
+      "class<gnome-tweaks|org.gnome.tweaks>": "<span font='11'>󰒓 </span>",
+      "class<org.gnome.seahorse.Application>": "<span font='11'>󰌆 </span>",
+      "class<gnome-screenshot>": "<span font='11'>󰄀 </span>",
+      "class<gnome-system-monitor>": "<span font='11'>󰍹 </span>",
+      "class<gufw>": "<span font='11'>󰒃 </span>",
+      "class<timeshift-gtk>": "<span font='11'>󰣜 </span>",
+      "class<grub-customizer>": "<span font='11'>󰞷 </span>",
+      "class<synaptic>": "<span font='11'>󰏗 </span>",
+      "class<software-properties-gtk>": "<span font='11'>󰏗 </span>",
+      "class<update-manager>": "<span font='11'>󰏗 </span>",
+      "class<gparted>": "<span font='11'> </span>",
+      "class<disks>": "<span font='11'>󰋊 </span>",
+      "class<gnome-system-log>": "<span font='11'>󰁯 </span>",
+      "class<org.gnome.About>": "<span font='11'>󰋖 </span>",
+      "class<org.gnome.PowerStats>": "<span font='11'>󰠭 </span>"
+      },
+      "window-rewrite-default": "<span font='11'>󰘚</span> ",
+      "persistent-workspaces": {
+        "2": [],
+        "3": [],
+        "4": [],
+      }
+  },
+
+  "sway/mode": {
+      "format": "<span style=\"italic\">{}</span>",
+      "tooltip": false
+  },
+
+  "sway/window": {
+      "format": "{}",
+      "max-length": 120,
+  },
+
+  "network": {
+      "format-disabled": " Disabled",
+      "format-wifi": " {bandwidthDownBits:>} 󰶡 {bandwidthUpBits:>} 󰶣",
+      "tooltip-format-wifi": "{essid}",
+      "format-ethernet": "󰈀 {bandwidthDownBits:>} 󰶡 {bandwidthUpBits:>} 󰶣",
+      "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+      "format-disconnected": " Disconnected",
+      "on-click": "footclient -T waybar_nmtui -e nmtui",
+      "interval": 2
+  },
+
+  "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+          "activated": "",
+          "deactivated": ""
+      },
+      "tooltip-format-activated": "Idle Inhibitor Activated",
+      "tooltip-format-deactivated": "Idle Inhibitor Deactivated"
+  },
+
+  "cpu": {
+      "interval": 5,
+      "format": "{usage:>3}%",
+      "states": {
+          "warning": 70,
+          "critical": 90,
+      },
+      "on-click": "footclient -T waybar_htop -e btop"
+  },
+  
+  "memory": {
+      "interval": 5,
+      "format": " {:>3}%",
+      "on-click": "footclient -T btop -e btop", 
+      "states": {
+          "warning": 70,
+          "critical": 90
+      }
+  },
+
+  "temperature": {
+    "interval": 10,
+    "tooltip": true,
+
+    "critical-threshold": 82,
+    "format-critical": "{temperatureC}°{icon}",
+    "format": "{temperatureC}°{icon}",
+    "format-icons": [
+      "󰈸"
+    ],
+    "tooltip-format": "CPU Temperature: {temperatureC}°C",
+    "on-click": "footclient -T btop -e btop",
+  },
+
+  "backlight": {
+      "format": "{icon} {percent}%",
+      "format-icons": ["󰄰", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
+      "tooltip-format": "Backlight (Scroll): {percent:}%",
+      "on-scroll-down": "brightnessctl -c backlight set 5%-",
+      "on-scroll-up": "brightnessctl -c backlight set +5%"
+  },
+
+  "pulseaudio": {
+      "scroll-step": 1,
+      "format": "{icon} {volume}%",
+      "format-muted":"󰝟 MUTED",
+      "format-icons": {
+          "headphones": "",
+          "handsfree": "",
+          "headset": "",
+          "phone": "",
+          "portable": "",
+          "car": "",
+          "default": ["󰕿", "󰖀", "󰕾"]
+      },
+      "on-click": "pavucontrol"
+  },
+
+  "battery": {
+      "states": {
+          "warning": 30,
+          "critical": 15
+      },
+      "format": "{icon} {capacity}%",
+      "format-icons": ["", "", "", "", ""]
+  },
+
+  "clock": {
+    "interval": 1,
+    "format": "󰅐 {:%H:%M • %d-%m-%Y}",
+    "format-alt": "󰅐 {:%H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+
+  "tray": {
+      "icon-size": 16,
+      "spacing":10
+   },
+
+  // Media Player
+  "mpris#1": {
+    "interval": 1,
+    "format": "{status_icon} {dynamic} {player_icon}",
+    "format-paused": "{status_icon} {dynamic} {player_icon}",
+    "format-stopped": "",
+    "format-disconnected": "",
+    "on-click-middle": "playerctl previous",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "scroll-step": 5.0,
+    "smooth-scrolling-threshold": 1,
+    "tooltip": true,
+    "tooltip-format": "{status_icon} {dynamic}\nLeft Click: Pause\nMid Click: Previous\nRight Click: Next",
+    "player-icons": {
+      "chromium": "",
+      "chrome": "",
+      "brave": "",
+      "default": "",
+      "firefox": "",
+      "kdeconnect": "",
+      "mopidy": "",
+      "mpv": "󰐹",
+      "spotify": "",
+      "vlc": "󰕼",
+      "lollypop": "",
+    },
+    "status-icons": {
+      "paused": "󰏤",
+      "playing": "",
+      "stopped": "",
+    },
+    "max-length": 70,
+  },
+}
