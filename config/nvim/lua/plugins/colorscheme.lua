@@ -1,27 +1,72 @@
 return {
   -- {
-  --   "thesimonho/kanagawa-paper.nvim",
+  --   "rebelot/kanagawa.nvim",
   --   lazy = false,
-  --   init = function()
-  --     vim.cmd.colorscheme("kanagawa-paper-ink")
-  --   end,
   --   config = {
+  --     compile = true,
   --     undercurl = true,
-  --     transparent = false,
-  --     gutter = false,
-  --     diag_background = true,
-  --     dim_inactive = true,
-  --     terminal_colors = true,
-  --     cache = false,
-  --     styles = {
-  --       comment = { italic = true },
-  --       functions = { italic = true },
-  --       keyword = { italic = true, bold = true },
-  --       statement = { italic = true, bold = true },
-  --       type = { italic = true },
+  --     commentStyle = { italic = true },
+  --     functionStyle = {},
+  --     keywordStyle = { italic = true },
+  --     statementStyle = { bold = true },
+  --     typeStyle = { bold = true },
+  --     transparent = true,
+  --     dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+  --     terminalColors = true, -- define vim.g.terminal_color_{0,17}
+  --     colors = {
+  --       palette = {},
+  --       theme = {
+  --         all = {
+  --           ui = {
+  --             bg_gutter = "none",
+  --             float = { bg = "none" },
+  --           },
+  --         },
+  --       },
   --     },
+  --     overrides = function(colors)
+  --       local theme = colors.theme
+  --
+  --       return {
+  --         NormalFloat = { bg = "none" },
+  --         FloatBorder = { bg = "none" },
+  --         FloatTitle = { bg = "none" },
+  --         NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+  --         LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+  --         MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+  --         Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
+  --         PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+  --         PmenuSbar = { bg = theme.ui.bg_m1 },
+  --         PmenuThumb = { bg = theme.ui.bg_p2 },
+  --       }
+  --     end,
+  --     theme = "dragon",
   --   },
   -- },
+  {
+    "webhooked/kanso.nvim",
+    lazy = false,
+    config = function()
+      require("kanso").setup({
+        functionStyle = { bold = true },
+        transparent = true,
+        colors = {
+          palette = {},
+          theme = { zen = {}, pearl = {}, ink = {}, all = {} },
+        },
+        overrides = function(colors)
+          return {
+            CurSearch = { bg = colors.palette.zenBg1, fg = colors.palette.red },
+            IncSearch = { bg = colors.palette.zenBg1, fg = colors.palette.red },
+            Search = { bg = colors.palette.zenBg1, fg = colors.palette.blue },
+          }
+        end,
+        foreground = "default", -- "default" or "saturated" (can also be a table like background)
+      })
+
+      vim.cmd.colorscheme("kanso-ink")
+    end,
+  },
   {
     "vague2k/vague.nvim",
     lazy = false,
@@ -33,26 +78,11 @@ return {
           bg = "#070708",
         },
         on_highlights = function(highlights, colors)
-          print(highlights)
           highlights.CurSearch.fg = "#070708"
         end,
       })
 
-      vim.cmd.colorscheme("vague")
+      -- vim.cmd.colorscheme("vague")
     end,
   },
-  -- {
-  --   "sainnhe/gruvbox-material",
-  --   lazy = false,
-  --   priority = 1000, -- Make sure to load this before all the other start plugins.
-  --   opts = function()
-  --     vim.g.gruvbox_material_background = "hard"
-  --     vim.g.gruvbox_material_foreground = "material"
-  --     vim.g.gruvbox_material_enable_italic = 1
-  --     vim.g.gruvbox_material_enable_bold = 1
-  --     vim.g.gruvbox_material_transparent_background = 1
-  --
-  --     vim.cmd.colorscheme("gruvbox-material")
-  --   end,
-  -- },
 }
