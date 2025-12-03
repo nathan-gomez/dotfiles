@@ -4,6 +4,13 @@ vim.o.relativenumber = true
 -- Enable project configurations
 vim.o.exrc = true
 
+-- Folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""
+vim.opt.foldcolumn = "0"
+vim.opt.foldlevelstart = 99
+
 --Tab width
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2

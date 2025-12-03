@@ -43,11 +43,11 @@ map("n", "<C-Left>", ":vertical resize -5<CR>", { noremap = true, silent = true,
 map("n", "<C-Right>", ":vertical resize +5<CR>", { noremap = true, silent = true, desc = "Increase window width" })
 
 -- Tabs
-map("n", "<leader>tn", "<cmd>tabnew<cr>", { noremap = true, silent = true, desc = "New tab" })
-map("n", "<leader>tc", "<cmd>tabclose<cr>", { noremap = true, silent = true, desc = "Close tab" })
-map("n", "<leader>tj", "<cmd>tabnext<cr>", { noremap = true, silent = true, desc = "Next tab" })
+map("n", "tn", "<cmd>tabnew<cr>", { noremap = true, silent = true, desc = "New tab" })
+map("n", "tc", "<cmd>tabclose<cr>", { noremap = true, silent = true, desc = "Close tab" })
+map("n", "tj", "<cmd>tabnext<cr>", { noremap = true, silent = true, desc = "Next tab" })
+map("n", "tk", "<cmd>tabprevious<cr>", { noremap = true, silent = true, desc = "Prev tab" })
 map("n", "<C-PageDown>", "<cmd>tabnext<cr>", { noremap = true, silent = true, desc = "Next tab" })
-map("n", "<leader>tk", "<cmd>tabprevious<cr>", { noremap = true, silent = true, desc = "Prev tab" })
 map("n", "<C-PageUp>", "<cmd>tabprevious<cr>", { noremap = true, silent = true, desc = "Prev tab" })
 
 -- Open terminal
