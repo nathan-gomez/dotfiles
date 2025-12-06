@@ -6,12 +6,6 @@ return {
   opts = {
     picker = {},
     explorer = {},
-    styles = {
-      scratch = {
-        width = 150,
-        height = 40,
-      }
-    }
   },
   keys = {
     { "<leader>ff", function() Snacks.picker.files({ show_empty = true, hidden = true, }) end, desc = "Find Files" },
@@ -22,7 +16,8 @@ return {
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>fp", function()
       Snacks.picker.projects({
-        dev = { "P:\\", "W:\\"  }, -- Win32
+        dev = { "P:\\", "W:\\", }, -- Win32
+        projects = { "F:\\Fede\\Google Drive\\notes" }, -- Win32
         -- dev = { "~/dev"  }, -- Linux
         confirm = "load_session",
         recent = false,

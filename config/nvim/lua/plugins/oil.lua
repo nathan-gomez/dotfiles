@@ -9,9 +9,10 @@ return {
         show_hidden = true,
       },
       keymaps = {
-        ["<C-s>"] = { "<cmd>w<CR>" },
+        ["<C-s>"] = { "<cmd>w<cr>" },
         ["<C-l>"] = { "actions.select" },
         ["<C-p>"] = "actions.preview",
+        ["<M-p>"] = "actions.preview",
         ["<C-h>"] = { "actions.toggle_hidden", mode = "n" },
       },
     }
