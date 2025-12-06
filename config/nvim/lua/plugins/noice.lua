@@ -4,6 +4,15 @@ return {
   dependencies = {
     "MunifTanjim/nui.nvim",
   },
+  keys = {
+    {
+      "<leader>nh",
+      function()
+        require("noice").cmd("snacks")
+      end,
+      desc = "Open Notification History",
+    },
+  },
   opts = {
     lsp = {
       override = {
