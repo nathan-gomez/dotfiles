@@ -1,3 +1,4 @@
+// vim:set ft=jsonc:
 {
     // ----- TOP BAR
     "layer": "top",
