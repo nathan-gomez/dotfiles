@@ -7,6 +7,10 @@ return {
 
     local on_attach = function(bufnr)
       map("n", "<leader>gbb", gitsigns.blame, { noremap = true, desc = "[g]it [b]lame" })
+      map("n", "<leader>glh", function()
+        gitsigns.toggle_numhl()
+        gitsigns.toggle_linehl()
+      end, { noremap = true, desc = "[g]it [l]ine [h]ighlight" })
 
       -- Diffing
       map("n", "<leader>gd", gitsigns.diffthis, { noremap = true, desc = "[g]it [d]iff against the index" })
@@ -37,7 +41,8 @@ return {
     end
 
     gitsigns.setup({
-      numhl = true,
+      numhl = false,
+      linehl = false,
       on_attach = on_attach,
       signs = {
         add = { text = "" },

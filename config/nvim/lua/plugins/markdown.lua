@@ -3,6 +3,7 @@ return {
   lazy = false,
   config = function()
     local markview = require("markview")
+    local presets = require("markview.presets")
 
     vim.keymap.set("n", "<leader>ms", "<cmd>Markview splitToggle<cr>", { desc = "[m]arkdown [s]plit view" })
     vim.keymap.set("n", "<leader>mt", "<cmd>Markview<cr>", { desc = "[m]arkdown [t]oggle view" })
@@ -10,6 +11,13 @@ return {
     markview.setup({
       preview = {
         icon_provider = "devicons",
+      },
+      markdown = {
+        headings = presets.headings.glow,
+        horizontal_rules = presets.thick,
+        code_blocks = {
+          label_direction = "left",
+        },
       },
     })
   end,
