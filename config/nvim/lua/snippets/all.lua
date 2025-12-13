@@ -30,4 +30,20 @@ ls.add_snippets("c", {
   ),
 })
 
+ls.add_snippets("zig", {
+  s(
+    {
+      trig = "dis",
+      snippetType = "snippet",
+      desc = "Discard value",
+      wordTrig = true,
+    },
+    fmt("_ = {};",
+      {
+        i(1, "value"),
+      }
+    )
+  ),
+})
+
 return snippets
