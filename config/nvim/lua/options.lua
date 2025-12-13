@@ -56,10 +56,11 @@ vim.g.loaded_ruby_provider = 0
 -- Matchpairs
 vim.opt.matchpairs:append("<:>")
 
--- add binaries installed by mason.nvim to path
 local is_windows = vim.fn.has("win32") ~= 0
 local sep = is_windows and "\\" or "/"
 local delim = is_windows and ";" or ":"
+
+-- add binaries installed by mason.nvim to path
 vim.env.PATH = table.concat({ vim.fn.stdpath("data"), "mason", "bin" }, sep) .. delim .. vim.env.PATH
 
 local icons = require("icons")

@@ -11,9 +11,9 @@ map("n", "<leader>Y", [["+Y]], { desc = "Copy to system clipboard" })
 -- Replace all words under cursor
 map(
   "n",
-  "<leader>r",
+  "<leader>rw",
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  { desc = "Replace all words under cursor" }
+  { desc = "[r]eplace [w]ord" }
 )
 
 -- Move selected lines

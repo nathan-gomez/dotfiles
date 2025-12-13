@@ -1,14 +1,16 @@
 local ls = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
-local s = ls.snippet
-local i = ls.insert_node
+local fmt_angle = ls.extend_decorator.apply(fmt, { delimiters = "<>" })
+local snippet = ls.snippet
+local insert_node = ls.insert_node
 
-local snippets = {}
+-- NOTE: Currently not populating this table.
+local M = {}
 
 ls.filetype_extend("cpp", { "c" })
 
 ls.add_snippets("c", {
-  s(
+  snippet(
     {
       trig = "region",
       snippetType = "snippet",
@@ -23,11 +25,40 @@ ls.add_snippets("c", {
         {}
         ]],
       {
-        i(1, "region"),
-        i(0),
+        insert_node(1, "region"),
+        insert_node(0),
       }
     )
   ),
 })
 
-return snippets
+ls.add_snippets("zig", {
+  snippet(
+    {
+      trig = "disc",
+      snippetType = "snippet",
+      desc = "Discard value",
+      wordTrig = true,
+    },
+    fmt("_ = {};", {
+      insert_node(1, "value"),
+    })
+  ),
+  snippet(
+    {
+      trig = "dalloc",
+      snippetType = "snippet",
+      desc = "Debug allocator",
+      wordTrig = true,
+    },
+    fmt_angle(
+      [[
+        var debug_allocator: std.heap.DebugAllocator(.{}) = .init;
+        const allocator = debug_allocator.allocator();
+      ]],
+      {}
+    )
+  ),
+})
+
+return M
