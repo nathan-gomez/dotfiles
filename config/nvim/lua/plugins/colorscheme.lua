@@ -46,6 +46,7 @@ return {
   {
     "webhooked/kanso.nvim",
     lazy = false,
+    priority = 1000,
     config = function()
       require("kanso").setup({
         functionStyle = { bold = true },
@@ -67,22 +68,22 @@ return {
       vim.cmd.colorscheme("kanso-ink")
     end,
   },
-  {
-    "vague2k/vague.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = function()
-      require("vague").setup({
-        transparent = true,
-        colors = {
-          bg = "#070708",
-        },
-        on_highlights = function(highlights, colors)
-          highlights.CurSearch.fg = "#070708"
-        end,
-      })
-
-      -- vim.cmd.colorscheme("vague")
-    end,
-  },
+  -- {
+  --   "vague2k/vague.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = function()
+  --     require("vague").setup({
+  --       transparent = true,
+  --       colors = {
+  --         bg = "#070708",
+  --       },
+  --       on_highlights = function(highlights, colors)
+  --         highlights.CurSearch.fg = "#070708"
+  --       end,
+  --     })
+  --
+  --     -- vim.cmd.colorscheme("vague")
+  --   end,
+  -- },
 }

@@ -17,6 +17,9 @@ return {
       ["<C-u>"] = { "scroll_documentation_up", "fallback" },
       ["<C-d>"] = { "scroll_documentation_down", "fallback" },
     },
+    cmdline = {
+      keymap = { preset = "inherit" },
+    },
 
     appearance = {
       nerd_font_variant = "mono",
