@@ -33,6 +33,20 @@ config.tab_and_split_indices_are_zero_based = false
 -----------------------------------------------------
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 3000 }
 config.keys = {
+
+	{
+		key = ",",
+		mods = "LEADER",
+		action = wezterm.action.PromptInputLine({
+			description = "Enter new name for tab",
+			action = wezterm.action_callback(function(window, pane, line)
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
+
 	-----------------------------------------------------
 	-- TABS
 	-----------------------------------------------------
