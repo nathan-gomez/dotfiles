@@ -61,4 +61,18 @@ ls.add_snippets("zig", {
   ),
 })
 
+ls.add_snippets("typescript", {
+  snippet(
+    {
+      trig = "todo",
+      snippetType = "snippet",
+      desc = "TODO annotation",
+      wordTrig = true,
+    },
+    fmt("// TODO: (fede) {}", {
+      insert_node(1, "todo"),
+    })
+  ),
+})
+
 return M
