@@ -28,7 +28,7 @@ return {
         map("n", "<F2>", vim.lsp.buf.rename, opts("Rename"))
 
         map("n", "]d", vim.diagnostic.goto_next, opts("Next diagnostic"))
-        map("n", "[d", vim.diagnostic.goto_next, opts("Previous diagnostic"))
+        map("n", "[d", vim.diagnostic.goto_prev, opts("Previous diagnostic"))
 
         map("n", "<leader>ti", function()
           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())

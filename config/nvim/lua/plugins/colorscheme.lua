@@ -51,6 +51,7 @@ return {
       require("kanso").setup({
         functionStyle = { bold = true },
         transparent = true,
+        compile = true,
         colors = {
           palette = {},
           theme = { zen = {}, pearl = {}, ink = {}, all = {} },
@@ -66,6 +67,10 @@ return {
       })
 
       vim.cmd.colorscheme("kanso-ink")
+
+      vim.schedule(function()
+        vim.cmd("KansoCompile")
+      end)
     end,
   },
   -- {

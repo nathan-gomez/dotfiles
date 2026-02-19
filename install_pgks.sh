@@ -15,7 +15,6 @@ packages=(
   ripgrep
   fzf
   lsd
-  # nvm
   # dotnet-host
   # dotnet-runtime
   # dotnet-sdk
@@ -35,6 +34,9 @@ packages=(
   obsidian
   eog
   qalculate-gtk
+
+  timeshift
+  xhost # timeshift dependency
 
   # Theme
   materia-gtk-theme

@@ -20,8 +20,12 @@ for_window [app_id="org.gnome.eog"] floating enable
 for_window [title="Save File"] floating enable
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [class="GtkFileChooserDialog"] floating enable
+for_window [title="^Rename.*" app_id="thunar"] floating enable
+for_window [title="Steam Settings"] floating enable
 
 # Inhibit idle
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [app_id="Chromium"] inhibit_idle fullscreen
+
 for_window [app_id="brave-browser"] inhibit_idle fullscreen
+for_window [app_id="brave-browser" title=".*wants to save$"] floating enable
