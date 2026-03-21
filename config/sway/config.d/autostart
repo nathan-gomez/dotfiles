@@ -19,7 +19,7 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 exec mako
 
 # Start foot server
-exec_always --no-startup-id foot --server
+exec_always foot --server
 
 # Autotiling
 exec autotiling
@@ -38,7 +38,7 @@ exec sleep 2 && firewall-applet
 exec_always nwg-drawer -r -c 7 -is 90 -mb 10 -ml 50 -mr 50 -mt 10
 
 # Prefer dark themes on all gnome apps
-exec = gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+exec gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Set cursor
 seat seat0 xcursor_theme Bibata-Modern-Ice

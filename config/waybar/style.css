@@ -26,6 +26,7 @@
 @define-color bg_primary #0a0b10;
 @define-color bg_alpha rgba(0, 0, 0, 0.7);
 @define-color muted #565f89;
+@define-color urgent #c9545d;
 
 @define-color workspace_active #3584e8;
 @define-color workspace_inactive #3a3a4a;
@@ -118,23 +119,25 @@
     margin-left: 2px;
 }
 
-#workspaces button.focused {
+#workspaces button.focused:not(.empty) {
     color: @secondary;
+    opacity: 1;
     border: none;
+}
+
+#workspaces button.focused.empty {
+    color: @secondary;
+    opacity: 1;
+}
+
+#workspaces button.empty:not(.focused) {
+    color: @muted;
+    opacity: 0.6;
 }
 
 #workspaces button.urgent {
-    color: #c9545d;
-}
-
-#workspaces button:hover {
-    background: transparent;
-    color: @primary;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    animation: gradient_f 10s ease-in infinite;
-    transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+    color: @urgent;
+    opacity: 1;
 }
 
 #mode {

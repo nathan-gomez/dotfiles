@@ -27,8 +27,8 @@
       "format": "{icon}{name}",
       "format-icons": {
         "focused": "<span font='16'>●</span> ",
-        "default": "<span font='16'>○</span> ",
-        "urgent": "<span font='16'></span> ",
+        "default": "<span font='13'>●</span> ",
+        "urgent": "<span font='10'></span> ",
       },
       "persistent-workspaces": {
         "2": [],
@@ -225,6 +225,12 @@
   "sway/window": {
       "format": "{}",
       "max-length": 120,
+  },
+
+  "sway/language": {
+      "format": "󰌌 {short}",
+      "tooltip": true,
+      "tooltip-format": "Layout: {long}"
   },
 
   "network": {

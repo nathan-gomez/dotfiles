@@ -29,7 +29,7 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
     # Kill focused window
     bindsym $mod+q kill
 
-    # Start your launcher
+    # Open the launcher
     bindsym $mod+d exec $launcher
     bindsym Control+slash exec $launcher
 
@@ -214,6 +214,9 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
     # Delete an entry from the clipboard manager
     bindsym $mod+Shift+x exec cliphist list | fuzzel -d -w 90 -l 30 -t cc9393ff -S cc9393ff -p "Select an entry to delete it from cliphist:"| cliphist delete
     # Note: you can clear all cliphist entries by running `cliphist wipe`
+
+    # Show keybindings cheatsheet
+    bindsym $mod+slash exec ~/.config/sway/scripts/show_keybindings.sh
 
 #
 # Screenshots

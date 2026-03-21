@@ -10,7 +10,7 @@ default_border pixel 1
 
 # Default Font
 # font pango:Noto Sans Regular 10
-font pango: JetBrainsMono Nerd Font 11
+font pango:JetBrainsMono Nerd Font 11
 
 # Thin borders:
 smart_borders on
