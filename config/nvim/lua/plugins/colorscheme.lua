@@ -51,7 +51,7 @@ return {
       require("kanso").setup({
         functionStyle = { bold = true },
         transparent = true,
-        compile = true,
+        compile = false,
         colors = {
           palette = {},
           theme = { zen = {}, pearl = {}, ink = {}, all = {} },
@@ -68,9 +68,14 @@ return {
 
       vim.cmd.colorscheme("kanso-ink")
 
-      vim.schedule(function()
-        vim.cmd("KansoCompile")
-      end)
+      -- NOTE: Re-fire ColorScheme after VimEnter so plugins like todo-comments that
+      -- register their handlers during VimEnter get properly initialized.
+      -- (The initial ColorScheme event fires before VimEnter plugins load.)
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function()
+          vim.api.nvim_exec_autocmds("ColorScheme", { modeline = false })
+        end,
+      })
     end,
   },
   -- {
