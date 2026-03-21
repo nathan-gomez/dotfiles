@@ -93,6 +93,7 @@ alias srv-prod-2="ssh sysadmin@192.168.100.6"
 # Places
 alias notes="cd /mnt/hdd/Fede/gdrive/notes"
 alias fede="cd /mnt/hdd/Fede"
+alias projects="cd /mnt/hdd/Fede/projects"
 
 # Fastfetch with correct logo width
 alias fastfetch='command fastfetch --logo-width 20'

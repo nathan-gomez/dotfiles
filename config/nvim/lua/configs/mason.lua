@@ -1,7 +1,5 @@
 local servers = {
   -- Web dev
-  "biome",
-  "prettier",
   "svelte",
   "ts_ls",
   "html",
@@ -18,10 +16,6 @@ local servers = {
   -- Lua
   "stylua",
   "lua_ls",
-
-  -- Elixir
-  "elixirls",
-  "lexical",
 
   "clangd",
   "zls",
