@@ -11,7 +11,7 @@ config.inactive_pane_hsb = {
 }
 
 config.font = wezterm.font({ family = "JetBrainsMono Nerd Font Mono", weight = "Regular" })
-config.font_size = 10.0
+config.font_size = 11.0
 
 -- Window
 config.window_decorations = "RESIZE"
