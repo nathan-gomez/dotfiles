@@ -5,7 +5,7 @@ local snippet = ls.snippet
 local insert_node = ls.insert_node
 
 local todo_snippet = snippet({ trig = "todo", desc = "TODO annotation" }, fmt("// TODO: {}", { insert_node(1, "todo") }))
-local target_filetypes = { "c", "cpp", "zig", "svelte" }
+local target_filetypes = { "c", "cpp", "zig", "svelte", "go" }
 
 for _, ft in ipairs(target_filetypes) do
     ls.add_snippets(ft, { todo_snippet })
@@ -77,5 +77,26 @@ ls.add_snippets("typescript", {
     fmt("// TODO: (fede) {}", {
       insert_node(1, "todo"),
     })
+  ),
+})
+
+ls.add_snippets("go", {
+  snippet(
+    {
+      trig = "iferr",
+      snippetType = "snippet",
+      desc = "If error not nil",
+      wordTrig = true,
+    },
+    fmt_angle(
+      [[
+        if err != nil {
+          return err<>
+        }
+        ]],
+      {
+        insert_node(0),
+      }
+    )
   ),
 })
