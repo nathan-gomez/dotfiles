@@ -68,5 +68,6 @@ return {
 		Test = "󰙨 ",
     Study = " ",
     Mark = " ",
+    Debug = " ",
 	},
 }

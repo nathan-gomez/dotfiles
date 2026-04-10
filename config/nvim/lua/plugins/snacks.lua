@@ -11,7 +11,6 @@ return {
     { "<leader>ff", function() Snacks.picker.files({ show_empty = true, hidden = true, }) end, desc = "[f]ind [f]iles" },
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "[f]ind [b]uffers" },
     { "<leader>fs", function() Snacks.picker.grep() end, desc = "Grep Search" },
-    { "-", function() Snacks.explorer() end, desc = "File Explorer" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "[f]ind [c]onfig File" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>fp", function()

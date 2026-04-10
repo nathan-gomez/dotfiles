@@ -1,11 +1,9 @@
 local servers = {
   -- Web dev
-  "svelte",
   "ts_ls",
   "html",
   "cssls",
   "stylelint",
-  "tailwindcss",
 
   -- Go
   "gopls",

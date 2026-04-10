@@ -21,6 +21,7 @@ return {
         TEST = { icon = icons.todoComments.Test, color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
         STUDY = { icon = icons.todoComments.Study, color = "hint", alt = { "RESEARCH" } },
         MARK = { icon = icons.todoComments.Mark, color = "error" },
+        DEBUG = { icon = icons.todoComments.Debug, color = "warning" },
       },
       gui_style = {
         fg = "NONE",
