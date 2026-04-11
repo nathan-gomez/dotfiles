@@ -86,9 +86,3 @@ end, { range = true })
 map({ "n", "v", "x" }, "<leader>fo", "<Cmd>Format<cr>", { desc = "Format file" })
 
 -----------------
-
--- Oil
-
-map("n", "<leader>fe", "<cmd>Oil<cr>", { desc = "Open parent directory" })
-
-------

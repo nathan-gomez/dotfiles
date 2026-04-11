@@ -4,11 +4,12 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    picker = {},
-    explorer = {},
+    picker = {
+      exclude = { "node_modules" },
+    },
   },
   keys = {
-    { "<leader>ff", function() Snacks.picker.files({ show_empty = true, hidden = true, }) end, desc = "[f]ind [f]iles" },
+    { "<leader>ff", function() Snacks.picker.files({ show_empty = true, hidden = true, ignored = true }) end, desc = "[f]ind [f]iles" },
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "[f]ind [b]uffers" },
     { "<leader>fs", function() Snacks.picker.grep() end, desc = "Grep Search" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "[f]ind [c]onfig File" },
@@ -38,6 +39,7 @@ return {
     { "<leader>sm", function() Snacks.picker.marks() end, desc = "[s]earch [m]arks" },
     { "<leader>sq", function() Snacks.picker.qflist() end, desc = "[s]earch [q]uickfix list" },
     { "<leader>su", function() Snacks.picker.undo() end, desc = "[s]earch [u]ndo history" },
+    { "<leader>sj", function() Snacks.picker.jumps() end, desc = "[s]earch [j]umps" },
 
     { "<leader>cl", function() Snacks.picker.colorschemes() end, desc = "[c]olorschemes [l]ist" },
 
