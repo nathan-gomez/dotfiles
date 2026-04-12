@@ -33,7 +33,8 @@ return {
     -- Search
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "[s]earch current [b]uffer" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "[s]earch open [b]uffers" },
-    { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "[s]earch [w]ord or selection", mode = { "n", "x" } },
+    { "<leader>sw", function() Snacks.picker.grep({ search = vim.fn.expand("<cword>") }) end, desc = "[s]earch [w]ord", mode = "n" },
+    { "<leader>sw", function() Snacks.picker.grep({ search = require("utils").get_visual_selection() }) end, desc = "[s]earch [w]ord", mode = "x" },
     { '<leader>s"', function() Snacks.picker.registers() end, desc = "[s]earch registers" },
     { "<leader>sl", function() Snacks.picker.loclist() end, desc = "[s]earch [l]ocation list" },
     { "<leader>sm", function() Snacks.picker.marks() end, desc = "[s]earch [m]arks" },
