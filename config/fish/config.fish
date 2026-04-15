@@ -1,11 +1,11 @@
 # Greeting with fastfetch if available - with delay for terminal sizing
-function fish_greeting
-    if command -v fastfetch >/dev/null 2>&1
-        # Small delay to ensure terminal is fully sized
-        sleep 0.1
-        command fastfetch --logo-width 20 --logo arch
-    end
-end
+# function fish_greeting
+#     if command -v fastfetch >/dev/null 2>&1
+#         # Small delay to ensure terminal is fully sized
+#         sleep 0.1
+#         command fastfetch --logo-width 20 --logo arch
+#     end
+# end
 
 # =============================================================================
 # Path Configuration
@@ -14,7 +14,7 @@ end
 fish_add_path --prepend $HOME/.local/bin
 fish_add_path --prepend $HOME/go/bin
 fish_add_path --prepend $HOME/.dotnet/tools
-fish_add_path --prepend $HOME/.zvm/bin
+fish_add_path --prepend $HOME/.local/share/zvm/bin
 fish_add_path --prepend /opt/bin
 
 # =============================================================================
@@ -70,6 +70,7 @@ end
 
 alias reload='source ~/.config/fish/config.fish'
 alias tm='tmux'
+alias zl='zellij'
 
 # Vim/Vi aliases to nvim
 alias vim='nvim'
@@ -83,8 +84,6 @@ alias la='lsd -la'
 alias lzg='lazygit'
 alias lzd='lazydocker'
 
-alias grep='grep --color=auto'
-
 alias clear_clip='cliphist wipe'
 
 alias srv-prod-1="ssh sysadmin@192.168.100.4"
@@ -97,11 +96,6 @@ alias projects="cd /mnt/hdd/Fede/projects"
 
 # Fastfetch with correct logo width
 alias fastfetch='command fastfetch --logo-width 20'
-
-# Disk usage - show top 10 largest items by size
-function dum
-    du -sm * | sort -nr | head -10
-end
 
 # =============================================================================
 # Sway Auto-start

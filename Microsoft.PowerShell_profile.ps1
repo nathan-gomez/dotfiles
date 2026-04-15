@@ -7,9 +7,35 @@ $env:EDITOR = "nvim"
 
 Set-Alias -Name lzg -Value lazygit
 Set-Alias -Name vi -Value nvim
+Set-Alias -Name zl -Value zellij
+
 function notes { Set-Location "F:\Fede\gdrive\notes" }
 function startup { Set-Location "C:\Users\gomez\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" }
-function reload { . $PROFILE }
+
+function shared-services {
+  cd W:/Frontend
+  ng build shared-services --watch
+}
+
+function front-auth {
+  cd W:/Frontend
+  ng serve authentication --watch --port 4200 --ssl true
+}
+
+function front-admin {
+  cd W:/Frontend
+  ng serve admin --watch --port 4201 --ssl true
+}
+
+function front-market {
+  cd W:/Frontend
+  ng serve marketplace --watch --port 4202 --ssl true
+}
+
+function front-author {
+  cd W:/Frontend
+  ng serve authoring --watch --port 4203  --ssl true
+}
 
 function api-person {
   cd W:/Backend/PValue.API.Person

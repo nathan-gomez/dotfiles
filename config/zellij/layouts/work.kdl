@@ -1,0 +1,85 @@
+layout {
+    cwd "W:\\"
+
+    tab name="frontend" focus=true {
+      pane split_direction="vertical" {
+        pane stacked=true {
+          angular {
+            focus true
+            name "shared-services"
+            args "/K" "ng build shared-services --watch";
+          }
+
+          angular {
+            name "person"
+            args "/K" "ng serve authentication --watch --port 4200 --ssl true";
+          }
+        }
+
+        pane stacked=true {
+          angular {
+            name "authoring"
+            args "/K" "ng serve authoring --watch --port 4203 --ssl true";
+          }
+
+          angular {
+            name "admin"
+            args "/K" "ng serve admin --watch --port 4201 --ssl true";
+          }
+
+          angular {
+            name "market"
+            args "/K" "ng serve marketplace --watch --port 4202 --ssl true";
+          }
+        }
+      }
+
+      pane size=1 borderless=true {
+        plugin location="compact-bar"
+      }
+    }
+
+    tab name="backend" cwd="Backend" {
+      pane split_direction="vertical" {
+        dotnet {
+          focus true
+          name "API.Person"
+          cwd "PValue.API.Person"
+        }
+
+        dotnet {
+          name "API.Author"
+          cwd "PValue.API.Author"
+        }
+      }
+
+      pane split_direction="vertical" {
+        dotnet {
+          name "API.Admin"
+          cwd "PValue.API.Admin"
+        }
+
+        dotnet {
+          name "API.Market"
+          cwd "PValue.API.Market"
+        }
+      }
+
+      pane size=1 borderless=true {
+        plugin location="compact-bar"
+      }
+    }
+
+    // TEMPLATES
+    pane_template name="angular" {
+      cwd "Frontend"
+      command "cmd"
+      start_suspended true
+    }
+
+    pane_template name="dotnet" {
+      command "dotnet"
+      args "watch" "run"
+      start_suspended true
+    }
+}

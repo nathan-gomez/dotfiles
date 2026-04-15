@@ -11,6 +11,10 @@ tmux:
 	@echo "Creating symlink: $(CONFIG_DIR)/tmux"
 	@ln -sfn $(PWD)/config/tmux $(CONFIG_DIR)/tmux
 
+zellij:
+	@echo "Creating symlink: $(CONFIG_DIR)/zellij"
+	@ln -sfn $(PWD)/config/zellij $(CONFIG_DIR)/zellij
+
 lazydocker:
 	@echo "Creating symlink: $(CONFIG_DIR)/lazydocker"
 	@ln -sfn $(PWD)/config/lazydocker $(CONFIG_DIR)/lazydocker
@@ -43,4 +47,4 @@ rofi:
 	@echo "Creating symlink: $(CONFIG_DIR)/rofi"
 	@ln -sfn $(PWD)/config/rofi $(CONFIG_DIR)/rofi
 
-.PHONY: all nvim tmux lazydocker lazygit zsh rofi waybar sway fish
+.PHONY: all nvim tmux lazydocker lazygit zsh rofi waybar sway fish zellij
