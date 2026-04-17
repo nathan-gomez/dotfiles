@@ -3,6 +3,18 @@
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r' -PSReadlineChordProvider 'Ctrl+d'
 
+# osc7 integration for wezterm
+function prompt {
+    $p = $executionContext.SessionState.Path.CurrentLocation
+    $osc7 = ""
+    if ($p.Provider.Name -eq "FileSystem") {
+        $ansi_escape = [char]27
+        $provider_path = $p.ProviderPath -Replace "\\", "/"
+        $osc7 = "$ansi_escape]7;file://${env:COMPUTERNAME}/${provider_path}${ansi_escape}\"
+    }
+    "${osc7}PS $p$('>' * ($nestedPromptLevel + 1)) ";
+}
+
 $env:EDITOR = "nvim"
 
 Set-Alias -Name lzg -Value lazygit
@@ -17,7 +29,7 @@ function shared-services {
   ng build shared-services --watch
 }
 
-function front-auth {
+function front-person {
   cd W:/Frontend
   ng serve authentication --watch --port 4200 --ssl true
 }
@@ -56,3 +68,6 @@ function api-admin {
   cd W:/Backend/PValue.API.Admin
   dotnet watch run --urls="http://localhost:50579"
 }
+
+# zoxide integration
+Invoke-Expression (& { (zoxide init powershell | Out-String) })

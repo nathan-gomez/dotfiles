@@ -1,17 +1,18 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
+local theme_name = "DWM rob (terminal.sexy)"
+-- local theme_name = "UltraDark"
+local tab_theme = "Adventure"
 
 config.default_prog = { "pwsh.exe", "-NoLogo" }
-
-config.color_scheme = "UltraDark"
-
+config.color_scheme = theme_name
 config.inactive_pane_hsb = {
 	saturation = 0.8,
 	brightness = 0.5,
 }
 
 config.font = wezterm.font({ family = "JetBrainsMono Nerd Font Mono", weight = "Regular" })
-config.font_size = 11.0
+config.font_size = 12.0
 
 -- Window
 config.window_decorations = "RESIZE"
@@ -48,6 +49,25 @@ config.keys = {
 	},
 
 	-----------------------------------------------------
+	-- WORKSPACES
+	-----------------------------------------------------
+	-- Workspace switcher
+	{ key = "s", mods = "LEADER", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+
+	{
+		key = "(",
+		mods = "LEADER|SHIFT",
+		action = wezterm.action.PromptInputLine({
+			description = "Enter new name for session",
+			action = wezterm.action_callback(function(window, pane, line)
+				if line then
+					wezterm.mux.rename_workspace(window:mux_window():get_workspace(), line)
+				end
+			end),
+		}),
+	},
+
+	-----------------------------------------------------
 	-- TABS
 	-----------------------------------------------------
 	-- Jump to tab
@@ -63,18 +83,25 @@ config.keys = {
 	{ key = "0", mods = "LEADER", action = wezterm.action.ActivateTab(9) },
 	{ key = "l", mods = "LEADER", action = wezterm.action.ActivateLastTab },
 
-	-- Tab switcher
-	{ key = "w", mods = "LEADER", action = wezterm.action.ShowTabNavigator },
-
 	{ key = "p", mods = "LEADER", action = wezterm.action.ActivateTabRelative(-1) },
 	{ key = "n", mods = "LEADER", action = wezterm.action.ActivateTabRelative(1) },
+
+	{ key = "&", mods = "LEADER|SHIFT", action = wezterm.action.CloseCurrentTab({ confirm = true }) },
+
+	-- Tab switcher
+	{ key = "w", mods = "LEADER", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|TABS" }) },
+
+	-----------------------------------------------------
+	-- PANES
+	-----------------------------------------------------
+	{ key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
 	{ key = "x", mods = "LEADER", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 	{ key = "c", mods = "LEADER", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
 	{ key = "v", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "-", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "{", mods = "LEADER|SHIFT", action = wezterm.action.PaneSelect({ mode = "SwapWithActiveKeepFocus" }) },
 
-	-----------------------------------------------------
-	-- PANE NAVIGATION WITH ALT
-	-----------------------------------------------------
+	-- Navigation
 	{ key = "h", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Left") },
 	{ key = "l", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Right") },
 	{ key = "k", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Up") },
@@ -90,7 +117,6 @@ config.keys = {
 		action = wezterm.action.SendKey({ key = " ", mods = "CTRL" }),
 	},
 }
-
 -----------------------------------------------------
 -- LAUNCH PROFILES
 -----------------------------------------------------
@@ -106,11 +132,75 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		args = { "pwsh.exe", "-NoLogo", "-Command", "Start-Process pwsh.exe -Verb runAs" },
 	})
 	table.insert(launch_menu, {
+		label = "Cmd",
+		args = { "cmd.exe" },
+	})
+	table.insert(launch_menu, {
 		label = "Git Bash",
 		args = { "C:/Program Files/Git/bin/bash.exe" },
 	})
 end
 
 config.launch_menu = launch_menu
+
+-----------------------------------------------------
+-- PLUGINS
+-----------------------------------------------------
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+
+local function tab_title(tab)
+	local label
+	if tab.tab_title and #tab.tab_title > 0 then
+		label = tab.tab_title
+	else
+		local name = tab.active_pane and tab.active_pane.foreground_process_name or ""
+		name = name:match("([^/\\]+)[/\\]?$") or name
+		if name == "" or name == "wslhost.exe" then
+			name = (tab.active_pane and tab.active_pane.title) or "wezterm"
+		end
+		label = name
+	end
+	return " " .. label .. " "
+end
+
+tabline.setup({
+	options = {
+		icons_enabled = false,
+		theme = tab_theme,
+		theme_overrides = {},
+		section_separators = {
+			left = wezterm.nerdfonts.ple_upper_left_triangle,
+			right = wezterm.nerdfonts.ple_upper_right_triangle,
+		},
+		component_separators = {
+			left = wezterm.nerdfonts.ple_upper_left_triangle,
+			right = wezterm.nerdfonts.ple_upper_right_triangle,
+		},
+		tab_separators = {
+			left = wezterm.nerdfonts.ple_upper_left_triangle,
+			right = wezterm.nerdfonts.ple_lower_right_triangle,
+		},
+	},
+	sections = {
+		tabline_a = { "mode" },
+		tabline_b = { "" },
+		tabline_c = { "" },
+		tab_active = {
+			"index",
+			tab_title,
+			{ "zoomed", padding = 0 },
+		},
+		tab_inactive = {
+			"index",
+			tab_title,
+			{ "zoomed", padding = 0 },
+		},
+		tabline_x = { "" },
+		tabline_y = { "workspace" },
+		tabline_z = { "domain" },
+	},
+	extensions = {},
+})
+tabline.apply_to_config(config)
 
 return config
