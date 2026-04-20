@@ -5,7 +5,6 @@ return {
     require("mini.pairs").setup()
     require("mini.cursorword").setup()
     require("mini.indentscope").setup({ symbol = "|" })
-    require("mini.indentscope").gen_animation.none()
     require("mini.surround").setup({
       mappings = {
         add = "<leader>sa", -- Add surrounding in Normal and Visual modes
@@ -16,5 +15,6 @@ return {
         replace = "<leader>sr", -- Replace surrounding
       },
     })
+    require("mini.align").setup()
   end,
 }

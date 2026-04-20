@@ -41,6 +41,8 @@ map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 map("n", "<C-Left>", ":vertical resize -5<CR>", { noremap = true, silent = true, desc = "Decrease window width" })
 map("n", "<C-Right>", ":vertical resize +5<CR>", { noremap = true, silent = true, desc = "Increase window width" })
+map("n", "<C-Up>", ":horizontal resize +5<CR>", { noremap = true, silent = true, desc = "Increase window height" })
+map("n", "<C-Down>", ":horizontal resize -5<CR>", { noremap = true, silent = true, desc = "Decrease window height" })
 
 -- Tabs
 map("n", "tn", "<cmd>tabnew<cr>", { noremap = true, silent = true, desc = "New tab" })

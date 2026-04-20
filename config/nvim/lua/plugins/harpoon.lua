@@ -15,6 +15,9 @@ return {
     map("n", "<C-e>", function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end, { desc = "Open Harpoon" })
+    map("n", "<leader>ht", function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end, { desc = "Harpoon Toggle" })
 
     -- Quick select
     map("n", "<M-b>", function()
