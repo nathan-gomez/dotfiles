@@ -22,7 +22,7 @@ local lazy_config = require("configs.lazy")
 require("lazy").setup("plugins", lazy_config)
 
 require("options")
-require("autocmds")
+require("commands")
 vim.schedule(function()
   require("mappings")
 end)

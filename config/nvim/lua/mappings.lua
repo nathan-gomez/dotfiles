@@ -39,18 +39,18 @@ map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-map("n", "<C-Left>", ":vertical resize -5<CR>", { noremap = true, silent = true, desc = "Decrease window width" })
-map("n", "<C-Right>", ":vertical resize +5<CR>", { noremap = true, silent = true, desc = "Increase window width" })
-map("n", "<C-Up>", ":horizontal resize +5<CR>", { noremap = true, silent = true, desc = "Increase window height" })
-map("n", "<C-Down>", ":horizontal resize -5<CR>", { noremap = true, silent = true, desc = "Decrease window height" })
+map("n", "<C-Left>", ":vertical resize -5<CR>", { silent = true, desc = "Decrease window width" })
+map("n", "<C-Right>", ":vertical resize +5<CR>", { silent = true, desc = "Increase window width" })
+map("n", "<C-Up>", ":horizontal resize +5<CR>", { silent = true, desc = "Increase window height" })
+map("n", "<C-Down>", ":horizontal resize -5<CR>", { silent = true, desc = "Decrease window height" })
 
 -- Tabs
-map("n", "tn", "<cmd>tabnew<cr>", { noremap = true, silent = true, desc = "New tab" })
-map("n", "tc", "<cmd>tabclose<cr>", { noremap = true, silent = true, desc = "Close tab" })
-map("n", "tj", "<cmd>tabnext<cr>", { noremap = true, silent = true, desc = "Next tab" })
-map("n", "tk", "<cmd>tabprevious<cr>", { noremap = true, silent = true, desc = "Prev tab" })
-map("n", "<C-PageDown>", "<cmd>tabnext<cr>", { noremap = true, silent = true, desc = "Next tab" })
-map("n", "<C-PageUp>", "<cmd>tabprevious<cr>", { noremap = true, silent = true, desc = "Prev tab" })
+map("n", "tn", "<cmd>tabnew<cr>", { silent = true, desc = "New tab" })
+map("n", "tc", "<cmd>tabclose<cr>", { silent = true, desc = "Close tab" })
+map("n", "tj", "<cmd>tabnext<cr>", { silent = true, desc = "Next tab" })
+map("n", "tk", "<cmd>tabprevious<cr>", { silent = true, desc = "Prev tab" })
+map("n", "<C-PageDown>", "<cmd>tabnext<cr>", { silent = true, desc = "Next tab" })
+map("n", "<C-PageUp>", "<cmd>tabprevious<cr>", { silent = true, desc = "Prev tab" })
 
 -- Open terminal
 map("n", "<leader>te", function()
@@ -60,31 +60,16 @@ map("n", "<leader>te", function()
 end, { desc = "Open vertical terminal" })
 
 map("n", "<leader>th", function()
-  vim.cmd.vnew()
+  vim.cmd.new()
   vim.cmd.term()
   vim.cmd.wincmd("J")
   vim.api.nvim_win_set_height(0, 15)
 end, { desc = "Open horizontal terminal" })
 
 -- Quickfix list
-map("n", "<leader>xq", function() vim.diagnostic.setqflist({ bufnr = 0 }) end, { noremap = true, silent = true, desc = "Buffer Diagnostics -> Quickfix" })
-map("n", "<leader>xQ", function() vim.diagnostic.setqflist() end, { noremap = true, silent = true, desc = "Diagnostics -> Quickfix" })
-map("n", "<leader>xc", function()   vim.fn.setqflist({}, "r") end, { desc = "Clear Quickfix list" })
+map("n", "<leader>xq", function() vim.diagnostic.setqflist({ bufnr = 0 }) end, { silent = true, desc = "Buffer Diagnostics -> Quickfix" })
+map("n", "<leader>xQ", function() vim.diagnostic.setqflist() end, { silent = true, desc = "Diagnostics -> Quickfix" })
+map("n", "<leader>xc", function() vim.fn.setqflist({}, "r") end, { desc = "Clear Quickfix list" })
 
 -- Confrom Format
-
-vim.api.nvim_create_user_command("Format", function(args)
-  local range = nil
-  if args.count ~= -1 then
-    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
-    range = {
-      start = { args.line1, 0 },
-      ["end"] = { args.line2, end_line:len() },
-    }
-  end
-  require("conform").format({ async = true, lsp_fallback = true, range = range })
-end, { range = true })
-
 map({ "n", "v", "x" }, "<leader>fo", "<Cmd>Format<cr>", { desc = "Format file" })
-
------------------

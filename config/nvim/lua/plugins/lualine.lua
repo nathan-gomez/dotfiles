@@ -6,6 +6,7 @@ return {
     local icons = require("icons")
 
     return {
+      extensions = { "oil" },
       options = {
         icons_enabled = true,
         theme = "auto",
@@ -45,9 +46,23 @@ return {
         },
         lualine_x = {
           {
-            -- Show @recording messages
-            require("noice").api.statusline.mode.get,
-            cond = require("noice").api.statusline.mode.has,
+            function()
+              local ok, mc = pcall(require, "multicursor-nvim")
+              if not ok then
+                return ""
+              end
+
+              local count = mc.numEnabledCursors()
+              if count <= 1 then
+                return ""
+              end
+
+              return "MC: " .. count
+            end,
+            cond = function()
+              local ok, mc = pcall(require, "multicursor-nvim")
+              return ok and mc.numEnabledCursors() > 1
+            end,
             color = { fg = "#ff9e64" },
           },
         },

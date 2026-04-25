@@ -14,6 +14,8 @@ return {
     },
   },
   opts = {
+    cmdline = { enabled = false },
+    messages = { enabled = false },
     lsp = {
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -21,8 +23,8 @@ return {
       },
     },
     presets = {
-      inc_rename = true,
       lsp_doc_border = true,
+      long_message_to_split = true,
     },
   },
 }

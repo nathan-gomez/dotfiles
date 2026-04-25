@@ -1,31 +1,44 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  main = "nvim-treesitter.configs",
+  branch = "main",
+  main = "nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
   cmd = { "TSInstallInfo", "TSInstall" },
-  opts = {
-    ensure_installed = {
+  init = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function()
+        -- Enable treesitter highlighting and disable regex syntax
+        if not pcall(vim.treesitter.start) then
+          return
+        end
+      end,
+    })
+
+    local ok, treesitter_config = pcall(require, "nvim-treesitter.config")
+    if not ok then
+      return
+    end
+
+    local ensureInstalled = {
+      "go",
+      "cpp",
+      "zig",
       "bash",
-      "c",
-      "diff",
+      "make",
+      "typescript",
+      "css",
       "html",
-      "lua",
-      "luadoc",
-      "markdown",
-      "markdown_inline",
-      "query",
-      "vim",
-      "vimdoc",
-    },
-    auto_install = true,
-    highlight = {
-      enable = true,
-      -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-      --  If you are experiencing weird indenting issues, add the language to
-      --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-      additional_vim_regex_highlighting = {},
-    },
-    build = { parser_name = "zig" },
-  },
+    }
+    local alreadyInstalled = treesitter_config.get_installed()
+
+    local parsersToInstall = vim
+      .iter(ensureInstalled)
+      :filter(function(parser)
+        return not vim.tbl_contains(alreadyInstalled, parser)
+      end)
+      :totable()
+
+    require("nvim-treesitter").install(parsersToInstall)
+  end,
 }
