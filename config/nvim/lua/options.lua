@@ -4,6 +4,10 @@ vim.o.relativenumber = true
 -- Enable project configurations
 vim.o.exrc = true
 
+-- Show trailing whitespace
+vim.opt.list = true
+vim.opt.listchars:append({ trail = "·" })
+
 -- Folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"

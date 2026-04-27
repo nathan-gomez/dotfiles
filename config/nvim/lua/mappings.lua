@@ -2,6 +2,9 @@ vim.g.mapleader = " "
 
 local map = vim.keymap.set
 
+-- Make Ctrl+c trigger InsertLeave
+map("i", "<C-c>", "<Esc>", { desc = "Leave Insert mode" })
+
 map("n", ";", ":", { desc = "Enter command mode" })
 
 --Copy to system clipboard

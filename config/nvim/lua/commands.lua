@@ -17,6 +17,26 @@ autocmd("FileType", {
   end,
 })
 
+-- Set tralinig whitespaces
+vim.api.nvim_set_hl(0, "TrailingWhitespace", { link = "Error" })
+
+local function add_trailing_ws_match()
+  if not vim.w.trailing_ws_match then
+    vim.w.trailing_ws_match = vim.fn.matchadd("TrailingWhitespace", [[\s\+$]])
+  end
+end
+
+local function del_trailing_ws_match()
+  if vim.w.trailing_ws_match then
+    pcall(vim.fn.matchdelete, vim.w.trailing_ws_match)
+    vim.w.trailing_ws_match = nil
+  end
+end
+
+autocmd({ "BufWinEnter", "WinNew" }, { pattern = "*", callback = add_trailing_ws_match })
+autocmd("InsertEnter", { pattern = "*", callback = del_trailing_ws_match })
+autocmd("InsertLeave", { pattern = "*", callback = add_trailing_ws_match })
+
 ----------------
 -- User Commands
 ----------------
