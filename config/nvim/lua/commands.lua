@@ -17,6 +17,14 @@ autocmd("FileType", {
   end,
 })
 
+autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.h",
+  callback = function()
+    vim.bo.filetype = "c"
+  end,
+})
+
+
 -- Set tralinig whitespaces
 vim.api.nvim_set_hl(0, "TrailingWhitespace", { link = "Error" })
 
