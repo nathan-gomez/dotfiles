@@ -14,15 +14,6 @@ return {
     { "<leader>fs", function() Snacks.picker.grep() end, desc = "Grep Search" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "[f]ind [c]onfig File" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
-    { "<leader>fp", function()
-      Snacks.picker.projects({
-        dev = { "P:\\", "W:\\", }, -- Win32
-        projects = { "F:\\Fede\\Google Drive\\notes" }, -- Win32
-        -- dev = { "~/dev"  }, -- Linux
-        confirm = "load_session",
-        recent = false,
-      }) end,
-    desc = "[f]ind [p]rojects" },
 
     -- Git
     { "<leader>gf", function() Snacks.picker.git_files() end, desc = "[g]it [f]ind Files" },

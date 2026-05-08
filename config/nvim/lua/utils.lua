@@ -33,4 +33,18 @@ function M.get_visual_selection()
   return table.concat(lines, " ")
 end
 
+function M.append_current_to_loclist()
+  local bufnr    = vim.api.nvim_get_current_buf()
+  local filename = vim.api.nvim_buf_get_name(bufnr)
+  local cursor   = vim.api.nvim_win_get_cursor(0)
+  local line_num = cursor[1]
+  local col_num  = cursor[2] + 1
+
+  vim.fn.setloclist(0, {}, "a", {
+    items = {
+      { filename = filename, lnum = line_num, col = col_num, text = vim.fn.bufname(bufnr) },
+    },
+  })
+end
+
 return M

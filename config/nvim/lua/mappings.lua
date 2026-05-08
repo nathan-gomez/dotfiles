@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 
+local utils = require("utils")
 local map = vim.keymap.set
 
 -- Make Ctrl+c trigger InsertLeave
@@ -48,8 +49,8 @@ map("n", "<C-Up>", ":horizontal resize +5<CR>", { silent = true, desc = "Increas
 map("n", "<C-Down>", ":horizontal resize -5<CR>", { silent = true, desc = "Decrease window height" })
 
 -- Tabs
-map("n", "tn", "<cmd>tabnew<cr>", { silent = true, desc = "New tab" })
-map("n", "tc", "<cmd>tabclose<cr>", { silent = true, desc = "Close tab" })
+map("n", "<leader>tn", "<cmd>tabnew<cr>", { silent = true, desc = "New tab" })
+map("n", "<leader>tc", "<cmd>tabclose<cr>", { silent = true, desc = "Close tab" })
 map("n", "tj", "<cmd>tabnext<cr>", { silent = true, desc = "Next tab" })
 map("n", "tk", "<cmd>tabprevious<cr>", { silent = true, desc = "Prev tab" })
 map("n", "<C-PageDown>", "<cmd>tabnext<cr>", { silent = true, desc = "Next tab" })
@@ -73,6 +74,10 @@ end, { desc = "Open horizontal terminal" })
 map("n", "<leader>xq", function() vim.diagnostic.setqflist({ bufnr = 0 }) end, { silent = true, desc = "Buffer Diagnostics -> Quickfix" })
 map("n", "<leader>xQ", function() vim.diagnostic.setqflist() end, { silent = true, desc = "Diagnostics -> Quickfix" })
 map("n", "<leader>xc", function() vim.fn.setqflist({}, "r") end, { desc = "Clear Quickfix list" })
+
+-- Location list
+map("n", "<leader>la", utils.append_current_to_loclist, { silent = true, desc = "Add line to Loc list" })
+map("n", "<leader>lc", function() vim.fn.setloclist(0, {}, 'r') end, { desc = "Clear Loc list" })
 
 -- Confrom Format
 map({ "n", "v", "x" }, "<leader>fo", "<Cmd>Format<cr>", { desc = "Format file" })
