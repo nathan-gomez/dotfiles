@@ -1,12 +1,3 @@
-# Greeting with fastfetch if available - with delay for terminal sizing
-# function fish_greeting
-#     if command -v fastfetch >/dev/null 2>&1
-#         # Small delay to ensure terminal is fully sized
-#         sleep 0.1
-#         command fastfetch --logo-width 20 --logo arch
-#     end
-# end
-
 # =============================================================================
 # Path Configuration
 # =============================================================================
@@ -20,6 +11,8 @@ fish_add_path --prepend /opt/bin
 # =============================================================================
 # Environment Configuration
 # =============================================================================
+
+set fish_greeting
 
 # Set Vi mode
 set --global fish_key_bindings fish_vi_key_bindings
@@ -49,8 +42,7 @@ function fish_prompt
     set -l last_status $status
     set_color purple
     echo -n "λ "
-    set_color normal
-    set_color blue
+    set_color cyan
     printf "%s" (string replace $HOME "~" (pwd))
     set_color normal
     printf "%s" (__fish_git_prompt)
@@ -64,13 +56,24 @@ function fish_prompt
     set_color normal
 end
 
+# Right-hand Prompt Function
+function fish_right_prompt
+    set_color purple
+    printf "("
+    set_color cyan
+    printf "%s" (hostname)
+    set_color purple
+    printf ") "
+    set_color normal
+    printf "%s" (date "+%H:%M:%S")
+end
+
 # =============================================================================
 # Aliases & Functions
 # =============================================================================
 
 alias reload='source ~/.config/fish/config.fish'
 alias tm='tmux'
-alias zl='zellij'
 
 # Vim/Vi aliases to nvim
 alias vim='nvim'
@@ -94,8 +97,7 @@ alias notes="cd /mnt/hdd/Fede/gdrive/notes"
 alias fede="cd /mnt/hdd/Fede"
 alias projects="cd /mnt/hdd/Fede/projects"
 
-# Fastfetch with correct logo width
-alias fastfetch='command fastfetch --logo-width 20'
+zoxide init fish | source
 
 # =============================================================================
 # Sway Auto-start
@@ -104,19 +106,6 @@ alias fastfetch='command fastfetch --logo-width 20'
 # Auto-start Sway on TTY1
 if test (tty) = /dev/tty1
     exec sway
-end
-
-# Right-hand Prompt Function
-function fish_right_prompt
-    set_color purple
-    printf "("
-    set_color cyan
-    printf "%s" (hostname)
-    set_color purple
-    printf ") "
-    set_color blue
-    printf "%s" (date "+%H:%M:%S")
-    set_color normal
 end
 
 # =============================================================================

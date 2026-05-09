@@ -31,6 +31,7 @@
         "urgent": "<span font='10'></span> ",
       },
       "persistent-workspaces": {
+        "1": [],
         "2": [],
         "3": [],
         "4": [],

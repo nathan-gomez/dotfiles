@@ -47,4 +47,8 @@ rofi:
 	@echo "Creating symlink: $(CONFIG_DIR)/rofi"
 	@ln -sfn $(PWD)/config/rofi $(CONFIG_DIR)/rofi
 
+wezterm:
+	@echo "Creating symlink: $(HOME)/.wezterm.lua"
+	@ln -sfn $(PWD)/.wezterm.lua $(HOME)/.wezterm.lua
+
 .PHONY: all nvim tmux lazydocker lazygit zsh rofi waybar sway fish zellij
