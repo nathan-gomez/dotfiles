@@ -1,7 +1,34 @@
 # Fzf Configurtation
 # Install-Module -Name PSFzf -Scope CurrentUser
 Import-Module PSFzf
+
+Set-PSReadLineOption -EditMode Vi
+Set-PSReadLineOption -HistoryNoDuplicates
+Set-PSReadLineOption -MaximumHistoryCount 10000
+Set-PSReadLineOption -PredictionSource History
+
 Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r' -PSReadlineChordProvider 'Ctrl+d'
+
+Set-PSReadLineKeyHandler -Key Ctrl+l -Function AcceptSuggestion
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
+
+$global:__ViMode = 'I'
+Write-Host -NoNewline "`e[6 q" # bar cursor
+
+function OnViModeChange {
+    if ($args[0] -eq 'Command') {
+        $global:__ViMode = 'N'
+        Write-Host -NoNewline "`e[2 q" # block cursor
+    } else {
+        $global:__ViMode = 'I'
+        Write-Host -NoNewline "`e[6 q"
+    }
+    [Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
+}
+Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
 
 # osc7 integration for wezterm
 function prompt {
@@ -12,14 +39,15 @@ function prompt {
         $provider_path = $p.ProviderPath -Replace "\\", "/"
         $osc7 = "$ansi_escape]7;file://${env:COMPUTERNAME}/${provider_path}${ansi_escape}\"
     }
-    "${osc7}PS $p$('>' * ($nestedPromptLevel + 1)) ";
+    $modeColor = if ($global:__ViMode -eq 'N') { "`e[33m" } else { "`e[32m" }
+    $reset = "`e[0m"
+    "${osc7}${modeColor}[$($global:__ViMode)]${reset} PS $p$('>' * ($nestedPromptLevel + 1)) "
 }
 
 $env:EDITOR = "nvim"
 
 Set-Alias -Name lzg -Value lazygit
 Set-Alias -Name vi -Value nvim
-Set-Alias -Name zl -Value zellij
 
 function notes { Set-Location "F:\Fede\gdrive\notes" }
 function startup { Set-Location "C:\Users\gomez\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" }
