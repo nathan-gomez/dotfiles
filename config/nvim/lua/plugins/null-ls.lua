@@ -10,9 +10,6 @@ return {
       -- Go
       null_ls.builtins.code_actions.gomodifytags,
       null_ls.builtins.diagnostics.golangci_lint,
-
-      -- Web Dev
-      null_ls.builtins.diagnostics.stylelint,
     }
 
     null_ls.setup({ sources = sources })

@@ -3,7 +3,6 @@ local servers = {
   "ts_ls",
   "html",
   "cssls",
-  "stylelint",
 
   -- Go
   "gopls",
@@ -16,6 +15,7 @@ local servers = {
   "lua_ls",
 
   "clangd",
+  "ols",
   "zls",
 }
 

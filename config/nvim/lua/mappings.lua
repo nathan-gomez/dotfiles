@@ -38,6 +38,8 @@ map("t", "<Esc><Esc>", "<C-\\><C-n><C-w>h", { silent = true, desc = "Exit termin
 
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
 
+map("n", "<C-w>-", "<cmd>botright new<CR>", { desc = "New horizontal buffer" })
+
 -- Navigation
 map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -74,6 +76,13 @@ end, { desc = "Open horizontal terminal" })
 map("n", "<leader>xq", function() vim.diagnostic.setqflist({ bufnr = 0 }) end, { silent = true, desc = "Buffer Diagnostics -> Quickfix" })
 map("n", "<leader>xQ", function() vim.diagnostic.setqflist() end, { silent = true, desc = "Diagnostics -> Quickfix" })
 map("n", "<leader>xc", function() vim.fn.setqflist({}, "r") end, { desc = "Clear Quickfix list" })
+
+map("n", "<leader>xt", function()
+  local config = vim.diagnostic.config() or {}
+  local new_virtual_text = not config.virtual_text
+  vim.diagnostic.config({ virtual_text = new_virtual_text })
+  print("Virtual text: " .. (new_virtual_text and "ON" or "OFF"))
+end, { desc = "Toggle diagnostics virtual text" })
 
 -- Location list
 map("n", "<leader>la", utils.append_current_to_loclist, { silent = true, desc = "Add line to Loc list" })

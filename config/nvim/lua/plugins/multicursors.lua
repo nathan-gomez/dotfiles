@@ -5,10 +5,31 @@ return {
   config = function()
     local map = vim.keymap.set
     local mc = require("multicursor-nvim")
+
+    local function splitVisualToCursors(col)
+      local mode = vim.fn.mode()
+      local at_start = col == "^"
+      mc.action(function(ctx)
+        ctx:forEachCursor(function(cursor) cursor:splitVisualLines() end)
+        ctx:forEachCursor(function(cursor)
+          cursor:feedkeys(
+            (cursor:atVisualStart() ~= at_start and "o" or "") .. "<esc>" .. (mode ~= "\22" and col or ""),
+            { keycodes = true }
+          )
+        end)
+      end)
+    end
+
     mc.setup()
 
     map({ "n", "x" }, "<c-n>", function() mc.matchAddCursor(1) end, { desc = "Add Cursor on next matching word" })
     map({ "n", "x" }, "<c-p>", function() mc.matchAddCursor(-1) end, { desc = "Add Cursor on prev matching word" })
+
+    map({ "n", "x" }, "<c-M-n>", function() mc.matchSkipCursor(1) end, { desc = "Skip Cursor on next matching word" })
+    map({ "n", "x" }, "<c-M-p>", function() mc.matchSkipCursor(-1) end, { desc = "Skip Cursor on prev matching word" })
+
+    map({ "x" }, "<leader>I", function() splitVisualToCursors("^") end, { desc = "Add cursors at start of each line" })
+    map({ "x" }, "<leader>A", function() splitVisualToCursors("$") end, { desc = "Add cursors at end of each line" })
 
     map({ "n", "x" }, "<leader><c-b>", mc.matchAllAddCursors, { desc = "Add cursors to matching selection/word" })
     map("n", "<leader>mA", mc.searchAllAddCursors, { desc = "Add cursors to search results in buffer" })
