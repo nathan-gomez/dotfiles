@@ -105,3 +105,7 @@ usercmd("Format", function(args)
   end
   require("conform").format({ async = true, lsp_fallback = true, range = range })
 end, { range = true, desc = "Format current buffer or visual selection" })
+
+usercmd("PrintCurrFilePath", function()
+  print(vim.fn.expand("%:p"))
+end, { desc = "Print current file absolute path" })

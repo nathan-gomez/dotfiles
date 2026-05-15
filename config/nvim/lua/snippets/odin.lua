@@ -47,18 +47,50 @@ return {
   ),
   snippet(
     {
-      trig = "main",
+      trig = "proc",
       snippetType = "snippet",
-      desc = "Main proc",
+      desc = "Proc snippet",
       wordTrig = true,
     },
     fmt_angle(
       [[
-        main :: proc() {
+        <> :: proc() {
+
+        }
+      ]],
+      { insert_node(1, "proc_name") }
+    )
+  ),
+  snippet(
+    {
+      trig = "str",
+      snippetType = "snippet",
+      desc = "Struct snippet",
+      wordTrig = true,
+    },
+    fmt_angle(
+      [[
+        <> :: struct {
+
+        }
+      ]],
+      { insert_node(1, "StructName") }
+    )
+  ),
+  snippet(
+    {
+      trig = "iferr",
+      snippetType = "snippet",
+      desc = "Err not nil",
+      wordTrig = true,
+    },
+    fmt_angle(
+      [[
+        if err != nil {
           <>
         }
       ]],
-      { insert_node(1) }
+      { insert_node(0) }
     )
   ),
 }

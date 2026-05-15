@@ -22,7 +22,8 @@ return {
     { "<leader>glf", function() Snacks.picker.git_log_file() end, desc = "[g]it [l]og current [f]ile" },
 
     -- Search
-    { "<leader>sb", function() Snacks.picker.lines() end, desc = "[s]earch current [b]uffer" },
+    { "<leader>sb", function() Snacks.picker.lines() end, desc = "[s]earch current [b]uffer", mode = "n" },
+    { "<leader>sb", function() Snacks.picker.lines({ pattern = require("utils").get_visual_selection() }) end, desc = "[s]earch current [b]uffer", mode = "x" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "[s]earch open [b]uffers" },
     { "<leader>sw", function() Snacks.picker.grep({ search = vim.fn.expand("<cword>") }) end, desc = "[s]earch [w]ord", mode = "n" },
     { "<leader>sw", function() Snacks.picker.grep({ search = require("utils").get_visual_selection() }) end, desc = "[s]earch [w]ord", mode = "x" },

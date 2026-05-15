@@ -7,6 +7,7 @@ vim.o.exrc = true
 -- Show trailing whitespace
 vim.opt.list = true
 vim.opt.listchars:append({ trail = "·" })
+vim.opt.fillchars:append({ diff = "╱" })
 
 -- Folding
 vim.opt.foldmethod = "expr"

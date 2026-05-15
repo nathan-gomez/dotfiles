@@ -18,6 +18,9 @@ return {
   },
   config = function()
     require("diffview").setup({
+      file_panel = {
+        listing_style = "list",
+      },
       view = {
         merge_tool = {
           layout = "diff3_mixed",
