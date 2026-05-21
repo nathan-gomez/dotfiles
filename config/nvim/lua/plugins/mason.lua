@@ -3,6 +3,10 @@ return {
   cmd = { "Mason", "MasonInstall", "MasonUpdate" },
   opts = function()
     return {
+      registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+      },
       ui = {
         icons = {
           package_pending = " ",

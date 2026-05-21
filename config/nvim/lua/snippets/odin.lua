@@ -10,7 +10,6 @@ return {
       trig = "iferr",
       snippetType = "snippet",
       desc = "If error not nil",
-      wordTrig = true,
     },
     fmt_angle(
       [[
@@ -28,7 +27,6 @@ return {
       trig = "disc",
       snippetType = "snippet",
       desc = "Discard value",
-      wordTrig = true,
     },
     fmt("_ = {}", {
       insert_node(1, "value"),
@@ -39,7 +37,6 @@ return {
       trig = "pack",
       snippetType = "snippet",
       desc = "Package line",
-      wordTrig = true,
     },
     fmt("package {}", {
       insert_node(1, "main"),
@@ -50,7 +47,6 @@ return {
       trig = "proc",
       snippetType = "snippet",
       desc = "Proc snippet",
-      wordTrig = true,
     },
     fmt_angle(
       [[
@@ -66,7 +62,6 @@ return {
       trig = "struct",
       snippetType = "snippet",
       desc = "Struct snippet",
-      wordTrig = true,
     },
     fmt_angle(
       [[
@@ -79,16 +74,15 @@ return {
   ),
   snippet(
     {
-      trig = "iferr",
+      trig = "region",
       snippetType = "snippet",
-      desc = "Err not nil",
-      wordTrig = true,
+      desc = "Region",
     },
-    fmt_angle(
+    fmt(
       [[
-        if err != nil {
-          <>
-        }
+      //------------------------------------
+      // {}
+      //------------------------------------
       ]],
       { insert_node(0) }
     )
