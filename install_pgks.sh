@@ -23,9 +23,10 @@ packages=(
 
   # Fonts
   ttf-jetbrains-mono-nerd
+  ttf-firacode-nerd
 
   # Desktop Programs
-  ghostty
+  wezterm
   bitwarden
   btop
   ktorrent
