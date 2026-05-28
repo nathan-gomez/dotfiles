@@ -6,6 +6,9 @@ local map = vim.keymap.set
 -- Make Ctrl+c trigger InsertLeave
 map("i", "<C-c>", "<Esc>", { desc = "Leave Insert mode" })
 
+-- Clear highlight with Escape
+map("n", "<Esc>", "<cmd>noh<cr>", { silent = true })
+
 map("n", ";", ":", { desc = "Enter command mode" })
 
 --Copy to system clipboard
