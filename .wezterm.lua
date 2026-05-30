@@ -15,7 +15,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 end
 
 config.font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular" })
-config.font_size = 12.0
+config.font_size = 14.0
 
 -- Window
 config.window_decorations = "RESIZE"

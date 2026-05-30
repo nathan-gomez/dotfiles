@@ -3,11 +3,11 @@
 # List of packages to install
 packages=(
   # Terminal
-  tmux
   lazygit
   lazydocker
   neovim
   fish
+  zoxide
 
   # Utilities
   unzip
@@ -29,7 +29,6 @@ packages=(
   wezterm
   bitwarden
   btop
-  ktorrent
   syncthing
   zerotier-one
   obsidian

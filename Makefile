@@ -1,7 +1,7 @@
 CONFIG_DIR := $(HOME)/.config
 
-# Default target
-all: nvim tmux lazydocker lazygit fish
+cli: nvim lazydocker lazygit fish yazi
+desktop: nvim lazydocker lazygit sway waybar fish wezterm yazi
 
 nvim:
 	@echo "Creating symlink: $(CONFIG_DIR)/nvim"
@@ -10,10 +10,6 @@ nvim:
 tmux:
 	@echo "Creating symlink: $(CONFIG_DIR)/tmux"
 	@ln -sfn $(PWD)/config/tmux $(CONFIG_DIR)/tmux
-
-zellij:
-	@echo "Creating symlink: $(CONFIG_DIR)/zellij"
-	@ln -sfn $(PWD)/config/zellij $(CONFIG_DIR)/zellij
 
 lazydocker:
 	@echo "Creating symlink: $(CONFIG_DIR)/lazydocker"
@@ -51,4 +47,7 @@ wezterm:
 	@echo "Creating symlink: $(HOME)/.wezterm.lua"
 	@ln -sfn $(PWD)/.wezterm.lua $(HOME)/.wezterm.lua
 
-.PHONY: all nvim tmux lazydocker lazygit zsh rofi waybar sway fish zellij
+yazi:
+	@echo "Creating symlink: $(CONFIG_DIR)/yazi"
+	@ln -sfn $(PWD)/config/yazi $(CONFIG_DIR)/yazi
+
