@@ -15,6 +15,9 @@ Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
 
+# edit current command line in $env:EDITOR
+Set-PSReadLineKeyHandler -Key Alt+e -Function ViEditVisually
+
 $global:__ViMode = 'I'
 Write-Host -NoNewline "`e[6 q" # bar cursor
 
@@ -51,6 +54,21 @@ Set-Alias -Name vi -Value nvim
 
 function notes { Set-Location "F:\Fede\gdrive\notes" }
 function startup { Set-Location "C:\Users\gomez\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" }
+
+# yazi needs file(1) for mime detection
+$env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
+
+function y {
+  $tmp = (New-TemporaryFile).FullName
+  yazi.exe @args --cwd-file="$tmp"
+  $cwd = Get-Content -Path $tmp -Encoding UTF8
+
+  if ($cwd -and $cwd -ne $PWD.Path -and (Test-Path -LiteralPath $cwd -PathType Container)) {
+    Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
+  }
+
+  Remove-Item -Path $tmp
+}
 
 function shared-services {
   cd W:/Frontend
