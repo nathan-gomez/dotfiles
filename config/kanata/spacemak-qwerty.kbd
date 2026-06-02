@@ -1,0 +1,124 @@
+#|
+spacemak:QWERTY Layout -- Standard US QWERTY with home-row mods, symbol layer and navigation layer
+Modified from anymak:END Version 41
+
+Key changes from anymak:END:
+- Base layer: Standard QWERTY
+- Layer keys: Changed from one-shot to hold-only (tap outputs character, hold activates layer)
+- Removed: anymak:END custom layout, shifted layer, character/diacritics layer
+- Kept: Navigation layer, home-row mods, intelligent shift
+- Timing: Optimized tap/hold timeouts for better reliability
+
+|#
+
+;; ======================================= Setup ======================================
+
+(defcfg
+  process-unmapped-keys yes
+  concurrent-tap-hold yes ;; needed for Combos to work
+)
+
+;; Virtual keys
+(defvirtualkeys alt lalt )  ;; needed for alt-tab to work on layer
+
+;; Comments are prefixed by double-semicolon. A single semicolon is parsed as the
+;; keyboard key. Comments are ignored for the configuration file.
+
+;; defsrc defines the keys that will be intercepted by kanata. The order of the
+;; keys matches with deflayer declarations and all deflayer declarations must
+;; have the same number of keys as defsrc.
+(defsrc
+  grv      1  2  3  4  5  6       7  8  9  0  -  =            bspc
+  tab  q  w  e  r  t              y  u  i  o  p  [            ]  \
+  caps a  s  d  f  g              h  j  k  l  ;  '            ret
+  lsft IntlBackslash   z  x  c  v  b              n  m  ,  .  /  rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+;; ============================ layers ================================
+
+(deflayer qwerty ;; base layer - standard QWERTY
+  esc       1  2  3  4  5  6              7  8  9  0  -  =         bspc
+  tab   q  w  e  r  t                     y  u  i  o  p  [         ]  del
+  @fn2  a  s  d  f  g                     h  j  k  l  ;  @apostfn2         ret
+  @isft @isft @zsft @xwin @calt @vctrl  b     @nctrl @malt @commawin  @dotshift / _
+  lctl lmet lalt            @spacefn           ralt rmet rctl
+)
+
+(deflayer navigation ;; aka space-fn -- navigation and shortcut layer
+  @rld    f1  f2  f3  f4  f5  f6                  f7  f8  f9  f10  f11 f12                 _
+  XX  C-f   XX  C-t  C-S-tab  C-tab              S-f10  return  home  end  pgup  XX        XX  XX
+  XX  S-tab  C-left  tab  C-right  esc           left  down  up  right  bspc  C-bspc      XX
+  _  _ XX  XX  XX  XX XX                 pgdn  @alttab  XX  XX  XX  XX
+  XX    XX    XX                   XX            XX    XX    XX
+)
+
+(deflayer symbol ;; symbols -- hold Caps or '
+  S-grv  S-1    S-2    S-3    S-4    S-5    S-6        S-7  S-8    S-9    S-0    S--  S-=   bspc
+  XX     grv    S-,    S-.    S-4    @pipe            S-3  S-[    S-]    S-grv  XX  XX    XX  XX
+  XX     S-1    S-8    \      =      S-7              S-9  S-0    S-'    S-6    S-;     XX     XX
+  lsft   lsft  @ntilde S-=    -      S--    S-5       [    ]      XX     S-2    S-/    XX
+  XX     XX     XX                   spc                          XX   XX   XX
+)
+
+;; =============================== global variables ==================================
+(defvar
+  ;; Tap-hold timing strategy:
+  ;; - tap-timeout: time allowed for tap action (should be longer than hold-timeout)
+  ;; - hold-timeout: time after which hold action activates (shorter = feels more responsive)
+  ;; - tap-timeout-zero: for special cases where tap must complete quickly
+
+  tap-timeout-zero 0         ;; tap completes immediately, hold only via explicit hold duration
+  tap-timeout 250            ;; generous tap window (should be > hold-timeout)
+  hold-timeout 170           ;; standard hold threshold
+)
+
+;; ================================ keys definitions ==================================
+
+;; ------------------------- defalias ---------------------------
+(defalias
+
+  ;; Navigation and shortcut layer - space-fn
+  spacefn (tap-hold-release $tap-timeout-zero $hold-timeout spc (multi (layer-while-held navigation) (on-release release-virtualkey alt)))
+
+  alttab (macro (on-press press-virtualkey alt) 2 tab)
+
+  ;; live-reload the config file in place (no restart)
+  rld lrld
+
+  ;; -------------------- intelligent shift (hold-only) -----------------------
+  ;; This preserves the behavior where modifier order doesn't matter
+  ;; tap-timeout-zero + same action for both = shift stays active while holding
+  ;; The magic: lsft/lsft means shift always behaves like a held key, not a one-shot
+  isft (tap-hold $tap-timeout-zero $hold-timeout lsft lsft)
+
+  ;; -------------------- fn2 layer - now hold-only (tap outputs esc) -------
+  fn2 (tap-hold $tap-timeout $hold-timeout esc (layer-while-held symbol))  ;; tap: esc | hold: symbol
+
+  ;; -------------------- apostrophe key - tap outputs apostrophe/quote, hold activates symbol -------
+  apostfn2 (tap-hold $tap-timeout $hold-timeout ' (layer-while-held symbol))  ;; tap: apostrophe | hold: symbol
+
+  ;; ---------------------- Home row mods on bottom row  - base layer --------------
+  ;; QWERTY bottom row: Z-X-C-V-B (left side) and N-M-,-. (right side)
+  ;; Mapped to: Z=lshift, X=lmet, C=lalt, V=lctrl, B=plain
+  ;;            N=rctrl, M=lalt, ,=rmet, .=lshift, /=plain
+
+  zsft (tap-hold $tap-timeout $hold-timeout z lsft)
+  xwin (tap-hold $tap-timeout $hold-timeout x lmet)
+  calt (tap-hold $tap-timeout $hold-timeout c lalt)
+  vctrl (tap-hold $tap-timeout $hold-timeout v lctl)
+  nctrl (tap-hold $tap-timeout $hold-timeout n rctl)
+  malt (tap-hold $tap-timeout $hold-timeout m lalt)
+  commawin (tap-hold $tap-timeout $hold-timeout , rmet)
+  dotshift (tap-hold $tap-timeout $hold-timeout . lsft)
+
+)
+
+;; ================================ character definitions ==============================
+
+(defalias
+
+  pipe (unicode |)
+  ntilde (unicode ñ)
+
+)

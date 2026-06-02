@@ -65,6 +65,15 @@ return {
             end,
             color = { fg = "#ff9e64" },
           },
+          "encoding",
+          {
+            "fileformat",
+            symbols = {
+              unix = "LF",
+              dos = "CRLF",
+              mac = "CR",
+            },
+          },
         },
         lualine_y = { "lsp_status", "filetype" },
         lualine_z = { "location" },
