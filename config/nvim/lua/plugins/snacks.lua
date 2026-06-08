@@ -7,6 +7,9 @@ return {
     picker = {
       exclude = { "node_modules" },
     },
+    scratch = {
+      win = { style = "split" },
+    },
   },
   keys = {
     { "<leader>ff", function() Snacks.picker.files({ show_empty = true, hidden = true, ignored = true }) end, desc = "[f]ind [f]iles" },
@@ -47,5 +50,9 @@ return {
 
     -- Lazygit
     { "<leader>lg",  function() Snacks.lazygit() end, desc = "LazyGit" },
+
+    -- Scratch
+    { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle [.] Scratch Buffer" },
+    { "<leader>S",  function() Snacks.scratch.select() end, desc = "[S]elect Scratch Buffer" },
   },
 }

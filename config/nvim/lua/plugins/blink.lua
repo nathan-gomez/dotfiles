@@ -29,6 +29,8 @@ return {
       menu = {
         border = "single",
         auto_show = false,
+        max_height = 20,
+        min_width = 30,
 
         draw = {
           columns = { { "kind_icon" }, { "label", gap = 1 } },
@@ -76,7 +78,7 @@ return {
 
       documentation = {
         auto_show = false,
-        window = { border = "rounded" },
+        window = { border = "rounded", max_width = 100, max_height = 30 },
       },
 
       ghost_text = {
