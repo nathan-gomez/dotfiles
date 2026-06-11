@@ -9,7 +9,6 @@ Set-PSReadLineOption -PredictionSource History
 
 Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r' -PSReadlineChordProvider 'Ctrl+d'
 
-Set-PSReadLineKeyHandler -Key Ctrl+l -Function AcceptSuggestion
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward

@@ -18,6 +18,8 @@ return {
       local neogit = require("neogit")
 
       neogit.setup({
+        treesitter_diff_highlight = true,
+        word_diff_highlight = true,
         integrations = {
           diffview = true,
           snacks = true,
