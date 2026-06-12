@@ -14,9 +14,6 @@ fish_add_path --prepend /opt/bin
 
 set fish_greeting
 
-# Set Vi mode
-set --global fish_key_bindings fish_vi_key_bindings
-
 # Environment variables
 set -gx EDITOR nvim
 
