@@ -1,3 +1,17 @@
+local function multicursor_status()
+  local ok, mc = pcall(require, "multicursor-nvim")
+  if not ok then
+    return ""
+  end
+
+  local count = mc.numEnabledCursors()
+  if count <= 1 then
+    return ""
+  end
+
+  return "MC: " .. count
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -6,66 +20,45 @@ return {
     local icons = require("icons")
 
     return {
-      extensions = { "oil" },
+      extensions = { "oil", "quickfix", "trouble" },
       options = {
         icons_enabled = true,
         theme = "auto",
-        section_separators = { left = "", right = "" },
-        component_separators = "|",
+        section_separators = { left = "", right = "" },
+        component_separators = "",
         globalstatus = true,
       },
       sections = {
         lualine_a = { "mode" },
         lualine_b = {
           {
-            "branch",
+            "b:gitsigns_head",
             icon = icons.git.branch,
           },
-          {
-            "diff",
-            symbols = icons.git,
-          },
-          {
-            "diagnostics",
-            sources = { "nvim_diagnostic" },
-            symbols = icons.diagnostics,
-          },
-        },
-        lualine_c = {
           {
             "filename",
             file_status = true, -- displays file status (readonly status, modified status)
             path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
             symbols = {
-              modified = "󰜥", -- Text to show when the file is modified.
-              readonly = "", -- Text to show when the file is non-modifiable or readonly.
-              unnamed = "", -- Text to show for unnamed buffers.
-              newfile = "", -- Text to show for newly created file before first write
+              modified = icons.file_status.modified, -- Text to show when the file is modified.
+              readonly = icons.file_status.readonly, -- Text to show when the file is non-modifiable or readonly.
+              unnamed = icons.file_status.unnamed, -- Text to show for unnamed buffers.
+              newfile = icons.file_status.newfile, -- Text to show for newly created file before first write
             },
+          },
+        },
+        lualine_c = {
+          {
+            multicursor_status,
+            color = { fg = "#ff9e64" },
           },
         },
         lualine_x = {
           {
-            function()
-              local ok, mc = pcall(require, "multicursor-nvim")
-              if not ok then
-                return ""
-              end
-
-              local count = mc.numEnabledCursors()
-              if count <= 1 then
-                return ""
-              end
-
-              return "MC: " .. count
-            end,
-            cond = function()
-              local ok, mc = pcall(require, "multicursor-nvim")
-              return ok and mc.numEnabledCursors() > 1
-            end,
-            color = { fg = "#ff9e64" },
+            "diagnostics",
+            sources = { "nvim_diagnostic" },
+            symbols = icons.diagnostics,
           },
-          "encoding",
           {
             "fileformat",
             symbols = {

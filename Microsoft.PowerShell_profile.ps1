@@ -2,7 +2,6 @@
 # Install-Module -Name PSFzf -Scope CurrentUser
 Import-Module PSFzf
 
-Set-PSReadLineOption -EditMode Vi
 Set-PSReadLineOption -HistoryNoDuplicates
 Set-PSReadLineOption -MaximumHistoryCount 10000
 Set-PSReadLineOption -PredictionSource History
@@ -17,21 +16,6 @@ Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
 # edit current command line in $env:EDITOR
 Set-PSReadLineKeyHandler -Key Alt+e -Function ViEditVisually
 
-$global:__ViMode = 'I'
-Write-Host -NoNewline "`e[6 q" # bar cursor
-
-function OnViModeChange {
-    if ($args[0] -eq 'Command') {
-        $global:__ViMode = 'N'
-        Write-Host -NoNewline "`e[2 q" # block cursor
-    } else {
-        $global:__ViMode = 'I'
-        Write-Host -NoNewline "`e[6 q"
-    }
-    [Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
-}
-Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
-
 # osc7 integration for wezterm
 function prompt {
     $p = $executionContext.SessionState.Path.CurrentLocation
@@ -41,9 +25,7 @@ function prompt {
         $provider_path = $p.ProviderPath -Replace "\\", "/"
         $osc7 = "$ansi_escape]7;file://${env:COMPUTERNAME}/${provider_path}${ansi_escape}\"
     }
-    $modeColor = if ($global:__ViMode -eq 'N') { "`e[33m" } else { "`e[32m" }
-    $reset = "`e[0m"
-    "${osc7}${modeColor}[$($global:__ViMode)]${reset} PS $p$('>' * ($nestedPromptLevel + 1)) "
+    "${osc7}PS $p$('>' * ($nestedPromptLevel + 1)) "
 }
 
 $env:EDITOR = "nvim"

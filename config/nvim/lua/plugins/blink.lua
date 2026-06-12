@@ -18,7 +18,17 @@ return {
       ["<C-d>"] = { "scroll_documentation_down", "fallback" },
     },
     cmdline = {
-      keymap = { preset = "inherit" },
+      keymap = {
+        preset = "inherit",
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+        ["<Right>"] = { "accept", "fallback" },
+      },
+      completion = {
+        menu = { auto_show = true },
+        list = { selection = { preselect = true, auto_insert = false } },
+        ghost_text = { enabled = true },
+      },
     },
 
     appearance = {
@@ -53,9 +63,7 @@ return {
                     icon = dev_icon
                   end
                 else
-                  icon = require("lspkind").symbolic(ctx.kind, {
-                    mode = "symbol",
-                  })
+                  icon = require("lspkind").symbolic(ctx.kind)
                 end
 
                 return icon .. ctx.icon_gap
