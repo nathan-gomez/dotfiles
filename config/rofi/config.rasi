@@ -1,10 +1,10 @@
 configuration {
   /*---------- General setting ----------*/
-  font: "JetBrainsMono Nerd Font 14";
+  font: "FiraCodeMono Nerd Font 14";
   show-icons: true;
   icon-theme: "Papirus";
   case-sensitive: false;
-  terminal: "alacritty";
+  terminal: "wezterm";
   disable-history: false;
   hide-scrollbar: true;
   sidebar-mode: false;
@@ -39,4 +39,4 @@ configuration {
   kb-delete-entry: "Control+q,Shift+Delete";
 }
 
-@theme "./squared-everforest.rasi"
+@theme "./gruvbox-dark.rasi"

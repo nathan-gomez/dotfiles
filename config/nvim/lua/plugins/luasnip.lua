@@ -2,7 +2,7 @@ return {
   "L3MON4D3/LuaSnip",
   version = "2.*",
   event = "BufReadPre",
-  build = "make install_jsregexp CC=zig cc",
+  build = "make install_jsregex",
   dependencies = {
     {
       "rafamadriz/friendly-snippets",

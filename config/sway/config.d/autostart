@@ -11,9 +11,8 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
-# Idle configuration
-# exec swayidle idlehint 1
-# exec_always swayidle -w before-sleep "gtklock -d"
+# XDG desktop portal (needed for GTK4/libadwaita dark mode and file choosers)
+exec systemctl --user start xdg-desktop-portal-gtk xdg-desktop-portal
 
 # Desktop notifications
 exec mako
@@ -27,18 +26,12 @@ exec autotiling
 # cliphist
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
-     
+
 # Network Applet
 exec nm-applet --indicator
 
 # Firewall Applet
 exec sleep 2 && firewall-applet
-
-# nwg-drawer
-exec_always nwg-drawer -r -c 7 -is 90 -mb 10 -ml 50 -mr 50 -mt 10
-
-# Prefer dark themes on all gnome apps
-exec gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Set cursor
 seat seat0 xcursor_theme Bibata-Modern-Ice

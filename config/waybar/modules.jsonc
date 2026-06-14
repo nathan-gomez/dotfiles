@@ -2,13 +2,13 @@
   // NOTE: Custom Modules
 
   "custom/launcher": {
-      "format":"<span size='x-large'>󰣇</span>",
-      "on-click": "exec nwg-drawer",
+      "format":"<span font='24'>󰣇</span>",
+      "on-click": "exec rofi -show drun",
       "tooltip": false
   },
 
   "custom/power": {
-      "format":"⏻",
+      "format":"<span font='24'>⏻</span>",
       "on-click": "exec ~/.config/sway/scripts/power_menu.sh",
       "tooltip": false
   },

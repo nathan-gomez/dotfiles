@@ -10,11 +10,10 @@ set $right l
 # Set default terminal emulator
 set $term wezterm
 
-# Application launcher
-set $launcher fuzzel
+set $file_explorer thunar
 
-# Application menu
-set $menu nwg-drawer
+# Application launcher
+set $launcher rofi
 
 # Power Menu
 set $powermenu ~/.config/sway/scripts/power_menu.sh
@@ -30,18 +29,13 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
     bindsym $mod+q kill
 
     # Open the launcher
-    bindsym $mod+d exec $launcher
-    bindsym Control+slash exec $launcher
-
-    # Menu
-    bindsym $mod+Shift+d exec $menu
+    bindsym $mod+d exec $launcher -show drun
 
     # Lock screen
-    bindsym $mod+f1 exec gtklock
+    bindsym $mod+f1 exec swaylock --screenshots --effect-blur 7x5
 
     # Activities
-    bindsym $mod+p exec ~/.config/sway/scripts/window_switcher.sh
-    bindsym $mod+tab exec ~/.config/sway/scripts/window_switcher.sh
+    bindsym alt+tab exec ~/.config/sway/scripts/window_switcher.sh
 
     # Move windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -53,9 +47,6 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
 
 #
 # Moving around:
-
-    bindsym Mod1+shift+tab workspace prev
-    bindsym Mod1+tab workspace next
 
     bindsym {
         # Change window focus
@@ -149,11 +140,11 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    # bindsym $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    # bindsym $mod+minus scratchpad show
 
 #
 # Resizing containers:
@@ -207,16 +198,13 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
     bindsym $mod+Return exec $term
 
     # Launch the file explorer
-    bindsym $mod+n exec thunar
+    bindsym $mod+n exec $file_explorer
 
     # Launch the clipboard manager
-    bindsym $mod+Shift+v exec cliphist list | fuzzel -d -w 90 -l 30 -p "Select an entry to copy it to your clipboard buffer:"| cliphist decode | wl-copy
+    bindsym $mod+Shift+v exec cliphist list | $launcher -dmenu -theme-str 'window {width: 60%;}' -l 20 -p "Copy:"| cliphist decode | wl-copy
     # Delete an entry from the clipboard manager
-    bindsym $mod+Shift+x exec cliphist list | fuzzel -d -w 90 -l 30 -t cc9393ff -S cc9393ff -p "Select an entry to delete it from cliphist:"| cliphist delete
+    bindsym $mod+Shift+x exec cliphist list | $launcher -dmenu  -theme-str 'window {width: 60%;}' -l 20 -p "Delete:"| cliphist delete
     # Note: you can clear all cliphist entries by running `cliphist wipe`
-
-    # Show keybindings cheatsheet
-    bindsym $mod+slash exec ~/.config/sway/scripts/show_keybindings.sh
 
 #
 # Screenshots

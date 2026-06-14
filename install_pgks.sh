@@ -15,9 +15,7 @@ packages=(
   ripgrep
   fzf
   lsd
-  # dotnet-host
-  # dotnet-runtime
-  # dotnet-sdk
+  jq
 
   # Desktop pkgs #
 
@@ -27,7 +25,6 @@ packages=(
 
   # Desktop Programs
   wezterm
-  bitwarden
   btop
   syncthing
   zerotier-one
@@ -35,8 +32,28 @@ packages=(
   eog
   qalculate-gtk
 
-  timeshift
-  xhost # timeshift dependency
+  # wayland apps
+  azote
+  cliphist
+  grim
+  slurp
+  autotiling
+  rofi
+  mako
+  foot
+  polkit-gnome
+  gnome-keyring
+  seahorse
+  network-manager-applet
+  firewall-applet
+  swappy
+  swaylock-effects
+  swaybg
+  nwg-look # control gtk settings
+  pamixer # sound control
+
+  #timeshift
+  #xhost # timeshift dependency
 
   # Theme
   materia-gtk-theme

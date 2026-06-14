@@ -2,35 +2,28 @@
  *
  * Waybar configuration
  *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
  * =========================================================================== */
 
 /* -----------------------------------------------------------------------------
  * Colors
  * -------------------------------------------------------------------------- */
 
-/* TODO: define a better color pallete */
+/* Gruvbox dark palette */
 
-/* Reds and Orange */
-/* @define-color primary #e57373; */
-/* @define-color secondary #f6e58d; */
-/* @define-color accent #ffab91; */
+@define-color primary #83a598;
+@define-color secondary #fabd2f;
+@define-color accent #d3869b;
 
-/* Blues and Purple */
-@define-color primary #64b5f6;
-@define-color secondary #b39ddb;
-@define-color accent #bb9af7;
+@define-color fg_primary #ebdbb2;
+@define-color bg_primary #1d2021;
+@define-color bg_alpha rgba(29, 32, 33, 0.7);
+@define-color muted #928374;
+@define-color urgent #fb4934;
+@define-color warning #fe8019;
 
-@define-color fg_primary #cfd8dc;
-@define-color bg_primary #0a0b10;
-@define-color bg_alpha rgba(0, 0, 0, 0.7);
-@define-color muted #565f89;
-@define-color urgent #c9545d;
-
-@define-color workspace_active #3584e8;
-@define-color workspace_inactive #3a3a4a;
-@define-color workspace_hover #6b8ba6;
+@define-color workspace_active #458588;
+@define-color workspace_inactive #3c3836;
+@define-color workspace_hover #689d6a;
 
 
 /* -----------------------------------------------------------------------------
@@ -39,23 +32,23 @@
 
 @keyframes blink-warning {
     70% {
-        color: white;
+        color: @fg_primary;
     }
 
     to {
-        color: white;
-        background-color: orange;
+        color: @bg_primary;
+        background-color: @warning;
     }
 }
 
 @keyframes blink-critical {
     70% {
-      color: white;
+      color: @fg_primary;
     }
 
     to {
-        color: white;
-        background-color: red;
+        color: @fg_primary;
+        background-color: @urgent;
     }
 }
 
@@ -78,7 +71,7 @@
     background-color: @bg_alpha;
     font-family: "Symbols Nerd Font", "Symbols Nerd Font Mono", monospace;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 /* Every modules */
@@ -143,7 +136,7 @@
 #mode {
     background: @primary;
     border-bottom: 3px transparent;
-    color:white;
+    color: @bg_primary;
     margin-left: 5px;
     padding: 7px;
 }
@@ -153,15 +146,15 @@
 }
 
 #network.disconnected {
-    color: orange;
+    color: @warning;
 }
 
 #cpu.warning {
-    color: orange;
+    color: @warning;
 }
 
 #cpu.critical {
-    color: red;
+    color: @urgent;
 }
 
 #memory {
@@ -171,11 +164,11 @@
 }
 
 #memory.warning {
-    color: orange;
+    color: @warning;
  }
 
 #memory.critical {
-    color: red;
+    color: @urgent;
     animation-name: blink-critical;
     animation-duration: 2s;
     padding-left:5px;
@@ -199,11 +192,11 @@
 }
 
 #battery.warning {
-    color: orange;
+    color: @warning;
 }
 
 #battery.critical {
-    color: red;
+    color: @urgent;
 }
 
 #battery.warning.discharging {

@@ -1,7 +1,7 @@
 CONFIG_DIR := $(HOME)/.config
 
 cli: nvim lazydocker lazygit fish yazi
-desktop: nvim lazydocker lazygit sway waybar fish wezterm yazi
+desktop: nvim lazydocker lazygit sway waybar mako fish wezterm yazi
 
 nvim:
 	@echo "Creating symlink: $(CONFIG_DIR)/nvim"
@@ -26,6 +26,10 @@ sway:
 waybar:
 	@echo "Creating symlink: $(CONFIG_DIR)/waybar"
 	@ln -sfn $(PWD)/config/waybar $(CONFIG_DIR)/waybar
+
+mako:
+	@echo "Creating symlink: $(CONFIG_DIR)/mako"
+	@ln -sfn $(PWD)/config/mako $(CONFIG_DIR)/mako
 
 fish:
 	@echo "Creating symlink: $(CONFIG_DIR)/fish"

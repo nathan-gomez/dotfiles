@@ -14,12 +14,16 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   config.default_prog = { "pwsh.exe", "-NoLogo" }
 end
 
+if wezterm.target_triple == "x86_64-unknown-linux-gnu" then
+  config.enable_wayland = false
+end
+
 config.font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular" })
 config.font_size = 14.0
 
 -- Window
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 1.0
+config.window_background_opacity = 0.9
 config.window_padding = {
   left = 5,
   right = 5,
