@@ -1,8 +1,6 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
-local theme_name = "DWM rob (terminal.sexy)"
--- local theme_name = "UltraDark"
-local tab_theme = "Adventure"
+local theme_name = "Black Metal (Gorgoroth) (base16)"
 
 config.color_scheme = theme_name
 config.inactive_pane_hsb = {
@@ -18,12 +16,14 @@ if wezterm.target_triple == "x86_64-unknown-linux-gnu" then
   config.enable_wayland = false
 end
 
-config.font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular" })
-config.font_size = 14.0
+-- config.font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular" })
+config.font = wezterm.font({ family = "JetBrains Mono Nerd Font", weight = "Regular" })
+config.font_size = 18.0
+config.line_height = 1.1
 
 -- Window
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.9
+config.window_background_opacity = 1
 config.window_padding = {
   left = 5,
   right = 5,
@@ -173,7 +173,7 @@ end
 tabline.setup({
   options = {
     icons_enabled = false,
-    theme = tab_theme,
+    theme = theme_name,
     theme_overrides = {},
     section_separators = {
       left = wezterm.nerdfonts.ple_upper_left_triangle,

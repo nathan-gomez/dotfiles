@@ -11,40 +11,34 @@
 ---@field term_keys compile_mode.Keymap[]
 local term = {}
 
---- shell that will spawn the cmd
----@return string|string[]
-local function resolve_shell()
-  if vim.fn.has("win32") == 1 then
-    local shell = vim.o.shell:lower()
-
-    if shell:match("pwsh") or shell:match("powershell") then
-      return { vim.o.shell, "-NoLogo" }
-    end
-  end
-
-  return vim.o.shell
-end
-
--- command that clears the terminal screen
----@return string
-local function resolve_clear_cmd()
-  return vim.fn.has("win32") == 1 and "cls" or "clear"
-end
-
 ---@param opts compile_mode.Opts
 function term:setup(opts)
   self.win_opts = opts.win_opts
   self.term_keys = opts.keys.term
-  self.shell = resolve_shell()
-  self.clear_cmd = resolve_clear_cmd()
   self.buf_name = "compile_mode_term"
   self.buf = nil
   self.win = nil
   self.channel = nil
   self.last_emitted = {}
+  self:resolve_shell()
 
   self.output = require("compile_mode.output")
   self.output:setup(opts)
+end
+
+function term:resolve_shell()
+  term.clear_cmd = "clear"
+  term.shell = vim.o.shell
+
+  if vim.fn.has("win32") == 1 then
+    term.clear_cmd = "cls"
+
+    local shell = vim.o.shell:lower()
+
+    if shell:match("pwsh") or shell:match("powershell") then
+      term.shell = { vim.o.shell, "-NoLogo" }
+    end
+  end
 end
 
 --- Jump to the file of the diagnostic under the cursor, if any.
@@ -195,9 +189,11 @@ function term:exec_cmd(cmd)
   assert(self.win ~= nil)
   pcall(vim.api.nvim_win_set_cursor, self.win, { 1, 0 })
 
-  -- \x15 clears any half-typed line; clear the screen, then run cmd (\r = enter).
-  vim.api.nvim_chan_send(self.channel, "\x15" .. self.clear_cmd .. "\r")
-  vim.api.nvim_chan_send(self.channel, cmd .. "\r")
+  local ret = "\r"
+
+  vim.api.nvim_chan_send(self.channel, ret)
+  vim.api.nvim_chan_send(self.channel, self.clear_cmd .. ret)
+  vim.api.nvim_chan_send(self.channel, cmd .. ret)
 end
 
 return term

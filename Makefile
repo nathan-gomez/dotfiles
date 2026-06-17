@@ -1,6 +1,6 @@
 CONFIG_DIR := $(HOME)/.config
 
-cli: nvim lazydocker lazygit fish yazi
+cli: nvim lazydocker lazygit fish yazi wezterm
 desktop: nvim lazydocker lazygit sway waybar mako fish wezterm yazi
 
 nvim:
@@ -39,17 +39,13 @@ zsh:
 	@echo "Creating symlink: $(HOME)/.zshrc"
 	@ln -sfn $(PWD)/.zshrc $(HOME)/.zshrc
 
-ghostty:
-	@echo "Creating symlink: $(CONFIG_DIR)/ghostty"
-	@ln -sfn $(PWD)/config/ghostty $(CONFIG_DIR)/ghostty
-
 rofi:
 	@echo "Creating symlink: $(CONFIG_DIR)/rofi"
 	@ln -sfn $(PWD)/config/rofi $(CONFIG_DIR)/rofi
 
 wezterm:
-	@echo "Creating symlink: $(HOME)/.wezterm.lua"
-	@ln -sfn $(PWD)/.wezterm.lua $(HOME)/.wezterm.lua
+	@echo "Creating symlink: $(CONFIG_DIR)/wezterm"
+	@ln -sfn $(PWD)/config/wezterm $(CONFIG_DIR)/wezterm
 
 yazi:
 	@echo "Creating symlink: $(CONFIG_DIR)/yazi"

@@ -27,6 +27,22 @@ local function default_severity_scan(line)
   return "info"
 end
 
+---@param line string
+---@return compile_mode.Severity
+local function csharp_severity_scan(line)
+  local line_l = line:lower()
+
+  if line_l:match("error%s+%w+%s*:") then
+    return "error"
+  end
+
+  if line_l:match("warning%s+%w+%s*:") then
+    return "warning"
+  end
+
+  return "info"
+end
+
 ---@class compile_mode.Opts
 ---@field win_opts vim.api.keyset.win_config window config for the compile terminal
 ---@field keys compile_mode.Keys keymaps
@@ -43,6 +59,11 @@ local opts = {
       name = "odin",
       pattern = "^%s*(..-)%((%d+):(%d+)%)",
       severity = default_severity_scan,
+    },
+    {
+      name = "csharp",
+      pattern = "^%s*(..-)%((%d+),(%d+)%):",
+      severity = csharp_severity_scan,
     },
     {
       name = "grep",

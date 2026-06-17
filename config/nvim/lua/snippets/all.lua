@@ -27,3 +27,17 @@ ls.add_snippets("typescript", {
     })
   ),
 })
+
+ls.add_snippets("lua", {
+  snippet(
+    {
+      trig = "todo",
+      snippetType = "snippet",
+      desc = "TODO annotation",
+      wordTrig = true,
+    },
+    fmt("-- TODO: {}", {
+      insert_node(1, "todo"),
+    })
+  ),
+})

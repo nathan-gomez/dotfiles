@@ -47,4 +47,44 @@ function M.append_current_to_loclist()
   })
 end
 
+---@param filepath string
+---@param expand? boolean
+function M.goto_file(filepath, expand)
+  local filename = filepath
+
+  if expand then
+    filename = vim.fn.expand(filepath)
+  end
+
+  local file
+
+  if vim.uv.fs_stat(filename) then
+    file = filename
+  else
+    file = vim.fs.find(filename)[1]
+  end
+
+  if not file then
+    vim.notify("File not found: " .. filename, vim.log.levels.WARN)
+    return
+  end
+
+  local wins = vim.tbl_filter(function(win)
+    return vim.api.nvim_win_get_config(win).relative == ""
+  end, vim.api.nvim_tabpage_list_wins(0))
+
+  if #wins > 1 then
+    local curr_win = vim.api.nvim_get_current_win()
+
+    for _, win in ipairs(wins) do
+      if win ~= curr_win then
+        vim.api.nvim_set_current_win(win)
+        break
+      end
+    end
+  end
+
+  vim.cmd("edit " .. vim.fn.fnameescape(file))
+end
+
 return M

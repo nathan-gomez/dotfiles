@@ -53,30 +53,9 @@ map("n", "<C-Right>", ":vertical resize +5<CR>", { silent = true, desc = "Increa
 map("n", "<C-Up>", ":horizontal resize +5<CR>", { silent = true, desc = "Increase window height" })
 map("n", "<C-Down>", ":horizontal resize -5<CR>", { silent = true, desc = "Decrease window height" })
 
--- open file in different buffer
-map("n", "gf", function()
-  local file = vim.fn.findfile(vim.fn.expand("<cfile>"), "**")
-  if file == "" then
-    vim.notify("No file under cursor", vim.log.levels.WARN)
-    return
-  end
-
-  local wins = vim.tbl_filter(function(win)
-    return vim.api.nvim_win_get_config(win).relative == ""
-  end, vim.api.nvim_tabpage_list_wins(0))
-
-  if #wins > 1 then
-    local cur = vim.api.nvim_get_current_win()
-    for _, win in ipairs(wins) do
-      if win ~= cur then
-        vim.api.nvim_set_current_win(win)
-        break
-      end
-    end
-  end
-
-  vim.cmd("edit " .. vim.fn.fnameescape(file))
-end, { desc = "Open file under cursor" })
+map("n", "gf", function() utils.goto_file("<cfile>", true) end, { desc = "Open file under cursor" })
+map("n", "<M-t>", require("transpose_words").transpose_words, { desc = "Transpose words" })
+map("n", "<M-C-t>", require("transpose_words").transpose_exprs_prompt, { desc = "Transpose expressions" })
 
 -- Tabs
 map("n", "<leader>tn", "<cmd>tabnew<cr>", { silent = true, desc = "New tab" })

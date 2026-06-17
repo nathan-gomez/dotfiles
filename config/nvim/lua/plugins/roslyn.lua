@@ -1,10 +1,12 @@
 return {
   "seblyng/roslyn.nvim",
   ft = "cs",
+  ---@module 'roslyn.config'
+  ---@type RoslynNvimConfig
+  opts = {
+    filewatching = "roslyn",
+  },
   config = function()
-    -- TODO: configure formatter
-    require("roslyn").setup({})
-
     local handles = {}
 
     -- Restore progress with fidget

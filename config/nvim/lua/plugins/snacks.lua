@@ -3,26 +3,33 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+  ---@type snacks.Config
   opts = {
     picker = {
       exclude = { "node_modules" },
-    },
-    scratch = {
-      win = { style = "split" },
+       sources = {
+        lines = {
+          layout = {
+            fullscreen = false,
+            preset = "bottom",
+          }
+        }
+      },
+      layout = {
+        fullscreen = true,
+        preset = "vertical",
+      },
     },
   },
   keys = {
     { "<leader>ff", function() Snacks.picker.files({ show_empty = true, hidden = true, ignored = true }) end, desc = "[f]ind [f]iles" },
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "[f]ind [b]uffers" },
     { "<leader>fs", function() Snacks.picker.grep() end, desc = "Grep Search" },
-    { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "[f]ind [c]onfig File" },
-    { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+    { "<leader>fh", function() Snacks.picker.help() end, desc = "[f]ind [h]elp" },
 
     -- Git
     { "<leader>gf", function() Snacks.picker.git_files() end, desc = "[g]it [f]ind Files" },
     { "<leader>gs", function() Snacks.picker.git_status() end, desc = "[g]it [s]tatus" },
-    { "<leader>gll", function() Snacks.picker.git_log() end, desc = "[g]it [l]og" },
-    { "<leader>glf", function() Snacks.picker.git_log_file() end, desc = "[g]it [l]og current [f]ile" },
 
     -- Search
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "[s]earch current [b]uffer", mode = "n" },
@@ -50,9 +57,5 @@ return {
 
     -- Lazygit
     { "<leader>lg",  function() Snacks.lazygit() end, desc = "LazyGit" },
-
-    -- Scratch
-    { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle [.] Scratch Buffer" },
-    { "<leader>S",  function() Snacks.scratch.select() end, desc = "[S]elect Scratch Buffer" },
   },
 }

@@ -44,6 +44,18 @@ map <leader>fe <Action>(RecentFiles)
 nmap <S-k> <Action>(ShowHoverInfo)
 nmap <C-Enter> <Action>(ShowIntentionActions)
 
+" LSP navigation
+nmap gI <Action>(GotoImplementation)
+nmap gr <Action>(FindUsages)
+
+" Multicursors
+nmap <C-n> <Action>(SelectNextOccurrence)
+xmap <C-n> <Action>(SelectNextOccurrence)
+nmap <C-p> <Action>(UnselectPreviousOccurrence)
+xmap <C-p> <Action>(UnselectPreviousOccurrence)
+nmap <leader>B <Action>(SelectAllOccurrences)
+xmap <leader>B <Action>(SelectAllOccurrences)
+
 map ]d <Action>(GotoNextError)
 map [d <Action>(GotoPreviousError)
 

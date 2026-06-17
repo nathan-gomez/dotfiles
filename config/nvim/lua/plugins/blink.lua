@@ -112,8 +112,14 @@ return {
       default = { "lsp", "path", "snippets", "lazydev" },
       per_filetype = {
         sql = { "dadbod" },
+        org = { "orgmode" },
       },
       providers = {
+        orgmode = {
+          name = "Orgmode",
+          module = "orgmode.org.autocompletion.blink",
+          fallbacks = { "buffer" },
+        },
         lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
         dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
       },

@@ -4,6 +4,8 @@ vim.o.relativenumber = true
 -- Enable project configurations
 vim.o.exrc = true
 
+vim.opt.background = "dark"
+
 -- Show trailing whitespace
 vim.opt.list = true
 vim.opt.listchars:append({ trail = "·" })
@@ -97,7 +99,7 @@ local icons = require("icons")
 
 vim.diagnostic.config({
   severity_sort = true,
-  float = { border = "rounded", source = "if_many" },
+  float = { source = "if_many", border = "rounded" },
   underline = { severity = vim.diagnostic.severity.ERROR },
   signs = {
     text = {

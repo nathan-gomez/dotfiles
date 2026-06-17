@@ -23,7 +23,7 @@ return {
     local ensureInstalled = {
       "go",
       "cpp",
-      "zig",
+      "odin",
       "bash",
       "make",
       "typescript",
