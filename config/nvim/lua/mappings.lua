@@ -67,10 +67,9 @@ map("n", "<C-PageUp>", "<cmd>tabprevious<cr>", { silent = true, desc = "Prev tab
 
 -- Open terminal
 map("n", "<leader>te", function()
-  vim.cmd.vnew()
+  vim.cmd.tabnew()
   vim.cmd.term()
-  vim.cmd.wincmd("L")
-end, { desc = "Open vertical terminal" })
+end, { desc = "Open terminal in new tab" })
 
 map("n", "<leader>th", function()
   vim.cmd.new()

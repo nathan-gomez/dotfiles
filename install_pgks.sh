@@ -22,6 +22,7 @@ packages=(
   # Fonts
   ttf-jetbrains-mono-nerd
   ttf-firacode-nerd
+  ttf-nerd-fonts-symbols
 
   # Desktop Programs
   wezterm

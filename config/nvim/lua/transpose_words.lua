@@ -76,8 +76,10 @@ local function swap(row, line, w1, w2)
   line = prefix .. b .. mid .. a .. suffix
   local col = (#prefix + #b + #mid + #a) - 1
 
-  vim.api.nvim_set_current_line(line)
-  vim.api.nvim_win_set_cursor(0, { row, math.max(col, 0) })
+  if vim.bo.modifiable then
+    vim.api.nvim_set_current_line(line)
+    vim.api.nvim_win_set_cursor(0, { row, math.max(col, 0) })
+  end
 end
 
 -- swap the two spans pick() selects from spans_fn, preserving separators

@@ -83,13 +83,12 @@ alias la='lsd -la'
 alias lzg='lazygit'
 alias lzd='lazydocker'
 
-alias srv-prod-1="ssh sysadmin@192.168.100.4"
-alias srv-prod-2="ssh sysadmin@192.168.100.6"
+alias gamma="ssh -i ~/.ssh/personal sysadmin@192.168.100.15"
 
 # Places
-alias notes="cd /mnt/hdd/Fede/gdrive/notes"
-alias fede="cd /mnt/hdd/Fede"
-alias dev="cd /mnt/hdd/Fede/dev"
+alias notes="cd ~/windows/Fede/gdrive/notes"
+alias fede="cd ~/windows/Fede"
+alias dev="cd ~/windows/Fede/dev"
 
 # TODO: add tray notification
 # alias vpnup="sudo ipsec up abstra"

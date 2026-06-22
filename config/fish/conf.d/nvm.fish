@@ -27,4 +27,6 @@ if status is-interactive && set --query nvm_default_version && ! set --query nvm
     nvm use --silent $nvm_default_version
 end
 
-nvm use lts > /dev/null
+if status is-interactive
+    nvm use lts > /dev/null
+end

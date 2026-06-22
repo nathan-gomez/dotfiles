@@ -2,13 +2,13 @@
   // NOTE: Custom Modules
 
   "custom/launcher": {
-      "format":"<span font='24'>󰣇</span>",
+      "format":"<span font='16'>󰣇</span>",
       "on-click": "exec rofi -show drun",
       "tooltip": false
   },
 
   "custom/power": {
-      "format":"<span font='24'>⏻</span>",
+      "format":"<span font='16'>⏻</span>",
       "on-click": "exec ~/.config/sway/scripts/power_menu.sh",
       "tooltip": false
   },
