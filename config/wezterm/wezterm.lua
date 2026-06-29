@@ -18,7 +18,7 @@ end
 
 config.font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular" })
 -- config.font = wezterm.font({ family = "JetBrains Mono Nerd Font", weight = "Regular" })
-config.font_size = 18.0
+config.font_size = 17.0
 
 -- Window
 config.window_decorations = "RESIZE"
@@ -91,6 +91,9 @@ config.keys = {
 
   { key = "p", mods = "LEADER", action = wezterm.action.ActivateTabRelative(-1) },
   { key = "n", mods = "LEADER", action = wezterm.action.ActivateTabRelative(1) },
+
+  { key = "LeftArrow", mods = "SHIFT", action = wezterm.action.ActivateTabRelative(-1) },
+  { key = "RightArrow", mods = "SHIFT", action = wezterm.action.ActivateTabRelative(1) },
 
   { key = "&", mods = "LEADER|SHIFT", action = wezterm.action.CloseCurrentTab({ confirm = true }) },
 

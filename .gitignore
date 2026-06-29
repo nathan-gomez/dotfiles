@@ -6,3 +6,5 @@ go/
 lazydocker/state.yml
 .vscode/
 config/tmux/plugins
+config/tmux/resurrect
+Session.vim

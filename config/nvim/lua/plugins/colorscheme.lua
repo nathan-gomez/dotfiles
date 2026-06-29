@@ -1,5 +1,17 @@
 return {
   {
+    dir = vim.fn.stdpath("config") .. "/dev/unnamed-theme",
+    name = "unnamed-theme",
+    priority = 1000,
+    lazy = false,
+    config = function ()
+      local unnamed = require("unnamed")
+
+      unnamed.setup()
+      unnamed:load()
+    end
+  },
+  {
     "webhooked/kanso.nvim",
     lazy = false,
     priority = 1000,
@@ -72,7 +84,7 @@ return {
         },
       })
 
-      black_metal.load()
+      -- black_metal.load()
     end,
   },
 }

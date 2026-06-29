@@ -22,7 +22,7 @@ return {
 
         map("n", "K", vim.lsp.buf.hover, opts("Hover"))
 
-        map("n", "<leader>ca", vim.lsp.buf.code_action, opts("Code actions"))
+        map("n", "<leader>vca", vim.lsp.buf.code_action, opts("Code actions"))
 
         map("n", "<leader>vrn", vim.lsp.buf.rename, opts("Rename"))
         map("n", "<F2>", vim.lsp.buf.rename, opts("Rename"))

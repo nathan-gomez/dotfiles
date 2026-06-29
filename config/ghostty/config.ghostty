@@ -1,0 +1,15 @@
+font-family="FiraCode Nerd Font Mono"
+font-size = 17
+
+mouse-hide-while-typing = true
+theme = Black Metal (Gorgoroth)
+
+cursor-color = #9b8d7f
+cursor-text = #111111
+cursor-style = block
+
+background-opacity = 0.9
+
+## Keybindings
+keybind = ctrl+v=paste_from_clipboard
+

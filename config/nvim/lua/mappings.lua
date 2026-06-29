@@ -24,8 +24,8 @@ map(
 )
 
 -- Move selected lines
-map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines up" })
-map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines down" })
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines up", silent = true })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines down", silent = true })
 
 -- Keep cursor in the middle
 map("n", "<C-d>", "<C-d>zz", { desc = "Keep cursor in the middle" })
@@ -33,15 +33,13 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
 -- Better indenting
-map("v", "<", "<gv", { desc = "Indent line in" })
-map("v", ">", ">gv", { desc = "Indent line out" })
+map("v", "<", "<gv", { desc = "Indent line in", silent = true })
+map("v", ">", ">gv", { desc = "Indent line out", silent = true })
 
 -- Exit terminal mode
 map("t", "<Esc><Esc>", "<C-\\><C-n><C-w>h", { silent = true, desc = "Exit terminal mode" })
 
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
-
-map("n", "<C-w>-", "<cmd>botright new<CR>", { desc = "New horizontal buffer" })
 
 -- Navigation
 map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })

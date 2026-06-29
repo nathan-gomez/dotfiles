@@ -22,10 +22,21 @@ return {
         listing_style = "list",
       },
       view = {
+        default = {
+          layout = "diff2_vertical",
+        },
         merge_tool = {
           layout = "diff3_mixed",
           disable_diagnostics = true,
           winbar_info = true,
+        },
+      },
+      keymaps = {
+        file_panel = {
+          { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Diffview Close" } },
+        },
+        file_history_panel = {
+          { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Diffview Close" } },
         },
       },
     })

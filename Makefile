@@ -35,10 +35,6 @@ fish:
 	@echo "Creating symlink: $(CONFIG_DIR)/fish"
 	@ln -sfn $(PWD)/config/fish $(CONFIG_DIR)/fish
 
-zsh:
-	@echo "Creating symlink: $(HOME)/.zshrc"
-	@ln -sfn $(PWD)/.zshrc $(HOME)/.zshrc
-
 rofi:
 	@echo "Creating symlink: $(CONFIG_DIR)/rofi"
 	@ln -sfn $(PWD)/config/rofi $(CONFIG_DIR)/rofi
@@ -46,6 +42,10 @@ rofi:
 wezterm:
 	@echo "Creating symlink: $(CONFIG_DIR)/wezterm"
 	@ln -sfn $(PWD)/config/wezterm $(CONFIG_DIR)/wezterm
+
+ghostty:
+	@echo "Creating symlink: $(CONFIG_DIR)/ghostty"
+	@ln -sfn $(PWD)/config/ghostty $(CONFIG_DIR)/ghostty
 
 yazi:
 	@echo "Creating symlink: $(CONFIG_DIR)/yazi"
