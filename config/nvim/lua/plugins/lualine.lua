@@ -12,6 +12,26 @@ local function multicursor_status()
   return "MC: " .. count
 end
 
+local function get_word_count()
+  local curr_mode = vim.fn.mode()
+
+  if not curr_mode:find("[Vv]") then
+    return ""
+  end
+
+  local starts = vim.fn.line("v")
+  local ends   = vim.fn.line(".")
+  local lines  = starts <= ends and ends - starts + 1 or starts - ends + 1
+
+  local str = tostring(lines) .. "L"
+
+  if not curr_mode:find("V") then
+    str = string.format("%s %sC", str, tostring(vim.fn.wordcount().visual_chars))
+  end
+
+  return str
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -26,7 +46,6 @@ return {
         theme = "auto",
         section_separators = { left = "", right = "" },
         component_separators = "",
-        -- globalstatus = true,
       },
       sections = {
         lualine_a = { "mode" },
@@ -52,6 +71,9 @@ return {
             multicursor_status,
             color = { fg = "#ff9e64" },
           },
+          {
+            get_word_count,
+          },
         },
         lualine_x = {
           {
@@ -72,12 +94,12 @@ return {
         lualine_z = { "location" },
       },
       inactive_sections = {
-        lualine_a = {},
+        lualine_a = { "filename" },
         lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
+        lualine_c = {},
+        lualine_x = {},
         lualine_y = {},
-        lualine_z = {},
+        lualine_z = { "location" },
       },
     }
   end,

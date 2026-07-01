@@ -9,6 +9,7 @@ return {
   },
   opts = {
     ui = {
+      preselect_current = true,
       position = "center",
       open_win_override = {
         title = "Buffers",
@@ -17,6 +18,7 @@ return {
     },
     navigate = {
       close_buffer = "X",
+      open_split = "S",
     },
   },
 }

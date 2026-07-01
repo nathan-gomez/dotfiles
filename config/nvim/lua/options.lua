@@ -80,7 +80,7 @@ local delim = is_windows and ";" or ":"
 if is_windows then
   local powershell_options = {
     shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
-    shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -NoExit -Command $PSStyle.OutputRendering = 'PlainText';",
+    shellcmdflag = "-NoLogo -NoProfile -Command",
     shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
     shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
     shellquote = "",

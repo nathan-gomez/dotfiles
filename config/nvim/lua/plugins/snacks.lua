@@ -7,17 +7,25 @@ return {
   opts = {
     picker = {
       exclude = { "node_modules" },
-       sources = {
-        lines = {
-          layout = {
-            fullscreen = false,
-            preset = "bottom",
-          }
-        }
-      },
       layout = {
-        fullscreen = true,
-        preset = "vertical",
+        preset = "telescope",
+      },
+      layouts = {
+        telescope = {
+          reverse = false,
+          layout = {
+            box = "horizontal",
+            width = 0.9,
+            height = 0.9,
+            border = "none",
+            {
+              box = "vertical",
+              { win = "input", height = 1, border = "single", title = "{title} {live} {flags}", title_pos = "center" },
+              { win = "list", border = "single" },
+            },
+            { win = "preview", title = "{preview}", width = 0.67, border = "single" },
+          },
+        },
       },
     },
   },
@@ -26,6 +34,7 @@ return {
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "[f]ind [b]uffers" },
     { "<leader>fs", function() Snacks.picker.grep() end, desc = "Grep Search" },
     { "<leader>fh", function() Snacks.picker.help() end, desc = "[f]ind [h]elp" },
+    { "<leader>sn", function() Snacks.picker.notifications() end, desc = "Show notifications" },
 
     -- Git
     { "<leader>gf", function() Snacks.picker.git_files() end, desc = "[g]it [f]ind Files" },
